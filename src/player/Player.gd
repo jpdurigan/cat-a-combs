@@ -5,6 +5,8 @@ const GRAVITY = Vector2(0, 64)
 const JUMP_SPEED = 600
 const WALK_SPEED = 180
 
+export var dead : PackedScene
+
 var velocity := Vector2.ZERO
 
 
@@ -25,3 +27,14 @@ func _physics_process(delta):
 	velocity.x = walk.x
 	velocity += GRAVITY
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+
+func kill():
+	var body : Node2D = dead.instance()
+	body.global_position = global_position
+	owner.add_child(body, true)
+
+
+func _on_Area2D_area_entered(area: Area2D):
+	if area.owner.is_in_group("espeto"):
+		kill()

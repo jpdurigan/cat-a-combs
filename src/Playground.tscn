@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://player/DeadPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/Espeto.tscn" type="PackedScene" id=3]
 
 [node name="Playground" type="Node2D"]
 
@@ -15,5 +15,5 @@ tile_data = PoolIntArray( 262143, 0, 0, 196608, 0, 1, 196609, 0, 2, 327679, 0, 6
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
-[node name="DeadPlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 168, 103 )
+[node name="Espeto" parent="." instance=ExtResource( 3 )]
+position = Vector2( 168, 112 )
