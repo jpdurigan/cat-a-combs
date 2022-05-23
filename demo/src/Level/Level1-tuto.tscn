@@ -17,12 +17,16 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 16
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 11, 0, 589832, 11, 0, 589833, 11, 0, 589834, 11, 0, 589835, 11, 0, 589836, 11, 0, 589837, 11, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 1, 0, 655366, 7, 0, 655367, 7, 0, 655368, 7, 0, 655369, 7, 0, 655370, 7, 0, 655371, 7, 0, 655372, 7, 0, 655373, 7, 0, 655374, 7, 0, 655375, 7, 0 )
+tile_data = PoolIntArray( 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589834, 14, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 1, 0, 655366, 7, 0, 655367, 12, 0, 655368, 12, 0, 655369, 12, 0, 655370, 12, 0, 655371, 12, 0, 655372, 12, 0, 655373, 12, 0, 655374, 7, 0, 720902, 7, 0, 720903, 7, 0, 720904, 7, 0, 720905, 7, 0, 720906, 7, 0, 720907, 7, 0, 720908, 7, 0, 720909, 7, 0, 720910, 7, 0 )
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource( 2 )]
+[node name="START" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 49, 278 )
+rotation = 3.14159
+
+[node name="END" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 588, 276 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
@@ -30,3 +34,6 @@ position = Vector2( 49, 278 )
 stream = ExtResource( 8 )
 autoplay = true
 script = ExtResource( 9 )
+
+[node name="1" type="SkeletonIK" parent="."]
+process_priority = 1

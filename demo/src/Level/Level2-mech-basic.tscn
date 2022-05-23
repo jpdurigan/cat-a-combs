@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Level/Level.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://src/Level/Music.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=6]
+
+[node name="Level" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 16
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 3, 0, 65536, 3, 0, 131072, 3, 0, 131096, 3, 0, 196608, 3, 0, 196632, 3, 0, 262144, 3, 0, 262168, 3, 0, 327680, 3, 0, 327704, 3, 0, 393216, 3, 0, 393240, 3, 0, 458752, 3, 0, 458776, 3, 0, 524312, 3, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589834, 14, 0, 589838, 14, 0, 589842, 7, 0, 589843, 7, 0, 589844, 7, 0, 589845, 7, 0, 589846, 7, 0, 589847, 7, 0, 589848, 3, 0, 655366, 7, 0, 655367, 12, 0, 655368, 12, 0, 655369, 12, 0, 655370, 12, 0, 655371, 12, 0, 655372, 12, 0, 655373, 12, 0, 655374, 12, 0, 655375, 12, 0, 655376, 12, 0, 655377, 12, 0, 655378, 7, 0, 720902, 7, 0, 720903, 7, 0, 720904, 7, 0, 720905, 7, 0, 720906, 7, 0, 720907, 7, 0, 720908, 7, 0, 720909, 7, 0, 720910, 7, 0, 720911, 7, 0, 720912, 7, 0, 720913, 7, 0, 720914, 7, 0 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="START" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 49, 278 )
+rotation = 3.14159
+
+[node name="END" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 651, 275 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+script = ExtResource( 5 )
+
+[node name="2" type="SkeletonIK" parent="."]
+process_priority = 1
