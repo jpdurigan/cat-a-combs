@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
+[ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/_base/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=5]
+
+[node name="BaseLevel" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Spawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8, 16 )
+
+[node name="Goal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 48, 16 )
+
+[node name="Camera" parent="." instance=ExtResource( 5 )]
+current = true
+limit_left = -18
+limit_right = 296
+limit_bottom = 180
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="TemporaryDisplay" type="ColorRect" parent="Overlay"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.5 )
+
+[node name="Center" type="CenterContainer" parent="Overlay/TemporaryDisplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Overlay/TemporaryDisplay/Center"]
+margin_left = 96.0
+margin_top = 65.0
+margin_right = 160.0
+margin_bottom = 79.0
+text = "YOU WIN!"
+
+[connection signal="player_reached" from="Goal" to="." method="_on_Goal_player_reached"]
