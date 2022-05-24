@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-class_name Projectile
-extends Node2D
+extends StaticBody2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -10,17 +9,19 @@ extends Node2D
 #--- constants ------------------------------------------------------------------------------------
 
 const DEFAULT_VELOCITY = 36.0
+const DEFAULT_INTERVAL = 5.0
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var velocity : float = DEFAULT_VELOCITY
+export var projectile_scene : PackedScene
+export var velocity : float = DEFAULT_VELOCITY
+export var interval : float = DEFAULT_INTERVAL
+export var is_active : bool = true
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _is_stopped : bool = false
-
-onready var _area: Area2D = $Area2D
-onready var _animator: AnimationPlayer = $AnimationPlayer
+onready var _projectiles: Node2D = $Projectiles
+onready var _timer: Timer = $Timer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -28,33 +29,37 @@ onready var _animator: AnimationPlayer = $AnimationPlayer
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	add_to_group(Constants.GROUPS.ARROW_PROJECTILE)
-
-
-func _physics_process(delta):
-	if _is_stopped:
-		return
-	position.x += velocity * delta
+	add_to_group(Constants.GROUPS.ARROW_SHOOTER)
+	_clear_children()
+	_timer.wait_time = interval
+	if is_active:
+		shoot()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func stop() -> void:
-	_is_stopped = true
-	set_physics_process(false)
-	_area.set_deferred("monitorable", false)
-	global_position = Grid.snap_position(global_position)
-	_animator.play("hit")
+func shoot() -> void:
+	var projectile : Projectile = projectile_scene.instance()
+	projectile.velocity = velocity
+	_projectiles.add_child(projectile, true)
+	if is_active:
+		_timer.start()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_Area2D_body_entered(body):
-	if body is TileMap or body.is_in_group(Constants.GROUPS.DEAD_PLAYER):
-		stop()
+func _clear_children() -> void:
+	for child in _projectiles.get_children():
+		_projectiles.remove_child(child)
+		child.queue_free()
+
+
+func _on_Timer_timeout():
+	if is_active:
+		shoot()
 
 ### -----------------------------------------------------------------------------------------------

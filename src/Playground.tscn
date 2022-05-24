@@ -3,8 +3,8 @@
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Espeto.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/LancadorDardo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/Dardo.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=8]
 [ext_resource path="res://PauseHelper.gd" type="Script" id=9]
 
@@ -51,14 +51,13 @@ limit_left = -18
 limit_right = 296
 limit_bottom = 180
 
-[node name="Dardo" parent="." instance=ExtResource( 7 )]
-position = Vector2( 64, 120 )
-
-[node name="Dardo2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 96, 120 )
-
-[node name="Dardo5" parent="." instance=ExtResource( 7 )]
-position = Vector2( 128, 120 )
-
 [node name="PauseHelper" type="Node" parent="."]
 script = ExtResource( 9 )
+
+[node name="LancadorDardo" parent="." instance=ExtResource( 4 )]
+position = Vector2( 8, 128 )
+velocity = 72.0
+interval = 1.0
+
+[node name="LancadorDardo2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 40, 64 )
