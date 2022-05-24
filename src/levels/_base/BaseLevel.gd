@@ -57,14 +57,14 @@ func _spawn_first_player() -> void:
 
 func _spawn_new_player() -> void:
 	_current_player = _spawner.spawn_new_player()
-	add_child(_current_player, true)
+	call_deferred("add_child", _current_player, true)
 	_current_player.connect("player_dead", self, "_on_current_player_dead")
 	_camera.target = _current_player
 
 
 func _spawn_dead_player() -> void:
 	var dead_player = _spawner.spawn_dead_player()
-	add_child(dead_player, true)
+	call_deferred("add_child", dead_player, true)
 
 
 func _on_current_player_dead() -> void:

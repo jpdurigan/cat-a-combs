@@ -83,7 +83,7 @@ func kill():
 ### Private Methods -------------------------------------------------------------------------------
 
 func _handle_body_entered(body: Node) -> void:
-	if body.is_in_group(Constants.GROUPS.SPIKE):
+	if body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
 		kill()
 	elif body.is_in_group(Constants.GROUPS.ARROW_PROJECTILE):
 		body.stop()
