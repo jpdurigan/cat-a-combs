@@ -13,7 +13,7 @@ signal player_dead
 const GRAVITY = Vector2.DOWN * 18
 
 const ACCELERATION = 45
-const JUMP_SPEED = 340
+const JUMP_SPEED = 240
 const WALK_SPEED = 120
 
 const JUMP_BUFFER_COUNT = 3
