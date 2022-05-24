@@ -1,5 +1,4 @@
 # Write your doc string for this file here
-class_name LevelSpawner
 extends Node2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
@@ -9,14 +8,18 @@ extends Node2D
 
 #--- constants ------------------------------------------------------------------------------------
 
+const DEFAULT_VELOCITY = 36.0
+
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var player_scene : PackedScene
-export var dead_player_scene : PackedScene
+var velocity : float = DEFAULT_VELOCITY
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _current_player: Player
+var _is_stopped : bool = false
+
+onready var _area: Area2D = $Area2D
+onready var _animator: AnimationPlayer = $AnimationPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -24,27 +27,33 @@ var _current_player: Player
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	spawn_new_player()
+	add_to_group(Constants.GROUPS.ARROW_PROJECTILE)
+
+
+func _physics_process(delta):
+	if _is_stopped:
+		return
+	position.x += velocity * delta
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func spawn_new_player() -> Player:
-	_current_player = player_scene.instance()
-	_current_player.global_position = global_position
-	return _current_player
-
-
-func spawn_dead_player() -> Node2D:
-	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = Grid.snap_position(_current_player.global_position)
-	return dead_player
+func stop() -> void:
+	_is_stopped = true
+	set_physics_process(false)
+	_area.set_deferred("monitorable", false)
+	global_position = Grid.snap_position(global_position)
+	_animator.play("hit")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _on_Area2D_body_entered(body):
+	if body is TileMap or body.is_in_group(Constants.GROUPS.DEAD_PLAYER):
+		stop()
 
 ### -----------------------------------------------------------------------------------------------

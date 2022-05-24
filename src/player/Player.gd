@@ -85,6 +85,9 @@ func kill():
 func _handle_body_entered(body: Node) -> void:
 	if body.is_in_group(Constants.GROUPS.SPIKE):
 		kill()
+	elif body.is_in_group(Constants.GROUPS.ARROW_PROJECTILE):
+		body.stop()
+		kill()
 
 
 func _can_jump() -> bool:
