@@ -3,6 +3,7 @@ class_name Constants
 extends Reference
 
 const TILE_SIZE = 16
+const TILE_GRID = Vector2(TILE_SIZE, TILE_SIZE)
 
 const GROUPS = {
 	PLAYER = "player",

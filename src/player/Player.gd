@@ -1,3 +1,4 @@
+class_name Player
 extends KinematicBody2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
@@ -92,6 +93,9 @@ func _can_jump() -> bool:
 
 
 func _on_Area2D_area_entered(area: Area2D):
+	if is_queued_for_deletion():
+		return
+	
 	_handle_body_entered(area.owner)
 
 ### -----------------------------------------------------------------------------------------------

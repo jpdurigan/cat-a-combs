@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Espeto.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/PlataformaQuebrada.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/PlataformaAndante.tscn" type="PackedScene" id=5]
@@ -21,10 +21,32 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 262143, 0, 0, 196608, 0, 1, 196609, 0, 2, 327679, 0, 65536, 262144, 0, 65537, 262145, 0, 65538, 262159, 0, 0, 262160, 0, 1, 262161, 0, 2, 393215, 0, 65536, 327680, 0, 65537, 327681, 0, 0, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 327689, 0, 2, 327695, 0, 65536, 327696, 0, 65537, 327697, 0, 65538, 458751, 0, 0, 393216, 0, 131073, 393217, 0, 131073, 393218, 0, 131073, 393219, 0, 131073, 393220, 0, 131073, 393221, 0, 131073, 393222, 0, 131073, 393223, 0, 131073, 393224, 0, 131073, 393225, 0, 131074, 393227, 0, 196608, 393228, 0, 196610, 393231, 0, 65536, 393232, 0, 65537, 393233, 0, 65538, 524287, 0, 65539, 458767, 0, 65536, 458768, 0, 65537, 458769, 0, 65538, 589823, 0, 0, 524288, 0, 1, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 524292, 0, 1, 524293, 0, 1, 524294, 0, 1, 524295, 0, 1, 524296, 0, 1, 524297, 0, 1, 524298, 0, 1, 524299, 0, 1, 524300, 0, 1, 524301, 0, 1, 524302, 0, 1, 524303, 0, 0, 524304, 0, 65537, 524305, 0, 65538, 655359, 0, 131072, 589824, 0, 131073, 589825, 0, 131073, 589826, 0, 131073, 589827, 0, 131073, 589828, 0, 131073, 589829, 0, 131073, 589830, 0, 131073, 589831, 0, 131073, 589832, 0, 131073, 589833, 0, 0, 589834, 0, 65537, 589835, 0, 65537, 589836, 0, 65537, 589837, 0, 65537, 589838, 0, 65537, 589839, 0, 65537, 589840, 0, 65537, 589841, 0, 65538, 655369, 0, 131072, 655370, 0, 131073, 655371, 0, 131073, 655372, 0, 131073, 655373, 0, 131073, 655374, 0, 131073, 655375, 0, 131073, 655376, 0, 131073, 655377, 0, 131074 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-
 [node name="Espeto" parent="." instance=ExtResource( 3 )]
 position = Vector2( 168, 112 )
+
+[node name="Espeto2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 40, 80 )
+
+[node name="Espeto3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 56, 80 )
+
+[node name="Espeto4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 72, 80 )
+
+[node name="Espeto5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 88, 80 )
+
+[node name="Espeto6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 104, 80 )
+
+[node name="Espeto7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 120, 80 )
+
+[node name="Espeto8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 136, 80 )
+
+[node name="Espeto9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 152, 80 )
 
 [node name="PlataformaAndante" parent="." instance=ExtResource( 5 )]
 position = Vector2( 216, 112 )
@@ -32,3 +54,6 @@ curve = SubResource( 1 )
 
 [node name="PlataformaQuebrada" parent="." instance=ExtResource( 4 )]
 position = Vector2( 168, 96 )
+
+[node name="Spawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8, 16 )
