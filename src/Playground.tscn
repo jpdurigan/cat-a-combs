@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Espeto.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/PlataformaQuebrada.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/PlataformaAndante.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tilemap/GameCamera.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 resource_local_to_scene = true
@@ -57,3 +58,11 @@ position = Vector2( 168, 96 )
 
 [node name="Spawner" parent="." instance=ExtResource( 2 )]
 position = Vector2( 8, 16 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 6 )]
+current = true
+limit_left = -18
+limit_right = 296
+limit_bottom = 180
+
+[connection signal="player_spawned" from="Spawner" to="GameCamera" method="_on_Spawner_player_spawned"]

@@ -1,10 +1,8 @@
 # Write your doc string for this file here
-extends Node2D
+extends Camera2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
-
-signal player_spawned(player)
 
 #--- enums ----------------------------------------------------------------------------------------
 
@@ -12,46 +10,32 @@ signal player_spawned(player)
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var player_scene : PackedScene
-export var dead_player_scene : PackedScene
+var target : Node2D = null
 
 #--- private variables - order: export > normal var > onready -------------------------------------
-
-var _current_player: Player
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func _ready():
-	spawn_new_player()
+func _physics_process(_delta):
+	if not is_instance_valid(target):
+		return
+	
+	global_position = global_position.linear_interpolate(target.global_position, 0.7)
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func spawn_new_player() -> void:
-	_current_player = player_scene.instance()
-	_current_player.global_position = global_position
-	owner.call_deferred("add_child", _current_player, true)
-	_current_player.connect("player_dead", self, "_on_current_player_dead")
-	emit_signal("player_spawned", _current_player)
-
-
-func spawn_dead_player() -> void:
-	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = _current_player.global_position.snapped(Constants.TILE_GRID / 4)
-	owner.add_child(dead_player, true)
-
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_current_player_dead() -> void:
-	spawn_dead_player()
-	spawn_new_player()
+func _on_Spawner_player_spawned(player):
+	target = player
 
 ### -----------------------------------------------------------------------------------------------
