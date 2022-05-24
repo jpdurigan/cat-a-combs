@@ -67,7 +67,7 @@ position = Vector2( 24, 120 )
 [node name="Laser2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 208, 120 )
 rotation = -1.5708
-extension = 80.0
+extension = 10.0
 
 [node name="PlataformaAndante" parent="." instance=ExtResource( 5 )]
 position = Vector2( 224, 72 )

@@ -106,6 +106,10 @@ func _set_extension(value: float) -> void:
 func _set_is_growing(value: bool) -> void:
 	is_growing = value
 	set_physics_process(is_growing)
+	
+	if not is_inside_tree():
+		yield(self, "ready")
+	
 	_raycast1.enabled = is_growing
 	_raycast2.enabled = is_growing
 

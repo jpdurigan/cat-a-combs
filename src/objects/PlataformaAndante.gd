@@ -1,5 +1,6 @@
 # Write your doc string for this file here
 tool
+class_name PlatformMoving
 extends Path2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
@@ -11,10 +12,14 @@ extends Path2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+var current_delta : Vector2 = Vector2.ZERO
+
 export var time_move : float = 3.0
 export var time_stop : float = 1.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
+
+var _last_progress_position : Vector2
 
 onready var _path_follow: PathFollow2D = $PathFollow2D
 onready var _tween : Tween = $Tween
@@ -30,6 +35,11 @@ func _ready():
 		return
 	add_to_group(Constants.GROUPS.PLATFORM_MOVING)
 	tween_forward()
+
+
+func _physics_process(delta: float):
+	current_delta = (_path_follow.position - _last_progress_position)
+	_last_progress_position = _path_follow.position
 
 ### -----------------------------------------------------------------------------------------------
 

@@ -25,6 +25,8 @@ const JUMP_BUFFER_COUNT = 3
 var _velocity := Vector2.ZERO
 var _jump_buffer : int = 0
 
+var _target_platform : PlatformMoving = null
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -46,6 +48,10 @@ func _unhandled_key_input(event: InputEventKey):
 
 
 func _physics_process(_delta: float):
+	# Handle platform
+	if is_instance_valid(_target_platform):
+		position += _target_platform.current_delta
+	
 	# Handle jump
 	if _jump_buffer > 0:
 		_jump_buffer -= 1
@@ -83,11 +89,18 @@ func kill():
 ### Private Methods -------------------------------------------------------------------------------
 
 func _handle_body_entered(body: Node) -> void:
-	if body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
+	if body.is_in_group(Constants.GROUPS.PLATFORM_MOVING):
+		_target_platform = body
+	elif body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
 		kill()
 	elif body.is_in_group(Constants.GROUPS.ARROW_PROJECTILE):
 		body.stop()
 		kill()
+
+
+func _handle_body_exited(body: Node) -> void:
+	if body == _target_platform:
+		_target_platform = null
 
 
 func _can_jump() -> bool:
@@ -100,5 +113,12 @@ func _on_Area2D_area_entered(area: Area2D):
 		return
 	
 	_handle_body_entered(area.owner)
+
+
+func _on_Area2D_area_exited(area: Area2D):
+	if is_queued_for_deletion():
+		return
+	
+	_handle_body_exited(area.owner)
 
 ### -----------------------------------------------------------------------------------------------
