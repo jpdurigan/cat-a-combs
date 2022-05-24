@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Espeto.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/Plataforma.tscn" type="PackedScene" id=4]
-[ext_resource path="res://TimeScaler.gd" type="Script" id=5]
+[ext_resource path="res://objects/PlataformaQuebrada.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/PlataformaAndante.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48 )
+}
 
 [node name="Playground" type="Node2D"]
 
@@ -20,6 +26,9 @@ tile_data = PoolIntArray( 262143, 0, 0, 196608, 0, 1, 196609, 0, 2, 327679, 0, 6
 [node name="Espeto" parent="." instance=ExtResource( 3 )]
 position = Vector2( 168, 112 )
 
-[node name="Plataforma" parent="." instance=ExtResource( 4 )]
+[node name="PlataformaAndante" parent="." instance=ExtResource( 5 )]
 position = Vector2( 216, 112 )
-move = Vector2( 0, -3 )
+curve = SubResource( 1 )
+
+[node name="PlataformaQuebrada" parent="." instance=ExtResource( 4 )]
+position = Vector2( 168, 96 )

@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Constants",
+"language": "GDScript",
+"path": "res://globals/Constants.gd"
+} ]
+_global_script_class_icons={
+"Constants": ""
+}
+
 [application]
 
 config/name="Gamedevtv Jam"
