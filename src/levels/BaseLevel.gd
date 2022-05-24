@@ -4,20 +4,22 @@ extends Node2D
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
 
-signal player_spawned(player)
-
 #--- enums ----------------------------------------------------------------------------------------
 
 #--- constants ------------------------------------------------------------------------------------
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var player_scene : PackedScene
-export var dead_player_scene : PackedScene
+export var lives : int = 3
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _current_player: Player
+var _current_player : Player
+var _current_lives : int
+
+onready var _camera : LevelCamera = $Camera
+onready var _spawner : LevelSpawner = $Spawner
+onready var _goal : LevelGoal = $Goal
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -25,33 +27,56 @@ var _current_player: Player
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	spawn_new_player()
+	_spawn_first_player()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func spawn_new_player() -> void:
-	_current_player = player_scene.instance()
-	_current_player.global_position = global_position
-	owner.call_deferred("add_child", _current_player, true)
-	_current_player.connect("player_dead", self, "_on_current_player_dead")
-	emit_signal("player_spawned", _current_player)
+func level_win() -> void:
+	get_tree().paused = true
+	$Overlay/TemporaryDisplay.show()
+	$Overlay/TemporaryDisplay/Center/Label.text = "YOU WIN!"
 
 
-func spawn_dead_player() -> void:
-	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = _current_player.global_position.snapped(Constants.TILE_GRID / 4)
-	owner.add_child(dead_player, true)
+func level_lose() -> void:
+	get_tree().paused = true
+	$Overlay/TemporaryDisplay.show()
+	$Overlay/TemporaryDisplay/Center/Label.text = "YOU LOSE!"
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func _spawn_first_player() -> void:
+	_current_lives = lives
+	_spawn_new_player()
+
+
+func _spawn_new_player() -> void:
+	_current_player = _spawner.spawn_new_player()
+	add_child(_current_player, true)
+	_current_player.connect("player_dead", self, "_on_current_player_dead")
+	_camera.target = _current_player
+
+
+func _spawn_dead_player() -> void:
+	var dead_player = _spawner.spawn_dead_player()
+	add_child(dead_player, true)
+
+
 func _on_current_player_dead() -> void:
-	spawn_dead_player()
-	spawn_new_player()
+	_spawn_dead_player()
+	_current_lives -= 1
+	if _current_lives <= 0:
+		level_lose()
+	else:
+		_spawn_new_player()
+
+
+func _on_Goal_player_reached():
+	level_win()
 
 ### -----------------------------------------------------------------------------------------------

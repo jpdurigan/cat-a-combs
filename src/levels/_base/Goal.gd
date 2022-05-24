@@ -1,8 +1,11 @@
 # Write your doc string for this file here
-extends Camera2D
+class_name LevelGoal
+extends Node2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
+
+signal player_reached
 
 #--- enums ----------------------------------------------------------------------------------------
 
@@ -10,20 +13,12 @@ extends Camera2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var target : Node2D = null
-
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
-
-func _physics_process(_delta):
-	if not is_instance_valid(target):
-		return
-	
-	global_position = global_position.linear_interpolate(target.global_position, 0.7)
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -35,7 +30,8 @@ func _physics_process(_delta):
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_Spawner_player_spawned(player):
-	target = player
+func _on_Area2D_area_entered(area: Area2D):
+	if area.owner.is_in_group(Constants.GROUPS.PLAYER):
+		emit_signal("player_reached")
 
 ### -----------------------------------------------------------------------------------------------
