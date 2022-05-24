@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Espeto.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/Plataforma.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TimeScaler.gd" type="Script" id=5]
 
 [node name="Playground" type="Node2D"]
 
@@ -17,3 +19,7 @@ tile_data = PoolIntArray( 262143, 0, 0, 196608, 0, 1, 196609, 0, 2, 327679, 0, 6
 
 [node name="Espeto" parent="." instance=ExtResource( 3 )]
 position = Vector2( 168, 112 )
+
+[node name="Plataforma" parent="." instance=ExtResource( 4 )]
+position = Vector2( 216, 112 )
+move = Vector2( 0, -3 )
