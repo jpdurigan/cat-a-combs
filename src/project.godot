@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://levels/_base/Camera.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "LevelGoal",
 "language": "GDScript",
 "path": "res://levels/_base/Goal.gd"
