@@ -69,6 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cat-A-Comb [Gamedevtv Jam]"
+run/main_scene="res://levels/Level_Exemple.tscn"
 config/icon="res://game_icon.png"
 
 [display]

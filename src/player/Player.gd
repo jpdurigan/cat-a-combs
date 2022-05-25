@@ -10,9 +10,9 @@ signal player_dead
 
 #--- constants ------------------------------------------------------------------------------------
 
-const ACCELERATION = 80
-const JUMP_SPEED = 480
-const WALK_SPEED = 240
+const ACCELERATION = 15
+const JUMP_SPEED = 360
+const WALK_SPEED = 180
 
 const JUMP_BUFFER_COUNT = 3
 
