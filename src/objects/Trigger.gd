@@ -1,8 +1,11 @@
 # Write your doc string for this file here
-extends PhysicsBody2D
+class_name Trigger
+extends Area2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
+
+signal player_triggered
 
 #--- enums ----------------------------------------------------------------------------------------
 
@@ -17,9 +20,6 @@ extends PhysicsBody2D
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func _ready():
-	add_to_group(Constants.GROUPS.SPIKE)
-
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -29,5 +29,9 @@ func _ready():
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _on_Trigger_area_entered(area: Area2D):
+	if area.owner.is_in_group(Constants.GROUPS.PLAYER):
+		emit_signal("player_triggered")
 
 ### -----------------------------------------------------------------------------------------------

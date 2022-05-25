@@ -10,8 +10,6 @@ signal player_dead
 
 #--- constants ------------------------------------------------------------------------------------
 
-const GRAVITY = Vector2.DOWN * 32
-
 const ACCELERATION = 80
 const JUMP_SPEED = 480
 const WALK_SPEED = 240
@@ -68,7 +66,7 @@ func _physics_process(_delta: float):
 	_velocity.x = min(abs(_velocity.x), WALK_SPEED) * sign(_velocity.x)
 	
 	# Handle gravity
-	_velocity += GRAVITY
+	_velocity += Constants.GRAVITY
 	
 	# Move
 	_velocity = move_and_slide(_velocity, Vector2.UP)

@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "Projectile",
 "language": "GDScript",
 "path": "res://objects/Dardo.gd"
+}, {
+"base": "Area2D",
+"class": "Trigger",
+"language": "GDScript",
+"path": "res://objects/Trigger.gd"
 } ]
 _global_script_class_icons={
 "Constants": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "LevelSpawner": "",
 "PlatformMoving": "",
 "Player": "",
-"Projectile": ""
+"Projectile": "",
+"Trigger": ""
 }
 
 [application]
