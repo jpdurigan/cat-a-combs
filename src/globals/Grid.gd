@@ -3,7 +3,7 @@ extends Reference
 
 
 static func snap_position(position: Vector2) -> Vector2:
-	return position.snapped(Constants.TILE_GRID / 4)
+	return position.snapped(Constants.TILE_GRID / 2)
 
 
 static func get_player_global_position(node: Node) -> Vector2:

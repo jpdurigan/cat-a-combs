@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
-extents = Vector2( 0, 4 )
+extents = Vector2( 0, 8 )
 
 [node name="Laser" type="Node2D"]
 script = ExtResource( 2 )
@@ -14,7 +14,7 @@ script = ExtResource( 2 )
 rotation = 1.5708
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 16, 0 )
+region_rect = Rect2( 0, 0, 32, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -22,12 +22,12 @@ region_rect = Rect2( 0, 0, 16, 0 )
 shape = SubResource( 1 )
 
 [node name="RayCast1" type="RayCast2D" parent="."]
-position = Vector2( 0, -4 )
-cast_to = Vector2( 6, 0 )
+position = Vector2( 0, -8 )
+cast_to = Vector2( 0, 0 )
 
 [node name="RayCast2" type="RayCast2D" parent="."]
-position = Vector2( 0, 4 )
-cast_to = Vector2( 6, 0 )
+position = Vector2( 0, 8 )
+cast_to = Vector2( 0, 0 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

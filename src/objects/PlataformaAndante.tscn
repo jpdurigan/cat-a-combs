@@ -10,11 +10,11 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 4 )
+extents = Vector2( 16, 9 )
 
 [sub_resource type="RectangleShape2D" id=4]
 resource_local_to_scene = true
-extents = Vector2( 8, 1 )
+extents = Vector2( 16, 1 )
 
 [node name="PlataformaAndante" type="Path2D"]
 curve = SubResource( 3 )
@@ -28,17 +28,17 @@ rotate = false
 [node name="Sprite" type="Sprite" parent="PathFollow2D/StaticBody2D"]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 48, 112, 16, 16 )
+region_rect = Rect2( 96, 128, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/StaticBody2D"]
-position = Vector2( 0, -4 )
+position = Vector2( 0, -5 )
 shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="Area2D" type="Area2D" parent="PathFollow2D/StaticBody2D"]
 
 [node name="DetectionShape" type="CollisionShape2D" parent="PathFollow2D/StaticBody2D/Area2D"]
-position = Vector2( 0, -9 )
+position = Vector2( 0, -15 )
 shape = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]

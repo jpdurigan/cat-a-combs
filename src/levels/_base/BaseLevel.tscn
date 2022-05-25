@@ -11,23 +11,20 @@ script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
+cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Spawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 8, 16 )
+position = Vector2( 16, 32 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 48, 16 )
+position = Vector2( 48, 32 )
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 current = true
-limit_left = -18
-limit_right = 296
-limit_bottom = 180
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 

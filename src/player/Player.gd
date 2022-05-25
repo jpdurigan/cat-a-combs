@@ -10,11 +10,11 @@ signal player_dead
 
 #--- constants ------------------------------------------------------------------------------------
 
-const GRAVITY = Vector2.DOWN * 18
+const GRAVITY = Vector2.DOWN * 32
 
-const ACCELERATION = 45
-const JUMP_SPEED = 240
-const WALK_SPEED = 120
+const ACCELERATION = 80
+const JUMP_SPEED = 480
+const WALK_SPEED = 240
 
 const JUMP_BUFFER_COUNT = 3
 

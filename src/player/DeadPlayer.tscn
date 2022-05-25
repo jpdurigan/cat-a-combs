@@ -4,17 +4,17 @@
 [ext_resource path="res://player/DeadPlayer.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.5, 3.5 )
+extents = Vector2( 13, 7 )
 
 [node name="DeadPlayer" type="StaticBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -16 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 96, 240, 16, 16 )
+region_rect = Rect2( 192, 448, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, -3.5 )
+position = Vector2( 1, -7 )
 shape = SubResource( 1 )
