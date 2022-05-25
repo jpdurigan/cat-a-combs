@@ -68,8 +68,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Gamedevtv Jam"
-config/icon="res://icon.png"
+config/name="Cat-A-Comb [Gamedevtv Jam]"
+config/icon="res://game_icon.png"
 
 [display]
 
