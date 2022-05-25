@@ -1,5 +1,5 @@
 # Write your doc string for this file here
-extends "res://objects/Espeto.gd"
+extends "res://objects/espetos/Espeto.gd"
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------

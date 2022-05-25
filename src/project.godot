@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Path2D",
 "class": "PlatformMoving",
 "language": "GDScript",
-"path": "res://objects/PlataformaAndante.gd"
+"path": "res://objects/plataformas/PlataformaAndante.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -47,12 +47,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Projectile",
 "language": "GDScript",
-"path": "res://objects/Dardo.gd"
+"path": "res://objects/dardos/Dardo.gd"
 }, {
 "base": "Area2D",
 "class": "Trigger",
 "language": "GDScript",
-"path": "res://objects/Trigger.gd"
+"path": "res://objects/espetos/Trigger.gd"
 } ]
 _global_script_class_icons={
 "Constants": "",

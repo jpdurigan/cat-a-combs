@@ -2,14 +2,14 @@
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/Espeto.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/Laser.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/PlataformaAndante.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/espetos/Espeto.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/laser/Laser.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/plataformas/PlataformaAndante.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/EspetoQueCai.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/espetos/EspetoQueCai.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=8]
 [ext_resource path="res://PauseHelper.gd" type="Script" id=9]
-[ext_resource path="res://objects/Trigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/espetos/Trigger.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve2D" id=1]
 resource_local_to_scene = true
