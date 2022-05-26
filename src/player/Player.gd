@@ -73,7 +73,7 @@ func _physics_process(_delta: float):
 	
 	# Move
 	_velocity = move_and_slide(_velocity, Vector2.UP)
-	_handle_sprite()
+	_handle_sprite(walk)
 
 
 ### -----------------------------------------------------------------------------------------------
@@ -90,22 +90,24 @@ func kill():
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _handle_sprite() -> void:
-	var is_idle = _velocity == Vector2.ZERO
-	
+func _handle_sprite(input_vector: Vector2) -> void:
 	# Handle left/right and walk 
-	if _velocity.x != 0:
-		var should_flip = true if _velocity.x < 0 else false
+	if input_vector.x != 0:
+		var should_flip = true if input_vector.x < 0 else false
 		_sprite.flip_h = should_flip
 		
 		var anim_name = "walk" if is_on_floor() else "idle"
 		_sprite.animation = anim_name
+	elif _sprite.animation == "walk":
+		_sprite.animation = "idle"
 	
 	# Handle jump
 	if _velocity.y != 0 and not is_on_floor():
 		if _sprite.animation in ["idle", "jump_up", "jump_down"]:
 			var anim_name = "jump_down" if _velocity.y > 0 else "jump_up"
 			_sprite.animation = anim_name
+	if is_on_floor() and "jump" in _sprite.animation:
+		_sprite.animation = "jump_end"
 
 
 func _handle_body_entered(body: Node) -> void:
