@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main_menu/play_pixel.png" type="Texture" id=1]
 [ext_resource path="res://main_menu/catacomb_pixel.png" type="Texture" id=2]
 [ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://main_menu/ChangeSceneButton.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -52,6 +53,8 @@ custom_styles/pressed = SubResource( 1 )
 custom_styles/focus = SubResource( 1 )
 custom_styles/disabled = SubResource( 1 )
 custom_styles/normal = SubResource( 1 )
+script = ExtResource( 4 )
+_next_scene_path = "res://levels/Level_Exemple.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/Play"]
 anchor_right = 1.0
@@ -73,3 +76,5 @@ Audrey Vasconcelos
 Fernando Silveira
 JP Durigan
 Lia Godoy"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="CenterContainer/VBoxContainer/Play" method="_on_Play_pressed"]

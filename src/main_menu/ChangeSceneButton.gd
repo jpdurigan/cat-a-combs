@@ -1,12 +1,9 @@
 # Write your doc string for this file here
 tool
-class_name LevelGoal
-extends Node2D
+extends Button
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
-
-signal player_reached
 
 #--- enums ----------------------------------------------------------------------------------------
 
@@ -21,6 +18,9 @@ signal player_reached
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
+func _ready():
+	pass
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -31,11 +31,8 @@ signal player_reached
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_Area2D_area_entered(area: Area2D):
-	if area.owner.is_in_group(Constants.GROUPS.PLAYER):
-		emit_signal("player_reached")
-		# espera animação?
-		LoadingManager.load_next_scene(_next_scene_path)
+func _on_Play_pressed():
+	LoadingManager.load_next_scene(_next_scene_path)
 
 ### -----------------------------------------------------------------------------------------------
 

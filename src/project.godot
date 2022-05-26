@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://levels/_base/Camera.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "LevelGoal",
 "language": "GDScript",
 "path": "res://levels/_base/Goal.gd"
@@ -71,6 +71,10 @@ _global_script_class_icons={
 config/name="Cat-A-Comb [Gamedevtv Jam]"
 run/main_scene="res://main_menu/MainMenu.tscn"
 config/icon="res://game_icon.png"
+
+[autoload]
+
+LoadingManager="*res://globals/LoadingManager.tscn"
 
 [display]
 
