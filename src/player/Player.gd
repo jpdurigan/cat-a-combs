@@ -25,6 +25,8 @@ var _jump_buffer : int = 0
 
 var _target_platform : PlatformMoving = null
 
+onready var _sprite: AnimatedSprite = $AnimatedSprite
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -56,6 +58,7 @@ func _physics_process(_delta: float):
 		if _jump_buffer == 0 or _can_jump():
 			_velocity += Vector2(0, -JUMP_SPEED)
 			_jump_buffer = 0
+			_sprite.animation = "jump_start"
 	
 	# Handle walk
 	var walk : Vector2 = (
@@ -70,6 +73,7 @@ func _physics_process(_delta: float):
 	
 	# Move
 	_velocity = move_and_slide(_velocity, Vector2.UP)
+	_handle_sprite()
 
 
 ### -----------------------------------------------------------------------------------------------
@@ -85,6 +89,24 @@ func kill():
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _handle_sprite() -> void:
+	var is_idle = _velocity == Vector2.ZERO
+	
+	# Handle left/right and walk 
+	if _velocity.x != 0:
+		var should_flip = true if _velocity.x < 0 else false
+		_sprite.flip_h = should_flip
+		
+		var anim_name = "walk" if is_on_floor() else "idle"
+		_sprite.animation = anim_name
+	
+	# Handle jump
+	if _velocity.y != 0 and not is_on_floor():
+		if _sprite.animation in ["idle", "jump_up", "jump_down"]:
+			var anim_name = "jump_down" if _velocity.y > 0 else "jump_up"
+			_sprite.animation = anim_name
+
 
 func _handle_body_entered(body: Node) -> void:
 	if body.is_in_group(Constants.GROUPS.PLATFORM_MOVING):
@@ -118,5 +140,13 @@ func _on_Area2D_area_exited(area: Area2D):
 		return
 	
 	_handle_body_exited(area.owner)
+
+
+func _on_AnimatedSprite_animation_finished():
+	match _sprite.animation:
+		"jump_start":
+			_sprite.animation = "jump_up"
+		"jump_end":
+			_sprite.animation = "idle"
 
 ### -----------------------------------------------------------------------------------------------
