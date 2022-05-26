@@ -1,5 +1,7 @@
 # Write your doc string for this file here
-extends Node2D
+tool
+class_name PlatformMoving
+extends Path2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -10,16 +12,17 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var lives : int = 3
+var current_delta : Vector2 = Vector2.ZERO
+
+export var time_move : float = 3.0
+export var time_stop : float = 1.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _current_player : Player
-var _current_lives : int
+var _last_progress_position : Vector2
 
-onready var _camera : LevelCamera = $Camera
-onready var _spawner : LevelSpawner = $Spawner
-onready var _goal : LevelGoal = $Goal
+onready var _path_follow: PathFollow2D = $PathFollow2D
+onready var _tween : Tween = $Tween
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -27,56 +30,44 @@ onready var _goal : LevelGoal = $Goal
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_spawn_first_player()
+	if Engine.editor_hint:
+		curve.resource_local_to_scene = true
+		return
+	add_to_group(Constants.GROUPS.PLATFORM_MOVING)
+	tween_forward()
+
+
+func _physics_process(delta: float):
+	current_delta = (_path_follow.position - _last_progress_position)
+	_last_progress_position = _path_follow.position
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func level_win() -> void:
-	get_tree().paused = true
-	$Overlay/TemporaryDisplay.show()
-	$Overlay/TemporaryDisplay/Center/Label.text = "YOU WIN!"
+func tween_forward():
+	_tween.interpolate_property(_path_follow, "unit_offset", 0.0, 1.0, time_move)
+	_tween.start()
 
 
-func level_lose() -> void:
-	get_tree().paused = true
-	$Overlay/TemporaryDisplay.show()
-	$Overlay/TemporaryDisplay/Center/Label.text = "YOU LOSE!"
+func tween_backward():
+	_tween.interpolate_property(_path_follow, "unit_offset", 1.0, 0.0, time_move)
+	_tween.start()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _spawn_first_player() -> void:
-	_current_lives = lives
-	_spawn_new_player()
-
-
-func _spawn_new_player() -> void:
-	_current_player = _spawner.spawn_new_player()
-	call_deferred("add_child", _current_player, true)
-	_current_player.connect("player_dead", self, "_on_current_player_dead")
-	_camera.target = _current_player
-
-
-func _spawn_dead_player() -> void:
-	var dead_player = _spawner.spawn_dead_player()
-	call_deferred("add_child", dead_player, true)
-
-
-func _on_current_player_dead() -> void:
-	_spawn_dead_player()
-	_current_lives -= 1
-	if _current_lives <= 0:
-		level_lose()
+func _on_Tween_tween_completed(object: Object, _key: NodePath):
+	if object != _path_follow:
+		return
+	
+	yield(get_tree().create_timer(time_stop), "timeout")
+	if _path_follow.unit_offset != 0.0:
+		tween_backward()
 	else:
-		_spawn_new_player()
-
-
-func _on_Goal_player_reached():
-	level_win()
+		tween_forward()
 
 ### -----------------------------------------------------------------------------------------------

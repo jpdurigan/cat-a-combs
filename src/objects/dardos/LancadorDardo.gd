@@ -1,5 +1,5 @@
 # Write your doc string for this file here
-extends Node2D
+extends StaticBody2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -8,18 +8,20 @@ extends Node2D
 
 #--- constants ------------------------------------------------------------------------------------
 
+const DEFAULT_VELOCITY = 36.0
+const DEFAULT_INTERVAL = 5.0
+
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var lives : int = 3
+export var projectile_scene : PackedScene
+export var velocity : float = DEFAULT_VELOCITY
+export var interval : float = DEFAULT_INTERVAL
+export var is_active : bool = true
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _current_player : Player
-var _current_lives : int
-
-onready var _camera : LevelCamera = $Camera
-onready var _spawner : LevelSpawner = $Spawner
-onready var _goal : LevelGoal = $Goal
+onready var _projectiles: Node2D = $Projectiles
+onready var _timer: Timer = $Timer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -27,56 +29,37 @@ onready var _goal : LevelGoal = $Goal
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_spawn_first_player()
+	add_to_group(Constants.GROUPS.ARROW_SHOOTER)
+	_clear_children()
+	_timer.wait_time = interval
+	if is_active:
+		shoot()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func level_win() -> void:
-	get_tree().paused = true
-	$Overlay/TemporaryDisplay.show()
-	$Overlay/TemporaryDisplay/Center/Label.text = "YOU WIN!"
-
-
-func level_lose() -> void:
-	get_tree().paused = true
-	$Overlay/TemporaryDisplay.show()
-	$Overlay/TemporaryDisplay/Center/Label.text = "YOU LOSE!"
+func shoot() -> void:
+	var projectile : Projectile = projectile_scene.instance()
+	projectile.velocity = velocity
+	_projectiles.add_child(projectile, true)
+	if is_active:
+		_timer.start()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _spawn_first_player() -> void:
-	_current_lives = lives
-	_spawn_new_player()
+func _clear_children() -> void:
+	for child in _projectiles.get_children():
+		_projectiles.remove_child(child)
+		child.queue_free()
 
 
-func _spawn_new_player() -> void:
-	_current_player = _spawner.spawn_new_player()
-	call_deferred("add_child", _current_player, true)
-	_current_player.connect("player_dead", self, "_on_current_player_dead")
-	_camera.target = _current_player
-
-
-func _spawn_dead_player() -> void:
-	var dead_player = _spawner.spawn_dead_player()
-	call_deferred("add_child", dead_player, true)
-
-
-func _on_current_player_dead() -> void:
-	_spawn_dead_player()
-	_current_lives -= 1
-	if _current_lives <= 0:
-		level_lose()
-	else:
-		_spawn_new_player()
-
-
-func _on_Goal_player_reached():
-	level_win()
+func _on_Timer_timeout():
+	if is_active:
+		shoot()
 
 ### -----------------------------------------------------------------------------------------------
