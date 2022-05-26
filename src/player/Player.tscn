@@ -43,9 +43,8 @@ shape = SubResource( 19 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -15 )
 frames = ExtResource( 4 )
-animation = "walk"
-frame = 9
-playing = true
+animation = "spawning"
+frame = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]

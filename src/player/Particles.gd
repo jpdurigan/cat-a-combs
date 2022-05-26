@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-class_name LevelSpawner
-extends Node2D
+extends AnimatedSprite
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -11,15 +10,7 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var player_scene : PackedScene
-export var dead_player_scene : PackedScene
-export var particle_dying_scene : PackedScene
-
 #--- private variables - order: export > normal var > onready -------------------------------------
-
-var _current_player: Player
-
-onready var _spawning_particles : AnimatedSprite = $SpawningParticles
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -27,44 +18,20 @@ onready var _spawning_particles : AnimatedSprite = $SpawningParticles
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_spawning_particles.hide()
+	connect("animation_finished", self, "_on_animation_finished")
+	call_deferred("play", "default")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func spawn_new_player() -> Player:
-	_spawning_particles.show()
-	_spawning_particles.play("spawn_start")
-	yield(_spawning_particles, "animation_finished")
-	
-	_current_player = player_scene.instance()
-	_current_player.global_position = global_position
-	
-	_spawning_particles.play("spawn_end")
-	
-	return _current_player
-
-
-func spawn_dead_player() -> Node2D:
-	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = Grid.snap_position(_current_player.global_position)
-	dead_player.is_flipped = _current_player.is_flipped
-	
-	var dying_particles = particle_dying_scene.instance()
-	add_child(dying_particles)
-	dying_particles.global_position = dead_player.global_position
-	
-	return dead_player
-
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_SpawningParticles_animation_finished():
-	if _spawning_particles.animation == "spawn_end":
-		_spawning_particles.hide()
+func _on_animation_finished() -> void:
+	queue_free()
 
 ### -----------------------------------------------------------------------------------------------

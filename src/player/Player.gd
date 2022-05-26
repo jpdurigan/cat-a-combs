@@ -18,6 +18,8 @@ const JUMP_BUFFER_COUNT = 3
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+var is_flipped: bool = false
+
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 var _velocity := Vector2.ZERO
@@ -34,6 +36,7 @@ onready var _sprite: AnimatedSprite = $AnimatedSprite
 
 func _ready():
 	add_to_group(Constants.GROUPS.PLAYER)
+	_sprite.play("spawning")
 
 
 func _unhandled_key_input(event: InputEventKey):
@@ -91,11 +94,17 @@ func kill():
 ### Private Methods -------------------------------------------------------------------------------
 
 func _handle_sprite(input_vector: Vector2) -> void:
+	var is_walking = input_vector.x != 0
+	# Handle left/right 
+	if is_walking:
+		is_flipped = true if input_vector.x < 0 else false
+		_sprite.flip_h = is_flipped
+	
+	if _sprite.animation == "spawning":
+		return
+	
 	# Handle left/right and walk 
 	if input_vector.x != 0:
-		var should_flip = true if input_vector.x < 0 else false
-		_sprite.flip_h = should_flip
-		
 		var anim_name = "walk" if is_on_floor() else "idle"
 		_sprite.animation = anim_name
 	elif _sprite.animation == "walk":
@@ -148,7 +157,7 @@ func _on_AnimatedSprite_animation_finished():
 	match _sprite.animation:
 		"jump_start":
 			_sprite.animation = "jump_up"
-		"jump_end":
+		"spawning", "jump_end":
 			_sprite.animation = "idle"
 
 ### -----------------------------------------------------------------------------------------------

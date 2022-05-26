@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=31 format=2]
+[gd_resource type="SpriteFrames" load_steps=35 format=2]
 
 [ext_resource path="res://player/spritesheet_player.png" type="Texture" id=1]
 
@@ -118,6 +118,22 @@ region = Rect2( 58, 56, 58, 56 )
 atlas = ExtResource( 1 )
 region = Rect2( 116, 56, 58, 56 )
 
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 280, 58, 56 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 1 )
+region = Rect2( 58, 280, 58, 56 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 1 )
+region = Rect2( 116, 280, 58, 56 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 1 )
+region = Rect2( 174, 280, 58, 56 )
+
 [resource]
 animations = [ {
 "frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ) ],
@@ -148,5 +164,10 @@ animations = [ {
 "frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
 "loop": true,
 "name": "walk",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
+"loop": false,
+"name": "spawning",
 "speed": 10.0
 } ]

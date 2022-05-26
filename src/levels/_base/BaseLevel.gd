@@ -56,7 +56,7 @@ func _spawn_first_player() -> void:
 
 
 func _spawn_new_player() -> void:
-	_current_player = _spawner.spawn_new_player()
+	_current_player = yield(_spawner.spawn_new_player(), "completed")
 	call_deferred("add_child", _current_player, true)
 	_current_player.connect("player_dead", self, "_on_current_player_dead")
 	_camera.target = _current_player
