@@ -75,6 +75,7 @@ config/icon="res://game_icon.png"
 [autoload]
 
 LoadingManager="*res://globals/LoadingManager.tscn"
+SoundManager="*res://globals/SoundManager.tscn"
 
 [display]
 
