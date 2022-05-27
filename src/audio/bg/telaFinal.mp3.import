@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/telaFinal.mp3-9e503d524541d3dc3aeefd774190db59.mp3str"
+
+[deps]
+
+source_file="res://audio/bg/telaFinal.mp3"
+dest_files=[ "res://.import/telaFinal.mp3-9e503d524541d3dc3aeefd774190db59.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
