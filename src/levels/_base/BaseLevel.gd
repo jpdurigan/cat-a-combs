@@ -10,7 +10,7 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var lives : int = 3
+export var lives : int = 99
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 

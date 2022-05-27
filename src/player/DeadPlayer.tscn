@@ -28,6 +28,7 @@ region_rect = Rect2( 2, 32, 34, 14 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, -6.5 )
 shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1, -15 )
