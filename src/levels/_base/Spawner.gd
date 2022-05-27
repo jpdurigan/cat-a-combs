@@ -20,6 +20,7 @@ export var particle_dying_scene : PackedScene
 var _current_player: Player
 
 onready var _spawning_particles : AnimatedSprite = $SpawningParticles
+onready var _audio_player : AudioStreamPlayer = $AudioStreamPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -37,6 +38,7 @@ func _ready():
 func spawn_new_player() -> Player:
 	_spawning_particles.show()
 	_spawning_particles.play("spawn_start")
+	_audio_player.play()
 	yield(_spawning_particles, "animation_finished")
 	
 	_current_player = player_scene.instance()

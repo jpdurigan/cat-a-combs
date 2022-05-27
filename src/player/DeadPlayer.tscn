@@ -34,3 +34,6 @@ one_way_collision = true
 position = Vector2( -1, -15 )
 frames = ExtResource( 4 )
 animation = "dying"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "World"

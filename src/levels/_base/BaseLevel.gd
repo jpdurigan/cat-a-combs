@@ -11,6 +11,8 @@ extends Node2D
 #--- public variables - order: export > normal var > onready --------------------------------------
 
 export var lives : int = 99
+export var ambience_sfx : AudioStream
+export var game_over_sfx : AudioStream
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -20,6 +22,8 @@ var _current_lives : int
 onready var _camera : LevelCamera = $Camera
 onready var _spawner : LevelSpawner = $Spawner
 onready var _goal : LevelGoal = $Goal
+
+onready var _audio_player : AudioStreamPlayer = $AudioStreamPlayer
 onready var _game_over_display : Control = $Overlay/GameOver
 
 ### -----------------------------------------------------------------------------------------------
@@ -28,6 +32,7 @@ onready var _game_over_display : Control = $Overlay/GameOver
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
+	SoundManager.play_ambience(ambience_sfx)
 	_game_over_display.hide()
 	
 	Events.emit_signal("level_started")
@@ -44,7 +49,8 @@ func level_win() -> void:
 
 
 func level_lose() -> void:
-#	get_tree().paused = true
+	_audio_player.stream = game_over_sfx
+	_audio_player.play()
 	_game_over_display.show()
 
 ### -----------------------------------------------------------------------------------------------
