@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
@@ -7,8 +7,8 @@
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://audio/bg/cave/cave audio.ogg" type="AudioStream" id=8]
-[ext_resource path="res://audio/sfx/Player/cat_death_total.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/sfx/Player/cat_death_total.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/bg/cave/cave2.wav" type="AudioStream" id=9]
 [ext_resource path="res://tilemap/tileset_foreground.tres" type="TileSet" id=10]
 
 [sub_resource type="DynamicFont" id=1]
@@ -20,8 +20,8 @@ font_data = ExtResource( 7 )
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 2 )
-ambience_sfx = ExtResource( 8 )
-game_over_sfx = ExtResource( 9 )
+ambience_sfx = ExtResource( 9 )
+game_over_sfx = ExtResource( 8 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
