@@ -16,7 +16,12 @@ const WALK_SPEED = 180
 
 const JUMP_BUFFER_COUNT = 3
 
+const WALK_SFX_FRAMES = [4, 9]
+
 #--- public variables - order: export > normal var > onready --------------------------------------
+
+export(Array, AudioStream) var step_sfxs : Array
+export(Array, AudioStream) var jump_sfxs : Array
 
 var is_flipped: bool = false
 
@@ -28,6 +33,7 @@ var _jump_buffer : int = 0
 var _target_platform : PlatformMoving = null
 
 onready var _sprite: AnimatedSprite = $AnimatedSprite
+onready var _audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -108,6 +114,7 @@ func _handle_sprite(input_vector: Vector2) -> void:
 		var anim_name = "walk" if is_on_floor() else "idle"
 		_sprite.animation = anim_name
 	elif _sprite.animation == "walk":
+		_play_step_sound()
 		_sprite.animation = "idle"
 	
 	# Handle jump
@@ -116,7 +123,24 @@ func _handle_sprite(input_vector: Vector2) -> void:
 			var anim_name = "jump_down" if _velocity.y > 0 else "jump_up"
 			_sprite.animation = anim_name
 	if is_on_floor() and "jump" in _sprite.animation:
+		_play_step_sound()
 		_sprite.animation = "jump_end"
+	
+	# Handle step sfx
+	if _sprite.animation == "walk" and WALK_SFX_FRAMES.has(_sprite.frame):
+		_play_step_sound()
+
+
+func _play_step_sound() -> void:
+	if _audio_player.playing or step_sfxs.empty():
+		return
+	
+	var new_step_sound : AudioStream = _audio_player.stream
+	while new_step_sound == _audio_player.stream:
+		new_step_sound = step_sfxs[randi() % step_sfxs.size()]
+	
+	_audio_player.stream = new_step_sound
+	_audio_player.play()
 
 
 func _handle_body_entered(body: Node) -> void:
@@ -157,7 +181,9 @@ func _on_AnimatedSprite_animation_finished():
 	match _sprite.animation:
 		"jump_start":
 			_sprite.animation = "jump_up"
-		"spawning", "jump_end":
+		"spawning":
+			_sprite.animation = "idle"
+		"jump_end":
 			_sprite.animation = "idle"
 
 ### -----------------------------------------------------------------------------------------------

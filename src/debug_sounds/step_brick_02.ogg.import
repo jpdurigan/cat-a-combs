@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/step_brick_02.ogg-26d040ab4b702172df7355e53ba08df3.oggstr"
+
+[deps]
+
+source_file="res://debug_sounds/step_brick_02.ogg"
+dest_files=[ "res://.import/step_brick_02.ogg-26d040ab4b702172df7355e53ba08df3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
