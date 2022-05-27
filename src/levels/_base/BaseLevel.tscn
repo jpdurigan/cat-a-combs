@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://tilemap/tileset_foreground.tres" type="TileSet" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 7 )
@@ -22,6 +23,11 @@ script = ExtResource( 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+
+[node name="FG" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Objects" type="Node2D" parent="."]
@@ -82,6 +88,7 @@ margin_bottom = 68.0
 text = "Try Again?"
 
 [node name="HUD" parent="Overlay" instance=ExtResource( 6 )]
+visible = false
 anchor_left = 1.0
 anchor_bottom = 0.0
 
