@@ -15,6 +15,7 @@ var is_flipped : bool = false setget _set_is_flipped
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 onready var _sprite : AnimatedSprite = $AnimatedSprite
+onready var _audio_player : AudioStreamPlayer = $AudioStreamPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -24,6 +25,7 @@ onready var _sprite : AnimatedSprite = $AnimatedSprite
 func _ready():
 	add_to_group(Constants.GROUPS.DEAD_PLAYER)
 	_sprite.set_deferred("playing", true)
+	_audio_player.call_deferred("play")
 
 ### -----------------------------------------------------------------------------------------------
 

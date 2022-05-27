@@ -85,5 +85,6 @@ frames = SubResource( 7 )
 offset = Vector2( 0, -16 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "World"
 
 [connection signal="animation_finished" from="SpawningParticles" to="." method="_on_SpawningParticles_animation_finished"]
