@@ -50,6 +50,7 @@ position = Vector2( 3, 98 )
 
 [node name="EspetoQueCai2" parent="Objects/Seção 2" index="1" instance=ExtResource( 1 )]
 position = Vector2( 272, -320 )
+trigger_path = NodePath("Trigger4")
 
 [node name="Trigger4" parent="Objects/Seção 2/EspetoQueCai2" index="3" instance=ExtResource( 4 )]
 position = Vector2( 0, 96 )
@@ -107,11 +108,11 @@ position = Vector2( 1232, -672 )
 [node name="Trigger2" parent="Objects/Seção 3/EspetoQueCai4" index="3" instance=ExtResource( 4 )]
 position = Vector2( 0, 128 )
 
-[node name="Spawner" parent="." index="2"]
+[node name="Spawner" parent="." index="3"]
 position = Vector2( 112, 64 )
 
-[node name="Goal" parent="." index="3"]
+[node name="Goal" parent="." index="4"]
 position = Vector2( 1360, -638 )
 
-[node name="Camera" parent="." index="4"]
+[node name="Camera" parent="." index="5"]
 position = Vector2( 112, 64 )
