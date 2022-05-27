@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
@@ -6,6 +6,14 @@
 [ext_resource path="res://levels/_base/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 7 )
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 2 )
@@ -30,23 +38,49 @@ current = true
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
-[node name="TemporaryDisplay" type="ColorRect" parent="Overlay"]
+[node name="GameOver" type="ColorRect" parent="Overlay"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.5 )
+color = Color( 0.08, 0.18, 0.26, 0.75 )
 
-[node name="Center" type="CenterContainer" parent="Overlay/TemporaryDisplay"]
+[node name="Center" type="CenterContainer" parent="Overlay/GameOver"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="Overlay/TemporaryDisplay/Center"]
-margin_left = 224.0
-margin_top = 137.0
-margin_right = 288.0
-margin_bottom = 151.0
-text = "YOU WIN!"
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/GameOver/Center"]
+margin_left = 148.0
+margin_top = 110.0
+margin_right = 364.0
+margin_bottom = 178.0
+custom_constants/separation = 12
+
+[node name="GameOver" type="Label" parent="Overlay/GameOver/Center/VBoxContainer"]
+margin_right = 216.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
+text = "GAME OVER"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Overlay/GameOver/Center/VBoxContainer"]
+margin_top = 28.0
+margin_right = 216.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "You've lost all your lives."
+align = 1
+valign = 1
+
+[node name="Retry" type="Button" parent="Overlay/GameOver/Center/VBoxContainer"]
+margin_top = 48.0
+margin_right = 216.0
+margin_bottom = 68.0
+text = "Try Again?"
 
 [node name="HUD" parent="Overlay" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
 
 [connection signal="player_reached" from="Goal" to="." method="_on_Goal_player_reached"]
+[connection signal="pressed" from="Overlay/GameOver/Center/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
