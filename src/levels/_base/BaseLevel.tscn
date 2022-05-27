@@ -8,6 +8,7 @@
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 2 )
+lives = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -22,6 +23,7 @@ position = Vector2( 16, 32 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 48, 32 )
+_next_scene_path = ""
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 current = true
@@ -39,10 +41,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="Overlay/TemporaryDisplay/Center"]
-margin_left = 96.0
-margin_top = 65.0
-margin_right = 160.0
-margin_bottom = 79.0
+margin_left = 224.0
+margin_top = 137.0
+margin_right = 288.0
+margin_bottom = 151.0
 text = "YOU WIN!"
 
 [connection signal="player_reached" from="Goal" to="." method="_on_Goal_player_reached"]

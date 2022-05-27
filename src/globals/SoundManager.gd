@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-class_name LevelSpawner
-extends Node2D
+extends Node
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -9,62 +8,50 @@ extends Node2D
 
 #--- constants ------------------------------------------------------------------------------------
 
+var BGM_BUS = AudioServer.get_bus_index("BGM")
+var SFX_BUS = AudioServer.get_bus_index("SFX")
+
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var player_scene : PackedScene
-export var dead_player_scene : PackedScene
-export var particle_dying_scene : PackedScene
+var is_bgm_on : bool = true setget _set_is_bgm_on
+var is_sfx_on : bool = true setget _set_is_sfx_on
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _current_player: Player
-
-onready var _spawning_particles : AnimatedSprite = $SpawningParticles
+onready var _bgm_player: AudioStreamPlayer = $BGM
+onready var _ui_player: AudioStreamPlayer = $UI
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func _ready():
-	_spawning_particles.hide()
-
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func spawn_new_player() -> Player:
-	_spawning_particles.show()
-	_spawning_particles.play("spawn_start")
-	yield(_spawning_particles, "animation_finished")
-	
-	_current_player = player_scene.instance()
-	_current_player.global_position = global_position
-	
-	_spawning_particles.play("spawn_end")
-	
-	return _current_player
+func play_bgm(bgm_stream: AudioStream) -> void:
+	_bgm_player.stream = bgm_stream
+	_bgm_player.play()
 
 
-func spawn_dead_player() -> Node2D:
-	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = Grid.snap_position(_current_player.global_position)
-	dead_player.is_flipped = _current_player.is_flipped
-	
-	var dying_particles = particle_dying_scene.instance()
-	add_child(dying_particles)
-	dying_particles.global_position = dead_player.global_position
-	
-	return dead_player
+func play_ui_sfx(ui_sfx_stream: AudioStream) -> void:
+	_ui_player.stream = ui_sfx_stream
+	_ui_player.play()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_SpawningParticles_animation_finished():
-	if _spawning_particles.animation == "spawn_end":
-		_spawning_particles.hide()
+func _set_is_bgm_on(value: bool) -> void:
+	is_bgm_on = value
+	AudioServer.set_bus_mute(BGM_BUS, not is_bgm_on)
+
+
+func _set_is_sfx_on(value: bool) -> void:
+	is_sfx_on = value
+	AudioServer.set_bus_mute(SFX_BUS, not is_sfx_on)
 
 ### -----------------------------------------------------------------------------------------------

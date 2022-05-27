@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-class_name LevelSpawner
-extends Node2D
+extends CanvasLayer
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -11,60 +10,63 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var player_scene : PackedScene
-export var dead_player_scene : PackedScene
-export var particle_dying_scene : PackedScene
-
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _current_player: Player
+var _loader : ResourceInteractiveLoader
 
-onready var _spawning_particles : AnimatedSprite = $SpawningParticles
+onready var _animator: AnimationPlayer = $AnimationPlayer
+onready var _progress: ProgressBar = $ColorRect/ProgressBar
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
-func _ready():
-	_spawning_particles.hide()
+func _process(_delta):
+	if not is_instance_valid(_loader):
+		set_process(false)
+		return
+	
+	var error = _loader.poll()
+	_progress.value = _loader.get_stage()
+	if error == ERR_FILE_EOF:
+		_progress.value = _progress.max_value
+		set_process(false)
+		_on_end_of_file()
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func spawn_new_player() -> Player:
-	_spawning_particles.show()
-	_spawning_particles.play("spawn_start")
-	yield(_spawning_particles, "animation_finished")
+func load_next_scene(path: String) -> void:
+	if is_instance_valid(_loader) or path.empty():
+		assert(false, "Algo de errado não está certo!")
 	
-	_current_player = player_scene.instance()
-	_current_player.global_position = global_position
+	if not get_tree().paused:
+		get_tree().paused = true
 	
-	_spawning_particles.play("spawn_end")
+	_loader = ResourceLoader.load_interactive(path)
+	_progress.max_value = _loader.get_stage_count()
+	_progress.min_value = 0.0
+	_progress.value = 0.0
 	
-	return _current_player
-
-
-func spawn_dead_player() -> Node2D:
-	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = Grid.snap_position(_current_player.global_position)
-	dead_player.is_flipped = _current_player.is_flipped
-	
-	var dying_particles = particle_dying_scene.instance()
-	add_child(dying_particles)
-	dying_particles.global_position = dead_player.global_position
-	
-	return dead_player
+	_animator.play("open")
+	yield(_animator, "animation_finished")
+	set_process(true)
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_SpawningParticles_animation_finished():
-	if _spawning_particles.animation == "spawn_end":
-		_spawning_particles.hide()
+func _on_end_of_file() -> void:
+	var next_scene = _loader.get_resource()
+	var _err = get_tree().change_scene_to(next_scene)
+	_animator.play("close")
+	yield(_animator, "animation_finished")
+	if get_tree().paused:
+		get_tree().paused = false
+	_loader = null
 
 ### -----------------------------------------------------------------------------------------------
