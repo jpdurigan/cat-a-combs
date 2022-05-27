@@ -8,8 +8,8 @@ extends StaticBody2D
 
 #--- constants ------------------------------------------------------------------------------------
 
-const DEFAULT_VELOCITY = 36.0
-const DEFAULT_INTERVAL = 5.0
+const DEFAULT_VELOCITY = 216.0
+const DEFAULT_INTERVAL = 4.0
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 

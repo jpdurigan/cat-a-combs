@@ -10,8 +10,8 @@ extends "res://objects/espetos/Espeto.gd"
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var trigger_path : NodePath
-export(float, 0.1, 3.0, 0.01) var gravity_multiplier : float = 1.0
+export var trigger_path := NodePath("./Trigger")
+export(float, 0.1, 3.0, 0.01) var gravity_multiplier : float = 0.7
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 

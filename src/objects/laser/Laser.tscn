@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
-extents = Vector2( 0, 8 )
+extents = Vector2( 0, 3 )
 
 [node name="Laser" type="Node2D"]
 script = ExtResource( 2 )
@@ -22,11 +22,11 @@ region_rect = Rect2( 0, 0, 32, 0 )
 shape = SubResource( 1 )
 
 [node name="RayCast1" type="RayCast2D" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -4 )
 cast_to = Vector2( 0, 0 )
 
 [node name="RayCast2" type="RayCast2D" parent="."]
-position = Vector2( 0, 8 )
+position = Vector2( 0, 4 )
 cast_to = Vector2( 0, 0 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -9,6 +9,7 @@
 [ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://audio/bg/cave/cave audio.ogg" type="AudioStream" id=8]
 [ext_resource path="res://audio/sfx/Player/cat_death_total.wav" type="AudioStream" id=9]
+[ext_resource path="res://tilemap/tileset_foreground.tres" type="TileSet" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 7 )
@@ -26,6 +27,11 @@ game_over_sfx = ExtResource( 9 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+
+[node name="FG" type="TileMap" parent="."]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Objects" type="Node2D" parent="."]
@@ -86,6 +92,7 @@ margin_bottom = 68.0
 text = "Try Again?"
 
 [node name="HUD" parent="Overlay" instance=ExtResource( 6 )]
+visible = false
 anchor_left = 1.0
 anchor_bottom = 0.0
 
