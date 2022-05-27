@@ -16,7 +16,14 @@ const WALK_SPEED = 160
 
 const JUMP_BUFFER_COUNT = 3
 
+const WALK_SFX_FRAMES = [4, 9]
+
 #--- public variables - order: export > normal var > onready --------------------------------------
+
+export(Array, AudioStream) var step_sfxs : Array
+export(Array, AudioStream) var jump_sfxs : Array
+
+var is_flipped: bool = false
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -25,6 +32,9 @@ var _jump_buffer : int = 0
 
 var _target_platform : PlatformMoving = null
 
+onready var _sprite: AnimatedSprite = $AnimatedSprite
+onready var _audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -32,6 +42,7 @@ var _target_platform : PlatformMoving = null
 
 func _ready():
 	add_to_group(Constants.GROUPS.PLAYER)
+	_sprite.play("spawning")
 
 
 func _unhandled_key_input(event: InputEventKey):
@@ -56,6 +67,7 @@ func _physics_process(_delta: float):
 		if _jump_buffer == 0 or _can_jump():
 			_velocity += Vector2(0, -JUMP_SPEED)
 			_jump_buffer = 0
+			_sprite.animation = "jump_start"
 	
 	# Handle walk
 	var walk : Vector2 = (
@@ -70,6 +82,7 @@ func _physics_process(_delta: float):
 	
 	# Move
 	_velocity = move_and_slide(_velocity, Vector2.UP)
+	_handle_sprite(walk)
 
 
 ### -----------------------------------------------------------------------------------------------
@@ -85,6 +98,50 @@ func kill():
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _handle_sprite(input_vector: Vector2) -> void:
+	var is_walking = input_vector.x != 0
+	# Handle left/right 
+	if is_walking:
+		is_flipped = true if input_vector.x < 0 else false
+		_sprite.flip_h = is_flipped
+	
+	if _sprite.animation == "spawning":
+		return
+	
+	# Handle left/right and walk 
+	if input_vector.x != 0:
+		var anim_name = "walk" if is_on_floor() else "idle"
+		_sprite.animation = anim_name
+	elif _sprite.animation == "walk":
+		_play_step_sound()
+		_sprite.animation = "idle"
+	
+	# Handle jump
+	if _velocity.y != 0 and not is_on_floor():
+		if _sprite.animation in ["idle", "jump_up", "jump_down"]:
+			var anim_name = "jump_down" if _velocity.y > 0 else "jump_up"
+			_sprite.animation = anim_name
+	if is_on_floor() and "jump" in _sprite.animation:
+		_play_step_sound()
+		_sprite.animation = "jump_end"
+	
+	# Handle step sfx
+	if _sprite.animation == "walk" and WALK_SFX_FRAMES.has(_sprite.frame):
+		_play_step_sound()
+
+
+func _play_step_sound() -> void:
+	if _audio_player.playing or step_sfxs.empty():
+		return
+	
+	var new_step_sound : AudioStream = _audio_player.stream
+	while new_step_sound == _audio_player.stream:
+		new_step_sound = step_sfxs[randi() % step_sfxs.size()]
+	
+	_audio_player.stream = new_step_sound
+	_audio_player.play()
+
 
 func _handle_body_entered(body: Node) -> void:
 	if body.is_in_group(Constants.GROUPS.PLATFORM_MOVING):
@@ -118,5 +175,15 @@ func _on_Area2D_area_exited(area: Area2D):
 		return
 	
 	_handle_body_exited(area.owner)
+
+
+func _on_AnimatedSprite_animation_finished():
+	match _sprite.animation:
+		"jump_start":
+			_sprite.animation = "jump_up"
+		"spawning":
+			_sprite.animation = "idle"
+		"jump_end":
+			_sprite.animation = "idle"
 
 ### -----------------------------------------------------------------------------------------------
