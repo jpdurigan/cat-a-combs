@@ -20,6 +20,7 @@ export var is_active : bool = true
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
+onready var _sprite: AnimatedSprite = $AnimatedSprite
 onready var _projectiles: Node2D = $Projectiles
 onready var _timer: Timer = $Timer
 
@@ -41,9 +42,12 @@ func _ready():
 ### Public Methods --------------------------------------------------------------------------------
 
 func shoot() -> void:
+	_sprite.play("shooting_start")
+	yield(_sprite, "animation_finished")
 	var projectile : Projectile = projectile_scene.instance()
 	projectile.velocity = velocity
 	_projectiles.add_child(projectile, true)
+	_sprite.play("shooting_end")
 	if is_active:
 		_timer.start()
 
