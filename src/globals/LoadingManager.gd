@@ -67,5 +67,6 @@ func _on_end_of_file() -> void:
 	yield(_animator, "animation_finished")
 	if get_tree().paused:
 		get_tree().paused = false
+	_loader = null
 
 ### -----------------------------------------------------------------------------------------------
