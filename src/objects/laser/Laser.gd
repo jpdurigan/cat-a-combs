@@ -18,11 +18,12 @@ var velocity : float = 160.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-onready var _sprite : Sprite = $Sprite
-onready var _area : Area2D = $Area2D
+onready var _tip : AnimatedSprite = $Head/Tip
+onready var _sprite : Sprite = $Beam/Sprite
+onready var _area : Area2D = $Beam/Area2D
 onready var _shape : RectangleShape2D = _area.shape_owner_get_shape(0, 0)
-onready var _raycast1 : RayCast2D = $RayCast1
-onready var _raycast2 : RayCast2D = $RayCast2
+onready var _raycast1 : RayCast2D = $Beam/RayCast1
+onready var _raycast2 : RayCast2D = $Beam/RayCast2
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -95,8 +96,9 @@ func _set_extension(value: float) -> void:
 	if not is_inside_tree():
 		yield(self, "ready")
 	
-	_sprite.offset.y = - extension / 2
-	_sprite.region_rect.size.y = extension
+	_tip.position.x = extension
+	_sprite.position.x = extension / 2
+	_sprite.region_rect.size.x = extension
 	_area.position.x = extension / 2
 	_shape.extents.x = extension / 2
 	_raycast1.cast_to.x = extension
