@@ -27,7 +27,9 @@ onready var _goal : LevelGoal = $Goal
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_spawn_first_player()
+	Events.emit_signal("level_started")
+	_start_level()
+	Events.connect("level_reset", self, "_on_level_reset")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -50,9 +52,17 @@ func level_lose() -> void:
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _spawn_first_player() -> void:
+func _start_level() -> void:
 	_current_lives = lives
+	Events.emit_signal("lives_updated", _current_lives)
 	_spawn_new_player()
+
+
+func _reset_level() -> void:
+	for dead_player in get_tree().get_nodes_in_group(Constants.GROUPS.DEAD_PLAYER):
+		dead_player.queue_free()
+	_current_player.queue_free()
+	_start_level()
 
 
 func _spawn_new_player() -> void:
@@ -70,10 +80,15 @@ func _spawn_dead_player() -> void:
 func _on_current_player_dead() -> void:
 	_spawn_dead_player()
 	_current_lives -= 1
+	Events.emit_signal("lives_updated", _current_lives)
 	if _current_lives <= 0:
 		level_lose()
 	else:
 		_spawn_new_player()
+
+
+func _on_level_reset() -> void:
+	_reset_level()
 
 
 func _on_Goal_player_reached():
