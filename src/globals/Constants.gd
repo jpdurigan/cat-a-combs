@@ -19,4 +19,6 @@ const GROUPS = {
 	ARROW_PROJECTILE = "arrow_projectile",
 	LASER_SHOOTER = "laser_shooter",
 	LASER_BEAM = "laser_beam",
+	
+	HUD = "hud",
 }

@@ -68,6 +68,7 @@ func _physics_process(_delta: float):
 			_velocity += Vector2(0, -JUMP_SPEED)
 			_jump_buffer = 0
 			_sprite.animation = "jump_start"
+			_play_jump_sound()
 	
 	# Handle walk
 	var walk : Vector2 = (
@@ -136,10 +137,23 @@ func _play_step_sound() -> void:
 		return
 	
 	var new_step_sound : AudioStream = _audio_player.stream
-	while new_step_sound == _audio_player.stream:
-		new_step_sound = step_sfxs[randi() % step_sfxs.size()]
+	if step_sfxs.size() > 1:
+		while new_step_sound == _audio_player.stream:
+			new_step_sound = step_sfxs[randi() % step_sfxs.size()]
 	
 	_audio_player.stream = new_step_sound
+	_audio_player.play()
+
+
+func _play_jump_sound() -> void:
+	if jump_sfxs.empty():
+		return
+	
+	if _audio_player.playing:
+		_audio_player.stop()
+	
+	var jump_sound : AudioStream = jump_sfxs[randi() % jump_sfxs.size()]
+	_audio_player.stream = jump_sound
 	_audio_player.play()
 
 
