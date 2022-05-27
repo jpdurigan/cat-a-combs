@@ -33,3 +33,6 @@ shape = SubResource( 1 )
 position = Vector2( -1, -15 )
 frames = ExtResource( 4 )
 animation = "dying"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "World"

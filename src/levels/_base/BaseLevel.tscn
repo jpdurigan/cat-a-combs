@@ -36,6 +36,9 @@ _next_scene_path = ""
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 current = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "UI"
+
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="GameOver" type="ColorRect" parent="Overlay"]

@@ -19,7 +19,9 @@ var is_sfx_on : bool = true setget _set_is_sfx_on
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 onready var _bgm_player: AudioStreamPlayer = $BGM
+onready var _ambience_player: AudioStreamPlayer = $Ambience
 onready var _ui_player: AudioStreamPlayer = $UI
+onready var _tween: Tween = $Tween
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -34,6 +36,13 @@ onready var _ui_player: AudioStreamPlayer = $UI
 func play_bgm(bgm_stream: AudioStream) -> void:
 	_bgm_player.stream = bgm_stream
 	_bgm_player.play()
+
+
+func play_ambience(ambience_stream: AudioStream) -> void:
+	if ambience_stream == _ambience_player.stream:
+		return
+	_ambience_player.stream = ambience_stream
+	_ambience_player.play()
 
 
 func play_ui_sfx(ui_sfx_stream: AudioStream) -> void:
