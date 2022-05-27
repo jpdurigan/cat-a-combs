@@ -12,7 +12,7 @@ signal player_dead
 
 const ACCELERATION = 15
 const JUMP_SPEED = 360
-const WALK_SPEED = 180
+const WALK_SPEED = 160
 
 const JUMP_BUFFER_COUNT = 3
 
