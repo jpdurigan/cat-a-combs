@@ -138,9 +138,3 @@ position = Vector2( 16, 280 )
 
 [node name="Goal" parent="." index="3"]
 position = Vector2( 1136, -768 )
-
-[node name="Label" parent="Overlay/TemporaryDisplay/Center" index="0"]
-margin_left = 224.0
-margin_top = 137.0
-margin_right = 288.0
-margin_bottom = 151.0
