@@ -31,13 +31,15 @@ position = Vector2( 240, 224 )
 position = Vector2( 272, 224 )
 
 [node name="Spawner" parent="." index="3"]
-position = Vector2( 16, 192 )
+position = Vector2( 15, 192 )
 
 [node name="Goal" parent="." index="4"]
 position = Vector2( 352, 192 )
+_next_scene_path = "res://levels/Level-2.tscn"
 
 [node name="Camera" parent="." index="5"]
 position = Vector2( 16, 192 )
+current = false
 limit_left = -96
 limit_top = -64
 limit_right = 448

@@ -24,7 +24,7 @@ position = Vector2( 480, 248 )
 scale = Vector2( -1, 1 )
 
 [node name="Checkpoint" parent="Objects/Seção 1" index="2" instance=ExtResource( 7 )]
-position = Vector2( 399, 129 )
+position = Vector2( 400, 129 )
 
 [node name="Seção 2" type="Node2D" parent="Objects" index="1"]
 
@@ -45,8 +45,8 @@ position = Vector2( 433, -63 )
 [node name="Seção 3" type="Node2D" parent="Objects" index="2"]
 
 [node name="Laser3" parent="Objects/Seção 3" index="0" instance=ExtResource( 4 )]
-position = Vector2( 479, -176 )
-rotation = 3.14159
+position = Vector2( 480, -178 )
+scale = Vector2( -1, 1 )
 extension = 50.0
 
 [node name="LancadorDardo4" parent="Objects/Seção 3" index="1" instance=ExtResource( 5 )]
@@ -248,6 +248,8 @@ position = Vector2( 88, 257 )
 
 [node name="Goal" parent="." index="4"]
 position = Vector2( 1200, -800 )
+_next_scene_path = "res://levels/Level-7-drop-adv.tscn"
 
 [node name="Camera" parent="." index="5"]
 position = Vector2( 96, 256 )
+current = false
