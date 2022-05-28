@@ -58,7 +58,7 @@ func _physics_process(delta):
 ### Private Methods -------------------------------------------------------------------------------
 
 func _handle_body_collision(body: Node) -> void:
-	if not is_instance_valid(body) or body.is_queued_for_deletion():
+	if not is_instance_valid(body) or body.is_queued_for_deletion() or not _is_falling:
 		return
 	
 	_area.set_deferred("monitoring", false)
