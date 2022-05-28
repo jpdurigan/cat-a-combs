@@ -54,7 +54,7 @@ func spawn_dead_player(player: Player = null) -> Node2D:
 		player = _current_player
 	
 	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = Grid.snap_position(player.global_position)
+	dead_player.global_position = Grid.snap_player_position(player)
 	dead_player.is_flipped = player.is_flipped
 	
 	var dying_particles = particle_dying_scene.instance()

@@ -24,6 +24,7 @@ export(Array, AudioStream) var step_sfxs : Array
 export(Array, AudioStream) var jump_sfxs : Array
 
 var is_flipped: bool = false
+var last_collision: Node = null
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -158,6 +159,7 @@ func _play_jump_sound() -> void:
 
 
 func _handle_body_entered(body: Node) -> void:
+	last_collision = body
 	if body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
 		kill()
 	elif body.is_in_group(Constants.GROUPS.ARROW_PROJECTILE):
