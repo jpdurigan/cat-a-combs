@@ -180,11 +180,13 @@ position = Vector2( 848, 65 )
 position = Vector2( -80, 82 )
 tile_count = 3
 target = Vector2( 6, 0 )
+move_time = 2.0
 
 [node name="PlataformaQueAnda2" parent="Objects" index="41" instance=ExtResource( 5 )]
 position = Vector2( 467, 43 )
 tile_count = 3
 target = Vector2( -6, 0 )
+move_time = 2.0
 
 [node name="PlataformaQueAnda3" parent="Objects" index="42" instance=ExtResource( 5 )]
 position = Vector2( 625, 12 )

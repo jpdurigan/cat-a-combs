@@ -43,6 +43,7 @@ func _ready():
 		_handle_tile_changes()
 		return
 	
+	yield(get_tree().create_timer(stop_time), "timeout")
 	move_forwards()
 
 
