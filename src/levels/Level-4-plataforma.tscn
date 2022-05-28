@@ -78,3 +78,4 @@ position = Vector2( 32, 192 )
 
 [node name="Goal" parent="." index="4"]
 position = Vector2( 32, 64 )
+_next_scene_path = "res://levels/Level-5-drop1.tscn"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/respawn1.mp3-290fdc6f57ea1f9d35c02888d8784f29.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Player/respawn1.mp3"
+dest_files=[ "res://.import/respawn1.mp3-290fdc6f57ea1f9d35c02888d8784f29.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
