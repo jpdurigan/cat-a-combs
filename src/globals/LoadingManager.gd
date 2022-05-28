@@ -41,7 +41,7 @@ func _process(_delta):
 
 func load_next_scene(path: String) -> void:
 	if is_instance_valid(_loader) or path.empty():
-		assert(false, "Algo de errado não está certo!")
+			assert(false, "Algo de errado não está certo!")
 	
 	if not get_tree().paused:
 		get_tree().paused = true

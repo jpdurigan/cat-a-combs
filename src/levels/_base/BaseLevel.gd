@@ -10,7 +10,7 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var lives : int = 3
+export var lives : int = 99
 export var ambience_sfx : AudioStream
 export var game_over_sfx : AudioStream
 
