@@ -22,6 +22,9 @@ font_data = ExtResource( 3 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -57,6 +60,9 @@ rect_min_size = Vector2( 240, 72 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_left = 80.0
