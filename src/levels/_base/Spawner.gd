@@ -49,10 +49,13 @@ func spawn_new_player() -> Player:
 	return _current_player
 
 
-func spawn_dead_player() -> Node2D:
+func spawn_dead_player(player: Player = null) -> Node2D:
+	if player == null:
+		player = _current_player
+	
 	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = Grid.snap_position(_current_player.global_position)
-	dead_player.is_flipped = _current_player.is_flipped
+	dead_player.global_position = Grid.snap_position(player.global_position)
+	dead_player.is_flipped = player.is_flipped
 	
 	var dying_particles = particle_dying_scene.instance()
 	add_child(dying_particles)

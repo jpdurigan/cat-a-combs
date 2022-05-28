@@ -1,5 +1,5 @@
 # Write your doc string for this file here
-extends StaticBody2D
+extends LevelSpawner
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -10,11 +10,9 @@ extends StaticBody2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var fall_time : float = 1.0
-
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-onready var _animator: AnimationPlayer = $AnimationPlayer
+onready var _animated_sprite : AnimatedSprite = $AnimatedSprite
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -22,33 +20,28 @@ onready var _animator: AnimationPlayer = $AnimationPlayer
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_animator.play("RESET")
-	add_to_group(Constants.GROUPS.PLATFORM_FALLING)
+	_animated_sprite.play("off")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func fall() -> void:
-	_animator.play("about_to_fall")
-	yield(get_tree().create_timer(fall_time), "timeout")
-	set_collision_layer_bit(0, false)
-	set_collision_mask_bit(0, false)
-	_animator.play("fall")
-	yield(_animator, "animation_finished")
-	queue_free()
+func activate() -> void:
+	Events.emit_signal("checkpoint_reached", self)
+	_animated_sprite.play("activate")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_Area2D_area_entered(area: Area2D):
-	if _animator.is_playing():
-		return
-	
-	if area.owner.is_in_group(Constants.GROUPS.PLAYER):
-		fall()
+func _on_Trigger_player_triggered():
+	activate()
+
+
+func _on_AnimatedSprite_animation_finished():
+	if _animated_sprite.animation == "activate":
+		_animated_sprite.play("on")
 
 ### -----------------------------------------------------------------------------------------------

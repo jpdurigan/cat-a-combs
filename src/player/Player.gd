@@ -29,8 +29,7 @@ var is_flipped: bool = false
 
 var _velocity := Vector2.ZERO
 var _jump_buffer : int = 0
-
-var _target_platform : PlatformMoving = null
+var _should_play_step_sound_on_ground : bool = false
 
 onready var _sprite: AnimatedSprite = $AnimatedSprite
 onready var _audio_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -57,10 +56,6 @@ func _unhandled_key_input(event: InputEventKey):
 
 
 func _physics_process(_delta: float):
-	# Handle platform
-	if is_instance_valid(_target_platform):
-		position += _target_platform.current_delta
-	
 	# Handle jump
 	if _jump_buffer > 0:
 		_jump_buffer -= 1
@@ -124,8 +119,10 @@ func _handle_sprite(input_vector: Vector2) -> void:
 			var anim_name = "jump_down" if _velocity.y > 0 else "jump_up"
 			_sprite.animation = anim_name
 	if is_on_floor() and "jump" in _sprite.animation:
-		_play_step_sound()
 		_sprite.animation = "jump_end"
+		if _should_play_step_sound_on_ground:
+			_play_step_sound()
+			_should_play_step_sound_on_ground = false
 	
 	# Handle step sfx
 	if _sprite.animation == "walk" and WALK_SFX_FRAMES.has(_sprite.frame):
@@ -140,6 +137,8 @@ func _play_step_sound() -> void:
 	if step_sfxs.size() > 1:
 		while new_step_sound == _audio_player.stream:
 			new_step_sound = step_sfxs[randi() % step_sfxs.size()]
+	else:
+		new_step_sound = step_sfxs.front()
 	
 	_audio_player.stream = new_step_sound
 	_audio_player.play()
@@ -155,12 +154,11 @@ func _play_jump_sound() -> void:
 	var jump_sound : AudioStream = jump_sfxs[randi() % jump_sfxs.size()]
 	_audio_player.stream = jump_sound
 	_audio_player.play()
+	_should_play_step_sound_on_ground = true
 
 
 func _handle_body_entered(body: Node) -> void:
-	if body.is_in_group(Constants.GROUPS.PLATFORM_MOVING):
-		_target_platform = body
-	elif body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
+	if body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
 		kill()
 	elif body.is_in_group(Constants.GROUPS.ARROW_PROJECTILE):
 		body.stop()
@@ -168,8 +166,7 @@ func _handle_body_entered(body: Node) -> void:
 
 
 func _handle_body_exited(body: Node) -> void:
-	if body == _target_platform:
-		_target_platform = null
+	pass
 
 
 func _can_jump() -> bool:

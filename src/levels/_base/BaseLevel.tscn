@@ -37,11 +37,12 @@ format = 1
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Spawner" parent="." instance=ExtResource( 3 )]
+show_behind_parent = true
 position = Vector2( 16, 32 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
+show_behind_parent = true
 position = Vector2( 48, 32 )
-_next_scene_path = ""
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 current = true
