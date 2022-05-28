@@ -51,9 +51,11 @@ func _on_main_menu_entered() -> void:
 
 
 func _on_level_started() -> void:
-	_reset_sprite.play("normal")
-	if not _game_hud.visible:
+	if _game_hud.visible:
+		yield(_reset_sprite, "animation_finished")
+	else:
 		_game_hud.show()
+	_reset_sprite.play("normal")
 
 
 func _on_lives_updated(value: int) -> void:

@@ -78,6 +78,7 @@ animations = [ {
 } ]
 
 [node name="HUD" type="CanvasLayer"]
+pause_mode = 2
 layer = 101
 script = ExtResource( 8 )
 
@@ -205,6 +206,7 @@ custom_styles/normal = SubResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Game/MarginContainer/Buttons/Reset"]
 frames = SubResource( 8 )
 animation = "normal"
+playing = true
 centered = false
 
 [connection signal="toggled" from="Sound/MarginContainer/Buttons/Music" to="." method="_on_Music_toggled"]

@@ -68,11 +68,7 @@ func _start_level() -> void:
 
 
 func _reset_level() -> void:
-	for dead_player in get_tree().get_nodes_in_group(Constants.GROUPS.DEAD_PLAYER):
-		dead_player.queue_free()
-	if is_instance_valid(_current_player):
-		_current_player.queue_free()
-	_start_level()
+	LoadingManager.load_next_scene(filename)
 
 
 func _spawn_new_player() -> void:
