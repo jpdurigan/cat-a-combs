@@ -1,6 +1,5 @@
 # Write your doc string for this file here
-class_name LevelSpawner
-extends Node2D
+extends LevelSpawner
 
 ### Member Variables and Dependencies -------------------------------------------------------------
 #--- signals --------------------------------------------------------------------------------------
@@ -11,16 +10,9 @@ extends Node2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-export var player_scene : PackedScene
-export var dead_player_scene : PackedScene
-export var particle_dying_scene : PackedScene
-
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-var _current_player: Player
-
-onready var _spawning_particles : AnimatedSprite = $SpawningParticles
-onready var _audio_player : AudioStreamPlayer = $AudioStreamPlayer
+onready var _animated_sprite : AnimatedSprite = $AnimatedSprite
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -28,48 +20,28 @@ onready var _audio_player : AudioStreamPlayer = $AudioStreamPlayer
 ### Built in Engine Methods -----------------------------------------------------------------------
 
 func _ready():
-	_spawning_particles.hide()
+	_animated_sprite.play("off")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
-func spawn_new_player() -> Player:
-	_spawning_particles.show()
-	_spawning_particles.play("spawn_start")
-	_audio_player.play()
-	yield(_spawning_particles, "animation_finished")
-	
-	_current_player = player_scene.instance()
-	_current_player.global_position = global_position
-	
-	_spawning_particles.play("spawn_end")
-	
-	return _current_player
-
-
-func spawn_dead_player(player: Player = null) -> Node2D:
-	if player == null:
-		player = _current_player
-	
-	var dead_player = dead_player_scene.instance()
-	dead_player.global_position = Grid.snap_position(player.global_position)
-	dead_player.is_flipped = player.is_flipped
-	
-	var dying_particles = particle_dying_scene.instance()
-	add_child(dying_particles)
-	dying_particles.global_position = dead_player.global_position
-	
-	return dead_player
+func activate() -> void:
+	Events.emit_signal("checkpoint_reached", self)
+	_animated_sprite.play("activate")
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_SpawningParticles_animation_finished():
-	if _spawning_particles.animation == "spawn_end":
-		_spawning_particles.hide()
+func _on_Trigger_player_triggered():
+	activate()
+
+
+func _on_AnimatedSprite_animation_finished():
+	if _animated_sprite.animation == "activate":
+		_animated_sprite.play("on")
 
 ### -----------------------------------------------------------------------------------------------
