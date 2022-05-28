@@ -61,6 +61,7 @@ func _handle_body_collision(body: Node) -> void:
 	if not is_instance_valid(body) or body.is_queued_for_deletion() or not _is_falling:
 		return
 	
+	var has_hit_player = body.is_in_group(Constants.GROUPS.PLAYER)
 	_area.set_deferred("monitoring", false)
 	_area.set_deferred("monitorable", false)
 	_is_falling = false
@@ -68,10 +69,8 @@ func _handle_body_collision(body: Node) -> void:
 	
 	_animator.play("impact")
 	yield(_animator, "animation_finished")
-	if not is_instance_valid(body) or body.is_queued_for_deletion():
-		return
 	
-	if body.is_in_group(Constants.GROUPS.PLAYER):
+	if has_hit_player:
 		queue_free()
 	else:
 		yield(get_tree().create_timer(spawn_time), "timeout")
