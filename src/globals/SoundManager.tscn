@@ -13,3 +13,5 @@ bus = "World"
 
 [node name="UI" type="AudioStreamPlayer" parent="."]
 bus = "UI"
+
+[node name="Tween" type="Tween" parent="."]
