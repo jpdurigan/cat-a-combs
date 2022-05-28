@@ -139,6 +139,9 @@ trigger_path = NodePath("Trigger2")
 [node name="Trigger2" parent="Objects/Seção 3/EspetoQueCai4" index="3" instance=ExtResource( 4 )]
 position = Vector2( 0, 128 )
 
+[node name="Checkpoint" parent="Objects" index="3" instance=ExtResource( 8 )]
+position = Vector2( 48, -96 )
+
 [node name="Spawner" parent="." index="3"]
 position = Vector2( 112, 64 )
 
@@ -148,4 +151,3 @@ _next_scene_path = "res://levels/Level-6-drop.tscn"
 
 [node name="Camera" parent="." index="5"]
 position = Vector2( 112, 64 )
-current = false

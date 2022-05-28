@@ -109,4 +109,3 @@ _next_scene_path = "res://levels/Level-final.tscn"
 
 [node name="Camera" parent="." index="5"]
 position = Vector2( 80, 256 )
-current = false

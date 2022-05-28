@@ -16,14 +16,11 @@ tile_data = PoolIntArray( -2097152, 0, 0, -2097151, 0, 1, -2097150, 0, 1, -20971
 
 [node name="Seção 1" type="Node2D" parent="Objects" index="0"]
 
-[node name="Laser" parent="Objects/Seção 1" index="0" instance=ExtResource( 4 )]
-position = Vector2( 226, 280 )
-
-[node name="Laser2" parent="Objects/Seção 1" index="1" instance=ExtResource( 4 )]
+[node name="Laser2" parent="Objects/Seção 1" index="0" instance=ExtResource( 4 )]
 position = Vector2( 480, 248 )
 scale = Vector2( -1, 1 )
 
-[node name="Checkpoint" parent="Objects/Seção 1" index="2" instance=ExtResource( 7 )]
+[node name="Checkpoint" parent="Objects/Seção 1" index="1" instance=ExtResource( 7 )]
 position = Vector2( 400, 129 )
 
 [node name="Seção 2" type="Node2D" parent="Objects" index="1"]
@@ -252,4 +249,3 @@ _next_scene_path = "res://levels/Level-7-drop-adv.tscn"
 
 [node name="Camera" parent="." index="5"]
 position = Vector2( 96, 256 )
-current = false
