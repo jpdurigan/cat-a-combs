@@ -2,7 +2,7 @@
 class_name Constants
 extends Reference
 
-const TILE_SIZE = 16
+const TILE_SIZE = 32
 const TILE_GRID = Vector2(TILE_SIZE, TILE_SIZE)
 
 const GRAVITY = Vector2.DOWN * 16

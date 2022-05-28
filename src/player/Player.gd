@@ -30,8 +30,6 @@ var is_flipped: bool = false
 var _velocity := Vector2.ZERO
 var _jump_buffer : int = 0
 
-var _target_platform : PlatformMoving = null
-
 onready var _sprite: AnimatedSprite = $AnimatedSprite
 onready var _audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
@@ -57,10 +55,6 @@ func _unhandled_key_input(event: InputEventKey):
 
 
 func _physics_process(_delta: float):
-	# Handle platform
-	if is_instance_valid(_target_platform):
-		position += _target_platform.current_delta
-	
 	# Handle jump
 	if _jump_buffer > 0:
 		_jump_buffer -= 1
@@ -158,9 +152,7 @@ func _play_jump_sound() -> void:
 
 
 func _handle_body_entered(body: Node) -> void:
-	if body.is_in_group(Constants.GROUPS.PLATFORM_MOVING):
-		_target_platform = body
-	elif body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
+	if body.is_in_group(Constants.GROUPS.SPIKE) or body.is_in_group(Constants.GROUPS.LASER_BEAM):
 		kill()
 	elif body.is_in_group(Constants.GROUPS.ARROW_PROJECTILE):
 		body.stop()
@@ -168,8 +160,7 @@ func _handle_body_entered(body: Node) -> void:
 
 
 func _handle_body_exited(body: Node) -> void:
-	if body == _target_platform:
-		_target_platform = null
+	pass
 
 
 func _can_jump() -> bool:
