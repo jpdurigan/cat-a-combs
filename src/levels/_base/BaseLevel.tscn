@@ -92,10 +92,5 @@ margin_right = 216.0
 margin_bottom = 68.0
 text = "Try Again?"
 
-[node name="HUD" parent="Overlay" instance=ExtResource( 6 )]
-visible = false
-anchor_left = 1.0
-anchor_bottom = 0.0
-
 [connection signal="player_reached" from="Goal" to="." method="_on_Goal_player_reached"]
 [connection signal="pressed" from="Overlay/GameOver/Center/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
