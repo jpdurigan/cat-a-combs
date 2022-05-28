@@ -8,18 +8,6 @@
 [ext_resource path="res://player/spritesheet_player.png" type="Texture" id=6]
 [ext_resource path="res://audio/sfx/Player/respawn1.mp3" type="AudioStream" id=7]
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 6 )
-region = Rect2( 464, 336, 58, 56 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 6 )
-region = Rect2( 522, 336, 58, 56 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 6 )
-region = Rect2( 580, 336, 58, 56 )
-
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 336, 58, 56 )
@@ -52,17 +40,29 @@ region = Rect2( 348, 336, 58, 56 )
 atlas = ExtResource( 6 )
 region = Rect2( 406, 336, 58, 56 )
 
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 6 )
+region = Rect2( 464, 336, 58, 56 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 6 )
+region = Rect2( 522, 336, 58, 56 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 580, 336, 58, 56 )
+
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": false,
-"name": "spawn_end",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": false,
 "name": "spawn_start",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "spawn_end",
+"speed": 5.0
 } ]
 
 [node name="Spawner" type="Node2D"]

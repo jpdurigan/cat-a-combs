@@ -142,15 +142,12 @@ position = Vector2( 0, 128 )
 [node name="Checkpoint" parent="Objects" index="3" instance=ExtResource( 8 )]
 position = Vector2( 80, -96 )
 
-[node name="Spawner" parent="." index="3"]
+[node name="Spawner" parent="." index="4"]
 position = Vector2( 112, 64 )
 
-[node name="Goal" parent="." index="4"]
+[node name="Goal" parent="." index="5"]
 position = Vector2( 1376, -638 )
 _next_scene_path = "res://levels/Level-6-drop.tscn"
 
-[node name="Camera" parent="." index="5"]
+[node name="Camera" parent="." index="6"]
 position = Vector2( 112, 64 )
-
-[node name="HUD" parent="Overlay" index="1"]
-visible = true

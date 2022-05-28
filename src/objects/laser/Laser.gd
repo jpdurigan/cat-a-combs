@@ -19,6 +19,7 @@ var velocity : float = 160.0
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 onready var _tip : AnimatedSprite = $Head/Tip
+onready var _beam : Node2D = $Beam
 onready var _sprite : Sprite = $Beam/Sprite
 onready var _area : Area2D = $Beam/Area2D
 onready var _shape : RectangleShape2D = _area.shape_owner_get_shape(0, 0)
@@ -71,11 +72,17 @@ func _handle_collision_with(body: Node) -> void:
 func _handle_size_on_collision() -> void:
 	_update_raycasts()
 	
+	var scale_x := (
+		-1.0
+		if scale.x == -1 or scale.y == -1 and rotation == PI
+		else 1.0
+	)
+	
 	var possible_tips := []
 	if _raycast1.is_colliding():
-		possible_tips.append(to_local(_raycast1.get_collision_point()))
+		possible_tips.append(to_local(_raycast1.get_collision_point() - _beam.position * scale_x))
 	if _raycast2.is_colliding():
-		possible_tips.append(to_local(_raycast2.get_collision_point()))
+		possible_tips.append(to_local(_raycast2.get_collision_point() - _beam.position * scale_x))
 	
 	var tip : Vector2 = Vector2(extension, 0)
 	for possible_tip in possible_tips:

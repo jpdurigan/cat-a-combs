@@ -93,7 +93,7 @@ code = "shader_type canvas_item;
 uniform sampler2D texture_map;
 uniform int rows : hint_range(1, 128) = 8;
 uniform int columns : hint_range(1, 128) = 8;
-
+uniform int graduation : hint_range(1, 16) = 4;
 uniform float luminance : hint_range(-1.0, 1.0) = 0.0;
 
 vec2 get_pixelated_uv(vec2 real_uv) {
@@ -105,8 +105,11 @@ vec2 get_pixelated_uv(vec2 real_uv) {
 void fragment() {
 	vec2 uv = get_pixelated_uv(UV);
 	vec4 sample_color = texture(texture_map, uv);
+	float raw_alpha = max(min(sample_color.r + luminance, 1.0), 0.0);
+	float alpha = raw_alpha - fract(raw_alpha * float(graduation)) / float(graduation);
+	
 	vec4 color = COLOR;
-	color.a = max(min(sample_color.r + luminance, 1.0), 0.0);
+	color.a = alpha;
 	COLOR = color;
 }"
 
@@ -114,6 +117,7 @@ void fragment() {
 shader = SubResource( 6 )
 shader_param/rows = 20
 shader_param/columns = 32
+shader_param/graduation = 10
 shader_param/luminance = -1.0
 shader_param/texture_map = ExtResource( 2 )
 
