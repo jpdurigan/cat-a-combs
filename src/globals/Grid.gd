@@ -8,7 +8,12 @@ static func snap_position(position: Vector2) -> Vector2:
 
 static func snap_player_position(player: Player) -> Vector2:
 	var player_position = player.global_position
-	if player.last_collision.is_in_group(Constants.GROUPS.LASER_BEAM):
+	if not player.last_collision:
+		pass
+	elif (
+			player.last_collision.is_in_group(Constants.GROUPS.LASER_BEAM)
+			or player.last_collision.is_in_group(Constants.GROUPS.ARROW_PROJECTILE)
+	):
 		player_position.y = player.last_collision.global_position.y + Constants.TILE_SIZE / 4
 	return player_position.snapped(Constants.TILE_GRID / 4)
 

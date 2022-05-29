@@ -56,10 +56,7 @@ func spawn_dead_player(player: Player = null) -> Node2D:
 	var dead_player = dead_player_scene.instance()
 	dead_player.global_position = Grid.snap_player_position(player)
 	dead_player.is_flipped = player.is_flipped
-	
-	var dying_particles = particle_dying_scene.instance()
-	add_child(dying_particles)
-	dying_particles.global_position = dead_player.global_position
+	dead_player.connect("tree_entered", self, "_on_dead_player_entered_tree", [dead_player])
 	
 	return dead_player
 
@@ -67,6 +64,12 @@ func spawn_dead_player(player: Player = null) -> Node2D:
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _on_dead_player_entered_tree(dead_player: Node2D) -> void:
+	var dying_particles = particle_dying_scene.instance()
+	add_child(dying_particles)
+	dying_particles.global_position = dead_player.global_position
+
 
 func _on_SpawningParticles_animation_finished():
 	if _spawning_particles.animation == "spawn_end":
