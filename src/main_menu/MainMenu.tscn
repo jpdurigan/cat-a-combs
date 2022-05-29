@@ -363,9 +363,6 @@ rect_min_size = Vector2( 240, 72 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Play" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 margin_left = 78.0

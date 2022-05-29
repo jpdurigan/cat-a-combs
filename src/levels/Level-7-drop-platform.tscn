@@ -54,7 +54,7 @@ position = Vector2( 16, -16 )
 position = Vector2( 24, 61 )
 
 [node name="Checkpoint" parent="Objects/Seção 2" index="0" instance=ExtResource( 8 )]
-position = Vector2( 1240, -285 )
+position = Vector2( 1256, -285 )
 
 [node name="LancadorDardo5" parent="Objects/Seção 2" index="1" instance=ExtResource( 5 )]
 position = Vector2( 1192, -365 )
@@ -90,7 +90,7 @@ position = Vector2( 976, 160 )
 
 [node name="Goal" parent="." index="5"]
 position = Vector2( 1376, -638 )
-_next_scene_path = "res://levels/Level-7.tscn"
+_next_scene_path = "res://levels/Level-8-gauntlet.tscn"
 
 [node name="Camera" parent="." index="6"]
 position = Vector2( 976, 160 )
