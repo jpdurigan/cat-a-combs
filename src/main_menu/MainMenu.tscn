@@ -108,7 +108,8 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 2, 65535, 0, 65536,
 [node name="Objetos" type="Node2D" parent="FG"]
 
 [node name="LancadorDardo" parent="FG/Objetos" instance=ExtResource( 8 )]
-position = Vector2( 383, 306 )
+position = Vector2( 384, 304 )
+interval = 2.0
 
 [node name="LancadorDardo2" parent="FG/Objetos" instance=ExtResource( 8 )]
 position = Vector2( 416, 112 )
@@ -121,6 +122,7 @@ rotation = 1.5708
 interval = 2.0
 
 [node name="LancadorDardo4" parent="FG/Objetos" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 80, 192 )
 rotation = 1.5708
 interval = 2.0
@@ -131,6 +133,7 @@ rotation = 1.5708
 interval = 2.0
 
 [node name="LancadorDardo6" parent="FG/Objetos" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 144, 192 )
 rotation = 1.5708
 interval = 2.0
@@ -156,10 +159,10 @@ rotation = 1.5708
 interval = 2.0
 
 [node name="Laser" parent="FG/Objetos" instance=ExtResource( 9 )]
-position = Vector2( 96, 56 )
+position = Vector2( 96, 48 )
 
 [node name="Laser2" parent="FG/Objetos" instance=ExtResource( 9 )]
-position = Vector2( 384, 144 )
+position = Vector2( 256, 304 )
 scale = Vector2( -1, 1 )
 
 [node name="Espeto" parent="FG/Objetos" instance=ExtResource( 10 )]
@@ -169,22 +172,27 @@ position = Vector2( 80, 32 )
 position = Vector2( 272, 256 )
 
 [node name="Espeto3" parent="FG/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 256, 272 )
 rotation = -1.5708
 
 [node name="Espeto4" parent="FG/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 256, 304 )
 rotation = -1.5708
 
 [node name="Espeto5" parent="FG/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 288, 336 )
 rotation = -1.5708
 
 [node name="Espeto6" parent="FG/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 288, 368 )
 rotation = -1.5708
 
 [node name="Espeto7" parent="FG/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 288, 368 )
 rotation = -1.5708
 
@@ -228,7 +236,8 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 2, 65535, 0, 65536,
 [node name="Objetos" type="Node2D" parent="FG2"]
 
 [node name="LancadorDardo" parent="FG2/Objetos" instance=ExtResource( 8 )]
-position = Vector2( 383, 306 )
+position = Vector2( 384, 302 )
+interval = 2.0
 
 [node name="LancadorDardo2" parent="FG2/Objetos" instance=ExtResource( 8 )]
 position = Vector2( 416, 112 )
@@ -241,6 +250,7 @@ rotation = 1.5708
 interval = 2.0
 
 [node name="LancadorDardo4" parent="FG2/Objetos" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 80, 192 )
 rotation = 1.5708
 interval = 2.0
@@ -251,6 +261,7 @@ rotation = 1.5708
 interval = 2.0
 
 [node name="LancadorDardo6" parent="FG2/Objetos" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 144, 192 )
 rotation = 1.5708
 interval = 2.0
@@ -261,6 +272,7 @@ rotation = 1.5708
 interval = 2.0
 
 [node name="LancadorDardo8" parent="FG2/Objetos" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 80, -256 )
 rotation = 1.5708
 interval = 2.0
@@ -271,15 +283,16 @@ rotation = 1.5708
 interval = 2.0
 
 [node name="LancadorDardo10" parent="FG2/Objetos" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 144, -256 )
 rotation = 1.5708
 interval = 2.0
 
 [node name="Laser" parent="FG2/Objetos" instance=ExtResource( 9 )]
-position = Vector2( 96, 56 )
+position = Vector2( 96, 46 )
 
 [node name="Laser2" parent="FG2/Objetos" instance=ExtResource( 9 )]
-position = Vector2( 384, 144 )
+position = Vector2( 256, 302 )
 scale = Vector2( -1, 1 )
 
 [node name="Espeto" parent="FG2/Objetos" instance=ExtResource( 10 )]
@@ -289,22 +302,27 @@ position = Vector2( 80, 32 )
 position = Vector2( 272, 256 )
 
 [node name="Espeto3" parent="FG2/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 256, 272 )
 rotation = -1.5708
 
 [node name="Espeto4" parent="FG2/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 256, 304 )
 rotation = -1.5708
 
 [node name="Espeto5" parent="FG2/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 288, 336 )
 rotation = -1.5708
 
 [node name="Espeto6" parent="FG2/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 288, 368 )
 rotation = -1.5708
 
 [node name="Espeto7" parent="FG2/Objetos" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 288, 368 )
 rotation = -1.5708
 
