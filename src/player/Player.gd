@@ -88,6 +88,7 @@ func _physics_process(_delta: float):
 ### Public Methods --------------------------------------------------------------------------------
 
 func kill():
+	Events.emit_signal("player_dead")
 	emit_signal("player_dead")
 	queue_free()
 
