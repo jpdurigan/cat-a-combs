@@ -17,6 +17,7 @@ const DEFAULT_INTERVAL = 4.0
 export var projectile_scene : PackedScene
 export var velocity : float = DEFAULT_VELOCITY
 export var interval : float = DEFAULT_INTERVAL
+export var initial_delay : float = 0.0
 export var is_active : bool = true
 export var listening_rect : Rect2 setget _set_listening_rect
 
@@ -41,6 +42,8 @@ func _ready():
 	add_to_group(Constants.GROUPS.ARROW_SHOOTER)
 	_clear_children()
 	_timer.wait_time = interval
+	if initial_delay > 0:
+		yield(get_tree().create_timer(initial_delay), "timeout")
 	if is_active:
 		shoot()
 
