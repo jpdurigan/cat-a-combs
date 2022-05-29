@@ -89,10 +89,11 @@ position = Vector2( 976, 160 )
 
 [node name="Goal" parent="." index="5"]
 position = Vector2( 1376, -638 )
-_next_scene_path = "res://levels/Level-6-drop.tscn"
+_next_scene_path = "res://levels/Level-6-drop-adv.tscn"
 
 [node name="Camera" parent="." index="6"]
 position = Vector2( 976, 160 )
+current = false
 limit_left = 288
 limit_top = -832
 limit_right = 1472

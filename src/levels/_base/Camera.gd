@@ -38,5 +38,7 @@ func _physics_process(_delta):
 
 func _on_Spawner_player_spawned(player):
 	target = player
+	if not current:
+		current = true
 
 ### -----------------------------------------------------------------------------------------------

@@ -247,7 +247,8 @@ position = Vector2( 112, 256 )
 
 [node name="Goal" parent="." index="5"]
 position = Vector2( 1200, -800 )
-_next_scene_path = "res://levels/Level-7-drop-adv.tscn"
+_next_scene_path = "res://levels/Level-final.tscn"
 
 [node name="Camera" parent="." index="6"]
 position = Vector2( 112, 256 )
+current = false
