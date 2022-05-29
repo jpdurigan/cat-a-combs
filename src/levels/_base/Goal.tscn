@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/_base/Goal.gd" type="Script" id=1]
+[ext_resource path="res://levels/_base/spawners.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 16 )
+
+[node name="Goal" type="Node2D"]
+script = ExtResource( 1 )
+_next_scene_path = ""
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -27 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 69, 59, 64, 60 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="DetectionShape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -16 )
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/arrow_flying.ogg-58188621c59183670f9bc7c59fee94fc.oggstr"
+
+[deps]
+
+source_file="res://audio/sfx/arrow_flying.ogg"
+dest_files=[ "res://.import/arrow_flying.ogg-58188621c59183670f9bc7c59fee94fc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

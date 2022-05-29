@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Level/Level.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://src/Level/Music.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=6]
+
+[node name="Level" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( -64, 0, 0, 64, 0, 0 )
+collision_layer = 16
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 3, 0, 8, 11, 0, 65536, 3, 0, 65544, 11, 0, 65548, 3, 0, 131072, 7, 0, 131073, 7, 0, 131074, 3, 0, 131080, 11, 0, 131084, 3, 0, 196608, 3, 0, 196611, 14, 0, 196612, 14, 0, 196613, 14, 0, 196616, 11, 0, 196620, 3, 0, 262144, 3, 0, 262145, 12, 0, 262146, 12, 0, 262147, 12, 0, 262148, 12, 0, 262149, 12, 0, 262152, 11, 0, 262156, 3, 0, 327680, 7, 0, 327681, 7, 0, 327682, 7, 0, 327683, 7, 0, 327684, 7, 0, 327685, 7, 0, 327686, 3, 0, 327688, 11, 0, 327692, 3, 0, 393216, 7, 0, 393221, 14, 0, 393224, 11, 0, 393225, 7, 0, 393226, 7, 0, 393227, 7, 0, 393228, 3, 0, 458752, 9, 0, 458757, 1073741835, 0, 458760, 14, 0, 458764, 3, 0, 524293, 1073741835, 0, 524296, 11, 0, 524300, 3, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 3, 0, 655360, 8, 0, 655361, 8, 0, 655362, 8, 0, 655363, 8, 0, 655364, 8, 0, 655365, 8, 0, 655366, 8, 0, 655367, 8, 0, 655368, 8, 0, 655369, 8, 0, 655370, 8, 0, 655371, 8, 0, 655372, 9, 0 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="START" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 14, 276 )
+rotation = 3.14159
+
+[node name="END" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 49, 49 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+script = ExtResource( 5 )
+
+[node name="4" type="SkeletonIK" parent="."]
+process_priority = 1

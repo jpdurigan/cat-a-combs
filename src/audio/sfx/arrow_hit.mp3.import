@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/arrow_hit.mp3-45ca576a97a578f21fa1081953c3eb64.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/arrow_hit.mp3"
+dest_files=[ "res://.import/arrow_hit.mp3-45ca576a97a578f21fa1081953c3eb64.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

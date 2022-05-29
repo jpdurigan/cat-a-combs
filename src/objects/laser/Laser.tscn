@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://objects/laser/beam/beam01.png" type="Texture" id=1]
+[ext_resource path="res://objects/laser/Laser.gd" type="Script" id=2]
+[ext_resource path="res://objects/laser/tip_spritesheet.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://objects/laser/beam/beam04.png" type="Texture" id=4]
+[ext_resource path="res://objects/laser/beam/beam03.png" type="Texture" id=5]
+[ext_resource path="res://objects/laser/beam/beam02.png" type="Texture" id=6]
+[ext_resource path="res://objects/laser/head_spritesheet.tres" type="SpriteFrames" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 0, 3 )
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head/Tip:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Beam/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head/Tip:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="Laser" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Beam" type="Position2D" parent="."]
+position = Vector2( 16, 0 )
+
+[node name="Sprite" type="Sprite" parent="Beam"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 0, 32 )
+
+[node name="Area2D" type="Area2D" parent="Beam"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam/Area2D"]
+shape = SubResource( 1 )
+
+[node name="RayCast1" type="RayCast2D" parent="Beam"]
+position = Vector2( 0, -3 )
+cast_to = Vector2( 0, 0 )
+
+[node name="RayCast2" type="RayCast2D" parent="Beam"]
+position = Vector2( 0, 3 )
+cast_to = Vector2( 0, 0 )
+
+[node name="Head" type="AnimatedSprite" parent="."]
+position = Vector2( 8, 0 )
+frames = ExtResource( 7 )
+
+[node name="Tip" type="AnimatedSprite" parent="Head"]
+show_behind_parent = true
+frames = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+reset_on_save = false
+playback_speed = 10.0
+anims/RESET = SubResource( 14 )
+anims/idle = SubResource( 13 )
+
+[connection signal="area_entered" from="Beam/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Beam/Area2D" to="." method="_on_Area2D_body_entered"]

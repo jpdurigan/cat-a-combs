@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://audio/sfx/arrow_flying.ogg" type="AudioStream" id=1]
+[ext_resource path="res://objects/dardos/LancadorDardo.gd" type="Script" id=2]
+[ext_resource path="res://objects/dardos/Dardo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/dardos/lancador_spritesheet.tres" type="SpriteFrames" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.49995, 16 )
+
+[node name="LancadorDardo" type="StaticBody2D"]
+script = ExtResource( 2 )
+projectile_scene = ExtResource( 3 )
+listening_rect = Rect2( -36, -36, 72, 72 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 16, 0 )
+frames = ExtResource( 4 )
+playing = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( 4.50005, 0 )
+shape = SubResource( 1 )
+
+[node name="Projectiles" type="Position2D" parent="."]
+position = Vector2( 16.0001, 5.72205e-05 )
+
+[node name="Dardo" parent="Projectiles" instance=ExtResource( 3 )]
+position = Vector2( 16, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "World"
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+rect = Rect2( -36, -36, 72, 72 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

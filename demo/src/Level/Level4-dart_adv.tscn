@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Level/ParallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Level/Level.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://src/Level/Music.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/music/music.ogg" type="AudioStream" id=6]
+
+[node name="Level" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( -64, 0, 0, 64, 0, 0 )
+collision_layer = 16
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 3, 0, 65536, 3, 0, 65548, 3, 0, 131072, 3, 0, 131084, 3, 0, 196608, -1610612734, 0, 196619, 14, 0, 196620, 3, 0, 262144, -1610612734, 0, 262146, 14, 0, 262147, 14, 0, 262156, 3, 0, 327680, -1610612734, 0, 327682, 14, 0, 327686, 7, 0, 327687, 12, 0, 327688, 12, 0, 327689, 12, 0, 327690, 7, 0, 327692, 3, 0, 393216, 1073741827, 0, 393220, 7, 0, 393222, 7, 0, 393223, 7, 0, 393224, 7, 0, 393225, 7, 0, 393226, 7, 0, 393228, 3, 0, 458752, 7, 0, 458755, 7, 0, 458756, 7, 0, 458764, 3, 0, 524300, 3, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 3, 0 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="START" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 19, 276 )
+rotation = 3.14159
+
+[node name="END" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 366, 58 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+script = ExtResource( 5 )
+
+[node name="4" type="SkeletonIK" parent="."]
+process_priority = 1

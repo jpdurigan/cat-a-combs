@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/espetos/Espeto.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/plataformas/PlataformaQuebrada.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/plataformas/PlataformaQueAnda.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/espetos/EspetoQueCai.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=8]
+[ext_resource path="res://PauseHelper.gd" type="Script" id=9]
+[ext_resource path="res://objects/espetos/Trigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/dardos/LancadorDardo.tscn" type="PackedScene" id=11]
+
+[node name="Playground" type="Node2D"]
+script = ExtResource( 8 )
+lives = 10
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 131075, 1, 0, 131077, 1, 0, 131079, 1, 0, 131081, 1, 0, 262143, 0, 0, 196608, 0, 1, 196609, 0, 2, 196610, 1, 0, 196612, 1, 0, 196614, 1, 0, 196616, 1, 0, 196618, 1, 0, 327679, 0, 65536, 262144, 0, 65537, 262145, 0, 65538, 262147, 1, 0, 262149, 1, 0, 262151, 1, 0, 262153, 1, 0, 262159, 0, 0, 262160, 0, 1, 262161, 0, 2, 393215, 0, 65536, 327680, 0, 65537, 327681, 0, 0, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 327689, 0, 2, 327695, 0, 65536, 327696, 0, 65537, 327697, 0, 65538, 458751, 0, 0, 393216, 0, 131073, 393217, 0, 131073, 393218, 0, 131073, 393219, 0, 131073, 393220, 0, 131073, 393221, 0, 131073, 393222, 0, 131073, 393223, 0, 131073, 393224, 0, 131073, 393225, 0, 131074, 393231, 0, 65536, 393232, 0, 65537, 393233, 0, 65538, 524287, 0, 65539, 458767, 0, 65536, 458768, 0, 65537, 458769, 0, 65538, 589823, 0, 0, 524288, 0, 1, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 524292, 0, 1, 524293, 0, 1, 524294, 0, 1, 524295, 0, 1, 524296, 0, 1, 524297, 0, 1, 524298, 0, 1, 524299, 0, 1, 524300, 0, 1, 524301, 0, 1, 524302, 0, 1, 524303, 0, 0, 524304, 0, 65537, 524305, 0, 65538, 655359, 0, 131072, 589824, 0, 131073, 589825, 0, 131073, 589826, 0, 131073, 589827, 0, 131073, 589828, 0, 131073, 589829, 0, 131073, 589830, 0, 131073, 589831, 0, 131073, 589832, 0, 131073, 589833, 0, 0, 589834, 0, 65537, 589835, 0, 65537, 589836, 0, 65537, 589837, 0, 65537, 589838, 0, 65537, 589839, 0, 65537, 589840, 0, 65537, 589841, 0, 65538, 655369, 0, 131072, 655370, 0, 131073, 655371, 0, 131073, 655372, 0, 131073, 655373, 0, 131073, 655374, 0, 131073, 655375, 0, 131073, 655376, 0, 131073, 655377, 0, 131074 )
+
+[node name="Espeto2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80, 160 )
+
+[node name="Espeto3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 112, 160 )
+
+[node name="Espeto4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 144, 160 )
+
+[node name="Espeto5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 176, 160 )
+
+[node name="Espeto6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 208, 160 )
+
+[node name="Espeto7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 240, 160 )
+
+[node name="PlataformaQueAnda" parent="." instance=ExtResource( 5 )]
+position = Vector2( 352, 208 )
+tile_count = 2
+target = Vector2( 3, 0 )
+
+[node name="PlataformaQueAnda2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 448, 208 )
+tile_count = 2
+target = Vector2( 0, -4 )
+move_time = 6.0
+stop_time = 0.5
+
+[node name="Espeto8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 272, 160 )
+
+[node name="Espeto9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 304, 160 )
+
+[node name="Spawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 496, 128 )
+
+[node name="Camera" parent="." instance=ExtResource( 6 )]
+limit_left = -18
+limit_right = 296
+limit_bottom = 180
+
+[node name="PauseHelper" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="Trigger" parent="." instance=ExtResource( 10 )]
+position = Vector2( 416, 256 )
+
+[node name="EspetoQueCai" parent="." instance=ExtResource( 7 )]
+position = Vector2( 384, 64 )
+trigger_path = NodePath("../Trigger")
+
+[node name="LancadorDardo" parent="." instance=ExtResource( 11 )]
+position = Vector2( 0, 240 )
+velocity = 360.0
+
+[node name="PlataformaQuebrada3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 464, 160 )
+
+[node name="PlataformaQuebrada4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 368, 136 )
+
+[node name="PlataformaQuebrada5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 336, 136 )
