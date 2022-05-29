@@ -1,3 +1,4 @@
+# warning-ignore-all:unused_signal
 extends Node
 
 signal main_menu_entered

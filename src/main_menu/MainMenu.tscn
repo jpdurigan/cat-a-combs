@@ -1,29 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main_menu/play_pixel.png" type="Texture" id=1]
 [ext_resource path="res://main_menu/catacomb_pixel.png" type="Texture" id=2]
-[ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://main_menu/ChangeSceneButton.gd" type="Script" id=4]
-[ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fonts/gothic_pixel.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://main_menu/MainMenu.gd" type="Script" id=6]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
+[ext_resource path="res://hud/panel_button_theme.tres" type="Theme" id=7]
 
 [sub_resource type="DynamicFont" id=2]
-size = 8
-extra_spacing_char = 1
+extra_spacing_space = 1
 font_data = ExtResource( 3 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
+_default_next_scene_path = "res://levels/Level-1-tuto.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -36,7 +27,7 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 136.0
-margin_top = 87.0
+margin_top = 86.0
 margin_right = 376.0
 margin_bottom = 201.0
 custom_constants/separation = 6
@@ -64,41 +55,43 @@ __meta__ = {
 }
 
 [node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_left = 80.0
+margin_left = 78.0
 margin_top = 78.0
-margin_right = 160.0
-margin_bottom = 114.0
-rect_min_size = Vector2( 80, 36 )
+margin_right = 162.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 84, 37 )
 size_flags_horizontal = 6
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
-script = ExtResource( 4 )
-_next_scene_path = "res://levels/Level-1-tuto.tscn"
+theme = ExtResource( 7 )
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/Play"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/Play"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="Play" type="TextureRect" parent="CenterContainer/VBoxContainer/Play/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 29.0
 texture = ExtResource( 1 )
 stretch_mode = 4
 
 [node name="Credits" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -74.0
-margin_right = 172.0
-margin_bottom = -11.0
+margin_left = 16.0
+margin_top = -98.0
+margin_right = 178.0
+margin_bottom = -16.0
 custom_fonts/font = SubResource( 2 )
-text = "created by:
-
+text = "created by
 Audrey Vasconcelos
 Fernando Silveira
 JP Durigan
 Lia Godoy"
 
-[node name="HUD" parent="." instance=ExtResource( 5 )]
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="CenterContainer/VBoxContainer/Play" method="_on_Play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
