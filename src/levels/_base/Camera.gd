@@ -11,7 +11,7 @@ extends Camera2D
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
-var target : Node2D = null
+var target : Node2D = null setget _set_target
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
@@ -19,6 +19,10 @@ var target : Node2D = null
 
 
 ### Built in Engine Methods -----------------------------------------------------------------------
+
+func _enter_tree():
+	current = true
+
 
 func _physics_process(_delta):
 	if not is_instance_valid(target):
@@ -36,9 +40,9 @@ func _physics_process(_delta):
 
 ### Private Methods -------------------------------------------------------------------------------
 
-func _on_Spawner_player_spawned(player):
+func _set_target(player):
 	target = player
-	if not current:
+	if is_instance_valid(target) and not current:
 		current = true
 
 ### -----------------------------------------------------------------------------------------------
