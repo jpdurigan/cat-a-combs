@@ -13,6 +13,9 @@ var SFX_BUS = AudioServer.get_bus_index("SFX")
 
 #--- public variables - order: export > normal var > onready --------------------------------------
 
+export var menu_music : AudioStream
+export var game_music : AudioStream
+
 var is_bgm_on : bool = true setget _set_is_bgm_on
 var is_sfx_on : bool = true setget _set_is_sfx_on
 
@@ -28,12 +31,18 @@ onready var _tween: Tween = $Tween
 
 ### Built in Engine Methods -----------------------------------------------------------------------
 
+func _ready():
+	Events.connect("main_menu_entered", self, "_on_main_menu_entered")
+	Events.connect("level_started", self, "_on_level_started")
+
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Public Methods --------------------------------------------------------------------------------
 
 func play_bgm(bgm_stream: AudioStream) -> void:
+	if bgm_stream == _bgm_player.stream:
+		return
 	_bgm_player.stream = bgm_stream
 	_bgm_player.play()
 
@@ -62,5 +71,13 @@ func _set_is_bgm_on(value: bool) -> void:
 func _set_is_sfx_on(value: bool) -> void:
 	is_sfx_on = value
 	AudioServer.set_bus_mute(SFX_BUS, not is_sfx_on)
+
+
+func _on_main_menu_entered() -> void:
+	play_bgm(menu_music)
+
+
+func _on_level_started() -> void:
+	play_bgm(game_music)
 
 ### -----------------------------------------------------------------------------------------------

@@ -21,6 +21,8 @@ var _is_stopped : bool = false
 
 onready var _area: Area2D = $Area2D
 onready var _animator: AnimationPlayer = $AnimationPlayer
+onready var _audio_player: AudioStreamPlayer = $AudioStreamPlayer
+onready var _visibility: VisibilityNotifier2D = $VisibilityNotifier2D
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -48,6 +50,8 @@ func stop() -> void:
 	global_position = Grid.snap_position(global_position)
 	
 	_animator.play("hit")
+	if _visibility.is_on_screen():
+		_audio_player.play()
 	yield(_animator, "animation_finished")
 	queue_free()
 
