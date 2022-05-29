@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://hud/panel_button_theme.tres" type="Theme" id=13]
 [ext_resource path="res://globals/pixelated_transition_shader.tres" type="Shader" id=14]
 [ext_resource path="res://globals/pixel_spiral.png" type="Texture" id=15]
+[ext_resource path="res://levels/_base/BGAutoHide.gd" type="Script" id=16]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -120,11 +121,12 @@ ambience_sfx = ExtResource( 9 )
 game_over_sfx = ExtResource( 8 )
 
 [node name="BG" type="TileMap" parent="."]
-material = ExtResource( 12 )
 z_index = -1
 tile_set = ExtResource( 11 )
 cell_size = Vector2( 32, 32 )
 format = 1
+script = ExtResource( 16 )
+light_only_material = ExtResource( 12 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
