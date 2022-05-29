@@ -38,14 +38,14 @@ func _ready():
 func spawn_new_player() -> Player:
 	_spawning_particles.show()
 	_spawning_particles.play("spawn_start")
-	_audio_player.play()
+	var is_first_player = _current_player == null
+	if not is_first_player:
+		_audio_player.play()
 	yield(_spawning_particles, "animation_finished")
 	
 	_current_player = player_scene.instance()
 	_current_player.global_position = global_position
-	
 	_spawning_particles.play("spawn_end")
-	
 	return _current_player
 
 

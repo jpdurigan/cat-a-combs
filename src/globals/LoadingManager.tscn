@@ -1,7 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://globals/LoadingManager.gd" type="Script" id=1]
-[ext_resource path="res://globals/pixel_spiral.png" type="Texture" id=2]
+[ext_resource path="res://globals/pixelated_transition_shader.tres" type="Shader" id=2]
+[ext_resource path="res://globals/pixel_spiral.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -87,39 +88,15 @@ tracks/1/keys = {
 "values": [ -1.0, 1.0 ]
 }
 
-[sub_resource type="Shader" id=6]
-code = "shader_type canvas_item;
-
-uniform sampler2D texture_map;
-uniform int rows : hint_range(1, 128) = 8;
-uniform int columns : hint_range(1, 128) = 8;
-uniform int graduation : hint_range(1, 16) = 4;
-uniform float luminance : hint_range(-1.0, 1.0) = 0.0;
-
-vec2 get_pixelated_uv(vec2 real_uv) {
-	float column_size = 1. / float(columns);
-	float row_size = 1. / float(rows);
-	return vec2(floor(real_uv.x / column_size) * column_size, floor(real_uv.y / row_size) * row_size);
-}
-
-void fragment() {
-	vec2 uv = get_pixelated_uv(UV);
-	vec4 sample_color = texture(texture_map, uv);
-	float raw_alpha = max(min(sample_color.r + luminance, 1.0), 0.0);
-	float alpha = raw_alpha - fract(raw_alpha * float(graduation)) / float(graduation);
-	
-	vec4 color = COLOR;
-	color.a = alpha;
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
-shader_param/rows = 20
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 2 )
+shader_param/invert = false
+shader_param/max_alpha = 1.0
+shader_param/rows = 16
 shader_param/columns = 32
-shader_param/graduation = 10
+shader_param/graduation = 16
 shader_param/luminance = -1.0
-shader_param/texture_map = ExtResource( 2 )
+shader_param/texture_map = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.505882, 0.447059, 0.839216, 1 )
@@ -148,7 +125,7 @@ anims/open = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
-material = SubResource( 7 )
+material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0784314, 0.176471, 0.258824, 1 )

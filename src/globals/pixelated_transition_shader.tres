@@ -1,0 +1,31 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D texture_map;
+uniform bool invert = false;
+uniform float max_alpha : hint_range(0.0, 1.0) = 1.0;
+uniform int rows : hint_range(1, 128) = 8;
+uniform int columns : hint_range(1, 128) = 8;
+uniform int graduation : hint_range(1, 16) = 4;
+uniform float luminance : hint_range(-1.0, 1.0) = 0.0;
+
+vec2 get_pixelated_uv(vec2 real_uv) {
+	float column_size = 1. / float(columns);
+	float row_size = 1. / float(rows);
+	return vec2(floor(real_uv.x / column_size) * column_size, floor(real_uv.y / row_size) * row_size);
+}
+
+void fragment() {
+	vec2 uv = get_pixelated_uv(UV);
+	vec4 sample_color = texture(texture_map, uv);
+	float raw_alpha = max(min(sample_color.r + luminance, 1.0), 0.0);
+	float alpha = raw_alpha - fract(raw_alpha * float(graduation)) / float(graduation);
+	alpha = invert ? 1. - alpha : alpha;
+	alpha *= max_alpha;
+	
+	vec4 color = COLOR;
+	color.a = alpha;
+	COLOR = color;
+}"
