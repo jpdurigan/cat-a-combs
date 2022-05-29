@@ -63,7 +63,7 @@ func _on_Area2D_area_entered(area: Area2D):
 	if _has_fallen or _animator.is_playing():
 		return
 	
-	if area.owner.is_in_group(Constants.GROUPS.PLAYER):
-		fall()
+#	if area.owner.is_in_group(Constants.GROUPS.PLAYER):
+#		fall()
 
 ### -----------------------------------------------------------------------------------------------

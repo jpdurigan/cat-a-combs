@@ -80,6 +80,14 @@ func _physics_process(_delta: float):
 	# Move
 	_velocity = move_and_slide(_velocity, Vector2.UP)
 	_handle_sprite(walk)
+	
+	# Activate plataforms
+	var last_collison := get_last_slide_collision()
+	if (
+			last_collison != null
+			and last_collison.collider.is_in_group(Constants.GROUPS.PLATFORM_FALLING)
+	):
+		last_collison.collider.fall()
 
 
 ### -----------------------------------------------------------------------------------------------
