@@ -14,7 +14,7 @@ extends Node2D
 export var extension : float = 0.0 setget _set_extension
 export var is_growing : bool = true setget _set_is_growing
 
-var velocity : float = 160.0
+var velocity : float = 1600.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
