@@ -1,22 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://hud/imgs/reset_anim.png" type="Texture" id=1]
+[ext_resource path="res://hud/panel_container_style.tres" type="StyleBox" id=2]
 [ext_resource path="res://hud/imgs/ui_icons.png" type="Texture" id=3]
-[ext_resource path="res://hud/imgs/ui_panel.png" type="Texture" id=5]
-[ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://hud/HUD.gd" type="Script" id=8]
-
-[sub_resource type="StyleBoxTexture" id=2]
-content_margin_left = 0.0
-content_margin_right = 0.0
-content_margin_top = 0.0
-content_margin_bottom = 0.0
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 32, 25 )
-margin_left = 11.0
-margin_right = 17.0
-margin_top = 9.0
-margin_bottom = 8.0
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
@@ -40,6 +28,7 @@ region = Rect2( 64, 0, 21, 16 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
+extra_spacing_top = 1
 font_data = ExtResource( 7 )
 
 [sub_resource type="StyleBoxEmpty" id=13]
@@ -91,7 +80,7 @@ margin_left = -56.0
 margin_top = -30.0
 grow_horizontal = 0
 grow_vertical = 0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -143,7 +132,7 @@ stretch_mode = 5
 visible = false
 margin_right = 79.0
 margin_bottom = 32.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -181,7 +170,7 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="Game/MarginContainer/Buttons/Lives"]
 margin_left = 23.0
-margin_top = 4.0
+margin_top = 3.0
 margin_right = 39.0
 margin_bottom = 12.0
 custom_colors/font_color = Color( 0.992157, 0.996078, 0.819608, 1 )

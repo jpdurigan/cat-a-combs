@@ -1,13 +1,45 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tilemap/monochrome_tilemap_transparent_packed.png" type="Texture" id=1]
 [ext_resource path="res://player/DeadPlayer.gd" type="Script" id=2]
 [ext_resource path="res://player/player_mockup.png" type="Texture" id=3]
 [ext_resource path="res://player/dead_player_spriteframes.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://audio/sfx/Player/death.ogg" type="AudioStream" id=5]
+[ext_resource path="res://player/light/light_animation.tres" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12.5, 6.5 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.01 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "light_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.6, 0.3, 0.15, 0.08, 0.01 ]
+}
 
 [node name="DeadPlayer" type="StaticBody2D"]
 script = ExtResource( 2 )
@@ -35,6 +67,18 @@ one_way_collision = true
 position = Vector2( -1, -15 )
 frames = ExtResource( 4 )
 animation = "dying"
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 6 )
+texture_scale = 0.01
+mode = 2
+range_z_max = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+root_node = NodePath("../..")
+autoplay = "light_up"
+anims/RESET = SubResource( 2 )
+anims/light_up = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

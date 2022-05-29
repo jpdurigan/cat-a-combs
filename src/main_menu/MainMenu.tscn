@@ -1,47 +1,351 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://main_menu/play_pixel.png" type="Texture" id=1]
 [ext_resource path="res://main_menu/catacomb_pixel.png" type="Texture" id=2]
-[ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://main_menu/ChangeSceneButton.gd" type="Script" id=4]
-[ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fonts/gothic_pixel.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://tilemap/tileset_background.tres" type="TileSet" id=4]
+[ext_resource path="res://tilemap/tileset_foreground.tres" type="TileSet" id=5]
 [ext_resource path="res://main_menu/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://hud/panel_button_theme.tres" type="Theme" id=7]
+[ext_resource path="res://objects/dardos/LancadorDardo.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/laser/Laser.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/espetos/Espeto.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/espetos/EspetoQueCai.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/plataformas/PlataformaQuebrada.tscn" type="PackedScene" id=12]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FG2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 442 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "loop"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FG:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -448 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FG2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 448 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="DynamicFont" id=2]
-size = 8
-extra_spacing_char = 1
+extra_spacing_space = 1
 font_data = ExtResource( 3 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
+_default_next_scene_path = "res://levels/Level-1-tuto.tscn"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BG" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65536, 0, 0, 65537, 0, 131072, 65538, 0, 65536, 65539, 0, 65537, 65540, 0, 65537, 65541, 0, 0, 65542, 0, 0, 65543, 0, 131074, 65544, 0, 65537, 65545, 0, 2, 65546, 0, 65538, 65547, 0, 2, 65548, 0, 2, 65549, 0, 2, 65550, 0, 65538, 65551, 0, 0, 131072, 0, 0, 131073, 0, 65538, 131074, 0, 131072, 131075, 0, 0, 131076, 0, 1, 131077, 0, 0, 131078, 0, 0, 131079, 0, 1, 131080, 0, 2, 131081, 0, 1, 131082, 0, 131074, 131083, 0, 0, 131084, 0, 131074, 131085, 0, 1, 131086, 0, 65536, 131087, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 131074, 196611, 0, 131073, 196612, 0, 65536, 196613, 0, 1, 196614, 0, 65538, 196615, 0, 65538, 196616, 0, 131073, 196617, 0, 2, 196618, 0, 131073, 196619, 0, 131072, 196620, 0, 131074, 196621, 0, 1, 196622, 0, 131073, 196623, 0, 0, 262144, 0, 0, 262145, 0, 65538, 262146, 0, 1, 262147, 0, 65537, 262148, 0, 65536, 262149, 0, 65537, 262150, 0, 0, 262151, 0, 1, 262152, 0, 1, 262153, 0, 1, 262154, 0, 65538, 262155, 0, 131074, 262156, 0, 131072, 262157, 0, 2, 262158, 0, 65538, 262159, 0, 0, 327680, 0, 0, 327681, 0, 131074, 327682, 0, 65537, 327683, 0, 65537, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 65536, 327688, 0, 0, 327689, 0, 1, 327690, 0, 131074, 327691, 0, 2, 327692, 0, 65538, 327693, 0, 1, 327694, 0, 65537, 327695, 0, 0, 393216, 0, 0, 393217, 0, 1, 393218, 0, 131072, 393219, 0, 65538, 393220, 0, 0, 393221, 0, 65538, 393222, 0, 131074, 393223, 0, 131073, 393224, 0, 131074, 393225, 0, 131073, 393226, 0, 131074, 393227, 0, 65538, 393228, 0, 131073, 393229, 0, 65538, 393230, 0, 131073, 393231, 0, 0, 458752, 0, 0, 458753, 0, 65538, 458754, 0, 131072, 458755, 0, 1, 458756, 0, 65538, 458757, 0, 65538, 458758, 0, 2, 458759, 0, 65538, 458760, 0, 65537, 458761, 0, 0, 458762, 0, 131074, 458763, 0, 65536, 458764, 0, 0, 458765, 0, 0, 458766, 0, 65538, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0 )
+
+[node name="FG" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="FG"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 2, 65535, 0, 65536, 0, 0, 131077, 1, 0, 65538, 131071, 0, 65536, 65536, 0, 196614, 65537, 0, 65540, 65538, 0, 2, 65544, 0, 196608, 65545, 0, 196610, 65551, 0, 0, 65552, 0, 1, 65553, 0, 2, 196607, 0, 65536, 131072, 0, 65537, 131073, 0, 131076, 131074, 0, 65540, 131075, 0, 2, 131086, 0, 0, 131087, 0, 65541, 131088, 0, 65537, 131089, 0, 65538, 262143, 0, 65536, 196608, 0, 196612, 196609, 0, 196613, 196610, 0, 196614, 196611, 0, 65540, 196612, 0, 2, 196621, 0, 0, 196622, 0, 65541, 196623, 0, 196613, 196624, 0, 65537, 196625, 0, 65538, 327679, 0, 65536, 262144, 0, 196613, 262145, 0, 196614, 262146, 0, 196612, 262147, 0, 196614, 262148, 0, 65540, 262149, 0, 2, 262156, 0, 0, 262157, 0, 65541, 262158, 0, 4, 262159, 0, 131073, 262160, 0, 5, 262161, 0, 65538, 393215, 0, 131072, 327680, 0, 131073, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131073, 327685, 0, 131074, 327691, 0, 0, 327692, 0, 65541, 327693, 0, 4, 327694, 0, 131074, 327696, 0, 65536, 327697, 0, 65538, 393226, 0, 0, 393227, 0, 65541, 393228, 0, 4, 393229, 0, 131074, 393232, 0, 65536, 393233, 0, 65538, 458761, 0, 0, 458762, 0, 65541, 458763, 0, 4, 458764, 0, 131074, 458768, 0, 65536, 458769, 0, 65538, 524296, 0, 0, 524297, 0, 65541, 524298, 0, 196613, 524299, 0, 65538, 524304, 0, 65536, 524305, 0, 65538, 589827, 0, 196608, 589828, 0, 196610, 589832, 0, 131072, 589833, 0, 5, 589834, 0, 65537, 589835, 0, 65538, 589840, 0, 65536, 589841, 0, 65538, 655362, 0, 196611, 655369, 0, 65536, 655370, 0, 131078, 655371, 0, 65540, 655372, 0, 1, 655373, 0, 1, 655374, 0, 1, 655375, 0, 1, 655376, 0, 65541, 655377, 0, 65538, 720905, 0, 131072, 720906, 0, 131073, 720907, 0, 131073, 720908, 0, 131073, 720909, 0, 131073, 720910, 0, 131073, 720911, 0, 131073, 720912, 0, 131073, 720913, 0, 131074 )
+
+[node name="Objetos" type="Node2D" parent="FG"]
+
+[node name="LancadorDardo" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 383, 306 )
+
+[node name="LancadorDardo2" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 416, 112 )
+scale = Vector2( -1, 1 )
+interval = 2.0
+
+[node name="LancadorDardo3" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 48, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo4" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 80, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo5" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 112, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo6" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 144, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo7" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 48, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo8" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 80, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo9" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 112, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo10" parent="FG/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 144, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="Laser" parent="FG/Objetos" instance=ExtResource( 9 )]
+position = Vector2( 96, 56 )
+
+[node name="Laser2" parent="FG/Objetos" instance=ExtResource( 9 )]
+position = Vector2( 384, 144 )
+scale = Vector2( -1, 1 )
+
+[node name="Espeto" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 80, 32 )
+
+[node name="Espeto2" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 272, 256 )
+
+[node name="Espeto3" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 256, 272 )
+rotation = -1.5708
+
+[node name="Espeto4" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 256, 304 )
+rotation = -1.5708
+
+[node name="Espeto5" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 288, 336 )
+rotation = -1.5708
+
+[node name="Espeto6" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 288, 368 )
+rotation = -1.5708
+
+[node name="Espeto7" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 288, 368 )
+rotation = -1.5708
+
+[node name="Espeto8" parent="FG/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 464, 192 )
+rotation = 3.14159
+
+[node name="EspetoQueCai" parent="FG/Objetos" instance=ExtResource( 11 )]
+position = Vector2( 176, 192 )
+
+[node name="EspetoQueCai2" parent="FG/Objetos" instance=ExtResource( 11 )]
+position = Vector2( 112, 320 )
+
+[node name="EspetoQueCai3" parent="FG/Objetos" instance=ExtResource( 11 )]
+position = Vector2( 304, 64 )
+
+[node name="PlataformaQuebrada" parent="FG/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 240, 104 )
+
+[node name="PlataformaQuebrada3" parent="FG/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 208, 72 )
+
+[node name="PlataformaQuebrada4" parent="FG/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 400, -16 )
+
+[node name="PlataformaQuebrada5" parent="FG/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 208, 392 )
+
+[node name="PlataformaQuebrada2" parent="FG/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 272, 200 )
+
+[node name="FG2" type="Node2D" parent="."]
+position = Vector2( 0, 442 )
+
+[node name="TileMap" type="TileMap" parent="FG2"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 2, 65535, 0, 65536, 0, 0, 131077, 1, 0, 65538, 131071, 0, 65536, 65536, 0, 196614, 65537, 0, 65540, 65538, 0, 2, 65544, 0, 196608, 65545, 0, 196610, 65551, 0, 0, 65552, 0, 1, 65553, 0, 2, 196607, 0, 65536, 131072, 0, 65537, 131073, 0, 131076, 131074, 0, 65540, 131075, 0, 2, 131086, 0, 0, 131087, 0, 65541, 131088, 0, 65537, 131089, 0, 65538, 262143, 0, 65536, 196608, 0, 196612, 196609, 0, 196613, 196610, 0, 196614, 196611, 0, 65540, 196612, 0, 2, 196621, 0, 0, 196622, 0, 65541, 196623, 0, 196613, 196624, 0, 65537, 196625, 0, 65538, 327679, 0, 65536, 262144, 0, 196613, 262145, 0, 196614, 262146, 0, 196612, 262147, 0, 196614, 262148, 0, 65540, 262149, 0, 2, 262156, 0, 0, 262157, 0, 65541, 262158, 0, 4, 262159, 0, 131073, 262160, 0, 5, 262161, 0, 65538, 393215, 0, 131072, 327680, 0, 131073, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131073, 327685, 0, 131074, 327691, 0, 0, 327692, 0, 65541, 327693, 0, 4, 327694, 0, 131074, 327696, 0, 65536, 327697, 0, 65538, 393226, 0, 0, 393227, 0, 65541, 393228, 0, 4, 393229, 0, 131074, 393232, 0, 65536, 393233, 0, 65538, 458761, 0, 0, 458762, 0, 65541, 458763, 0, 4, 458764, 0, 131074, 458768, 0, 65536, 458769, 0, 65538, 524296, 0, 0, 524297, 0, 65541, 524298, 0, 196613, 524299, 0, 65538, 524304, 0, 65536, 524305, 0, 65538, 589827, 0, 196608, 589828, 0, 196610, 589832, 0, 131072, 589833, 0, 5, 589834, 0, 65537, 589835, 0, 65538, 589840, 0, 65536, 589841, 0, 65538, 655362, 0, 196611, 655369, 0, 65536, 655370, 0, 131078, 655371, 0, 65540, 655372, 0, 1, 655373, 0, 1, 655374, 0, 1, 655375, 0, 1, 655376, 0, 65541, 655377, 0, 65538, 720905, 0, 131072, 720906, 0, 131073, 720907, 0, 131073, 720908, 0, 131073, 720909, 0, 131073, 720910, 0, 131073, 720911, 0, 131073, 720912, 0, 131073, 720913, 0, 131074 )
+
+[node name="Objetos" type="Node2D" parent="FG2"]
+
+[node name="LancadorDardo" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 383, 306 )
+
+[node name="LancadorDardo2" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 416, 112 )
+scale = Vector2( -1, 1 )
+interval = 2.0
+
+[node name="LancadorDardo3" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 48, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo4" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 80, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo5" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 112, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo6" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 144, 192 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo7" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 48, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo8" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 80, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo9" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 112, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="LancadorDardo10" parent="FG2/Objetos" instance=ExtResource( 8 )]
+position = Vector2( 144, -256 )
+rotation = 1.5708
+interval = 2.0
+
+[node name="Laser" parent="FG2/Objetos" instance=ExtResource( 9 )]
+position = Vector2( 96, 56 )
+
+[node name="Laser2" parent="FG2/Objetos" instance=ExtResource( 9 )]
+position = Vector2( 384, 144 )
+scale = Vector2( -1, 1 )
+
+[node name="Espeto" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 80, 32 )
+
+[node name="Espeto2" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 272, 256 )
+
+[node name="Espeto3" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 256, 272 )
+rotation = -1.5708
+
+[node name="Espeto4" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 256, 304 )
+rotation = -1.5708
+
+[node name="Espeto5" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 288, 336 )
+rotation = -1.5708
+
+[node name="Espeto6" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 288, 368 )
+rotation = -1.5708
+
+[node name="Espeto7" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 288, 368 )
+rotation = -1.5708
+
+[node name="Espeto8" parent="FG2/Objetos" instance=ExtResource( 10 )]
+position = Vector2( 464, 192 )
+rotation = 3.14159
+
+[node name="EspetoQueCai" parent="FG2/Objetos" instance=ExtResource( 11 )]
+position = Vector2( 176, 192 )
+
+[node name="EspetoQueCai2" parent="FG2/Objetos" instance=ExtResource( 11 )]
+position = Vector2( 112, 320 )
+
+[node name="EspetoQueCai3" parent="FG2/Objetos" instance=ExtResource( 11 )]
+position = Vector2( 304, 64 )
+
+[node name="PlataformaQuebrada" parent="FG2/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 240, 104 )
+
+[node name="PlataformaQuebrada3" parent="FG2/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 208, 72 )
+
+[node name="PlataformaQuebrada4" parent="FG2/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 400, -16 )
+
+[node name="PlataformaQuebrada5" parent="FG2/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 208, 392 )
+
+[node name="PlataformaQuebrada2" parent="FG2/Objetos" instance=ExtResource( 12 )]
+position = Vector2( 272, 200 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "loop"
+anims/RESET = SubResource( 3 )
+anims/loop = SubResource( 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.4233, 0.470985, 0.51, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0784314, 0.176471, 0.258824, 1 )
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
 margin_left = 136.0
-margin_top = 87.0
+margin_top = 86.0
 margin_right = 376.0
 margin_bottom = 201.0
 custom_constants/separation = 6
 
-[node name="Title" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+[node name="Title" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 self_modulate = Color( 0.494118, 0.454902, 0.815686, 1 )
 margin_right = 240.0
 margin_bottom = 72.0
@@ -50,7 +354,7 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
-[node name="Title2" type="TextureRect" parent="CenterContainer/VBoxContainer/Title"]
+[node name="Title2" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Title"]
 margin_left = -1.0
 margin_top = -2.0
 margin_right = 239.0
@@ -63,42 +367,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_left = 80.0
+[node name="Play" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_left = 78.0
 margin_top = 78.0
-margin_right = 160.0
-margin_bottom = 114.0
-rect_min_size = Vector2( 80, 36 )
+margin_right = 162.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 84, 37 )
 size_flags_horizontal = 6
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
-script = ExtResource( 4 )
-_next_scene_path = "res://levels/Level-1-tuto.tscn"
+theme = ExtResource( 7 )
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/Play"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/Play"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="Play" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/Play/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 76.0
+margin_bottom = 29.0
 texture = ExtResource( 1 )
 stretch_mode = 4
 
-[node name="Credits" type="Label" parent="."]
+[node name="Credits" type="Label" parent="CanvasLayer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -74.0
-margin_right = 172.0
-margin_bottom = -11.0
+margin_left = 16.0
+margin_top = -98.0
+margin_right = 178.0
+margin_bottom = -16.0
 custom_fonts/font = SubResource( 2 )
-text = "created by:
-
+text = "created by
 Audrey Vasconcelos
 Fernando Silveira
 JP Durigan
 Lia Godoy"
 
-[node name="HUD" parent="." instance=ExtResource( 5 )]
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="CenterContainer/VBoxContainer/Play" method="_on_Play_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
