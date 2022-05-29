@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
@@ -13,6 +13,96 @@
 [ext_resource path="res://tilemap/tileset_background.tres" type="TileSet" id=11]
 [ext_resource path="res://levels/_base/light_only_material.tres" type="Material" id=12]
 [ext_resource path="res://hud/panel_button_theme.tres" type="Theme" id=13]
+[ext_resource path="res://globals/pixelated_transition_shader.tres" type="Shader" id=14]
+[ext_resource path="res://globals/pixel_spiral.png" type="Texture" id=15]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay/GameOver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Overlay/GameOver:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "game_over"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 0.6, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.423529, 0.470588, 0.509804, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Overlay/GameOver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Overlay/GameOver:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 3, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 14 )
+shader_param/invert = true
+shader_param/max_alpha = 0.5
+shader_param/rows = 16
+shader_param/columns = 32
+shader_param/graduation = 16
+shader_param/luminance = 0.1
+shader_param/texture_map = ExtResource( 15 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -63,13 +153,20 @@ current = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = "UI"
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/game_over = SubResource( 4 )
+
 [node name="Overlay" type="CanvasLayer" parent="."]
 
 [node name="GameOver" type="ColorRect" parent="Overlay"]
 visible = false
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.08, 0.18, 0.26, 0.75 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Center" type="CenterContainer" parent="Overlay/GameOver"]
 anchor_right = 1.0
@@ -83,7 +180,7 @@ margin_bottom = 186.0
 custom_constants/separation = 12
 
 [node name="GameOver" type="Label" parent="Overlay/GameOver/Center/VBoxContainer"]
-margin_right = 164.0
+margin_right = 188.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 text = "GAME OVER?"
@@ -92,7 +189,7 @@ valign = 1
 
 [node name="Label" type="Label" parent="Overlay/GameOver/Center/VBoxContainer"]
 margin_top = 32.0
-margin_right = 164.0
+margin_right = 188.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "Cats have multiple lives I reckoned..."
@@ -101,7 +198,7 @@ valign = 1
 
 [node name="Retry" type="Button" parent="Overlay/GameOver/Center/VBoxContainer"]
 margin_top = 56.0
-margin_right = 164.0
+margin_right = 188.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 28 )
 theme = ExtResource( 13 )
@@ -118,7 +215,7 @@ custom_constants/margin_bottom = 8
 [node name="Label" type="Label" parent="Overlay/GameOver/Center/VBoxContainer/Retry/MarginContainer"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 156.0
+margin_right = 180.0
 margin_bottom = 20.0
 text = "Indeed we do!"
 align = 1

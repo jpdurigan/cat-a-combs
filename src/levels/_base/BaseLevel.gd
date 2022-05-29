@@ -25,6 +25,7 @@ onready var _initial_spawner : LevelSpawner = $Spawner
 onready var _goal : LevelGoal = $Goal
 
 onready var _audio_player : AudioStreamPlayer = $AudioStreamPlayer
+onready var _animator : AnimationPlayer = $AnimationPlayer
 onready var _game_over_display : Control = $Overlay/GameOver
 
 ### -----------------------------------------------------------------------------------------------
@@ -53,7 +54,7 @@ func level_win() -> void:
 func level_lose() -> void:
 	_audio_player.stream = game_over_sfx
 	_audio_player.play()
-	_game_over_display.show()
+	_animator.play("game_over")
 
 ### -----------------------------------------------------------------------------------------------
 
