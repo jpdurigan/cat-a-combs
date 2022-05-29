@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
 [ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/_base/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=5]
-[ext_resource path="res://hud/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://tilemap/tileset_foreground.tres" type="TileSet" id=8]
+[ext_resource path="res://audio/sfx/Player/cat_death_total3.ogg" type="AudioStream" id=8]
+[ext_resource path="res://audio/bg/cave/cave audio2.mp3" type="AudioStream" id=9]
+[ext_resource path="res://tilemap/tileset_foreground.tres" type="TileSet" id=10]
+[ext_resource path="res://tilemap/tileset_background.tres" type="TileSet" id=11]
+[ext_resource path="res://levels/_base/light_only_material.tres" type="Material" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 7 )
@@ -18,6 +21,15 @@ font_data = ExtResource( 7 )
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 2 )
+ambience_sfx = ExtResource( 9 )
+game_over_sfx = ExtResource( 8 )
+
+[node name="BG" type="TileMap" parent="."]
+material = ExtResource( 12 )
+z_index = -1
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 32, 32 )
+format = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -26,18 +38,19 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 
 [node name="FG" type="TileMap" parent="."]
-tile_set = ExtResource( 8 )
+tile_set = ExtResource( 10 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Spawner" parent="." instance=ExtResource( 3 )]
+show_behind_parent = true
 position = Vector2( 16, 32 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
+show_behind_parent = true
 position = Vector2( 48, 32 )
-_next_scene_path = ""
 
 [node name="Camera" parent="." instance=ExtResource( 5 )]
 current = true
@@ -86,11 +99,6 @@ margin_top = 48.0
 margin_right = 216.0
 margin_bottom = 68.0
 text = "Try Again?"
-
-[node name="HUD" parent="Overlay" instance=ExtResource( 6 )]
-visible = false
-anchor_left = 1.0
-anchor_bottom = 0.0
 
 [connection signal="player_reached" from="Goal" to="." method="_on_Goal_player_reached"]
 [connection signal="pressed" from="Overlay/GameOver/Center/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]

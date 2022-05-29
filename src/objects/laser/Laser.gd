@@ -18,11 +18,13 @@ var velocity : float = 160.0
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
-onready var _sprite : Sprite = $Sprite
-onready var _area : Area2D = $Area2D
+onready var _tip : AnimatedSprite = $Head/Tip
+onready var _beam : Node2D = $Beam
+onready var _sprite : Sprite = $Beam/Sprite
+onready var _area : Area2D = $Beam/Area2D
 onready var _shape : RectangleShape2D = _area.shape_owner_get_shape(0, 0)
-onready var _raycast1 : RayCast2D = $RayCast1
-onready var _raycast2 : RayCast2D = $RayCast2
+onready var _raycast1 : RayCast2D = $Beam/RayCast1
+onready var _raycast2 : RayCast2D = $Beam/RayCast2
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -70,11 +72,17 @@ func _handle_collision_with(body: Node) -> void:
 func _handle_size_on_collision() -> void:
 	_update_raycasts()
 	
+	var scale_x := (
+		-1.0
+		if scale.x == -1 or scale.y == -1 and rotation == PI
+		else 1.0
+	)
+	
 	var possible_tips := []
 	if _raycast1.is_colliding():
-		possible_tips.append(to_local(_raycast1.get_collision_point()))
+		possible_tips.append(to_local(_raycast1.get_collision_point() - _beam.position * scale_x))
 	if _raycast2.is_colliding():
-		possible_tips.append(to_local(_raycast2.get_collision_point()))
+		possible_tips.append(to_local(_raycast2.get_collision_point() - _beam.position * scale_x))
 	
 	var tip : Vector2 = Vector2(extension, 0)
 	for possible_tip in possible_tips:
@@ -95,8 +103,9 @@ func _set_extension(value: float) -> void:
 	if not is_inside_tree():
 		yield(self, "ready")
 	
-	_sprite.offset.y = - extension / 2
-	_sprite.region_rect.size.y = extension
+	_tip.position.x = extension
+	_sprite.position.x = extension / 2
+	_sprite.region_rect.size.x = extension
 	_area.position.x = extension / 2
 	_shape.extents.x = extension / 2
 	_raycast1.cast_to.x = extension

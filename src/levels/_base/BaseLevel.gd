@@ -18,9 +18,10 @@ export var game_over_sfx : AudioStream
 
 var _current_player : Player
 var _current_lives : int
+var _current_spawner : LevelSpawner
 
 onready var _camera : LevelCamera = $Camera
-onready var _spawner : LevelSpawner = $Spawner
+onready var _initial_spawner : LevelSpawner = $Spawner
 onready var _goal : LevelGoal = $Goal
 
 onready var _audio_player : AudioStreamPlayer = $AudioStreamPlayer
@@ -38,6 +39,7 @@ func _ready():
 	Events.emit_signal("level_started")
 	_start_level()
 	Events.connect("level_reset", self, "_on_level_reset")
+	Events.connect("checkpoint_reached", self, "_on_checkpoint_reached")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -59,28 +61,25 @@ func level_lose() -> void:
 ### Private Methods -------------------------------------------------------------------------------
 
 func _start_level() -> void:
+	_current_spawner = _initial_spawner
 	_current_lives = lives
 	Events.emit_signal("lives_updated", _current_lives)
 	_spawn_new_player()
 
 
 func _reset_level() -> void:
-	for dead_player in get_tree().get_nodes_in_group(Constants.GROUPS.DEAD_PLAYER):
-		dead_player.queue_free()
-	if is_instance_valid(_current_player):
-		_current_player.queue_free()
-	_start_level()
+	LoadingManager.load_next_scene(filename)
 
 
 func _spawn_new_player() -> void:
-	_current_player = yield(_spawner.spawn_new_player(), "completed")
+	_current_player = yield(_current_spawner.spawn_new_player(), "completed")
 	call_deferred("add_child", _current_player, true)
 	_current_player.connect("player_dead", self, "_on_current_player_dead")
 	_camera.target = _current_player
 
 
 func _spawn_dead_player() -> void:
-	var dead_player = _spawner.spawn_dead_player()
+	var dead_player = _current_spawner.spawn_dead_player(_current_player)
 	call_deferred("add_child", dead_player, true)
 
 
@@ -96,6 +95,10 @@ func _on_current_player_dead() -> void:
 
 func _on_level_reset() -> void:
 	_reset_level()
+
+
+func _on_checkpoint_reached(checkpoint: LevelSpawner) -> void:
+	_current_spawner = checkpoint
 
 
 func _on_Goal_player_reached():

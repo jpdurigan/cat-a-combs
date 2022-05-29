@@ -46,7 +46,10 @@ func stop() -> void:
 	set_physics_process(false)
 	_area.set_deferred("monitorable", false)
 	global_position = Grid.snap_position(global_position)
+	
 	_animator.play("hit")
+	yield(_animator, "animation_finished")
+	queue_free()
 
 ### -----------------------------------------------------------------------------------------------
 

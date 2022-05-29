@@ -1,6 +1,6 @@
 # Write your doc string for this file here
 tool
-class_name PlatformMoving
+#class_name PlatformMoving
 extends Path2D
 
 ### Member Variables and Dependencies -------------------------------------------------------------

@@ -1,22 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://levels/_base/Goal.gd" type="Script" id=1]
+[ext_resource path="res://levels/_base/spawners.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 12, 16 )
 
 [node name="Goal" type="Node2D"]
 script = ExtResource( 1 )
+_next_scene_path = ""
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -16.0
-margin_top = -32.0
-margin_right = 16.0
-color = Color( 0, 1, 0, 0.313726 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -27 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 69, 59, 64, 60 )
 
 [node name="Area2D" type="Area2D" parent="."]
 

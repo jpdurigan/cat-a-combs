@@ -4,7 +4,7 @@
 [ext_resource path="res://levels/_base/BaseLevel.tscn" type="PackedScene" id=2]
 
 [node name="Level_Exemple" instance=ExtResource( 2 )]
-lives = 5
+lives = 4
 
 [node name="TileMap" parent="." index="0"]
 visible = false
@@ -31,14 +31,18 @@ position = Vector2( 240, 224 )
 position = Vector2( 272, 224 )
 
 [node name="Spawner" parent="." index="3"]
-position = Vector2( 16, 192 )
+position = Vector2( 15, 192 )
 
 [node name="Goal" parent="." index="4"]
 position = Vector2( 352, 192 )
+_next_scene_path = "res://levels/Level-2.tscn"
 
 [node name="Camera" parent="." index="5"]
-position = Vector2( 16, 192 )
-limit_left = -96
+position = Vector2( 17, 193 )
+limit_left = -98
 limit_top = -64
 limit_right = 448
 limit_bottom = 256
+
+[node name="HUD" parent="Overlay" index="1"]
+visible = true

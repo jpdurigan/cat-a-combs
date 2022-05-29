@@ -3,19 +3,14 @@
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/espetos/Espeto.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/laser/Laser.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/plataformas/PlataformaAndante.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/plataformas/PlataformaQuebrada.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/plataformas/PlataformaQueAnda.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/espetos/EspetoQueCai.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=8]
 [ext_resource path="res://PauseHelper.gd" type="Script" id=9]
 [ext_resource path="res://objects/espetos/Trigger.tscn" type="PackedScene" id=10]
-
-[sub_resource type="Curve2D" id=1]
-resource_local_to_scene = true
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -112, 0 )
-}
+[ext_resource path="res://objects/dardos/LancadorDardo.tscn" type="PackedScene" id=11]
 
 [node name="Playground" type="Node2D"]
 script = ExtResource( 8 )
@@ -46,6 +41,18 @@ position = Vector2( 208, 160 )
 [node name="Espeto7" parent="." instance=ExtResource( 3 )]
 position = Vector2( 240, 160 )
 
+[node name="PlataformaQueAnda" parent="." instance=ExtResource( 5 )]
+position = Vector2( 352, 208 )
+tile_count = 2
+target = Vector2( 3, 0 )
+
+[node name="PlataformaQueAnda2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 448, 208 )
+tile_count = 2
+target = Vector2( 0, -4 )
+move_time = 6.0
+stop_time = 0.5
+
 [node name="Espeto8" parent="." instance=ExtResource( 3 )]
 position = Vector2( 272, 160 )
 
@@ -53,7 +60,7 @@ position = Vector2( 272, 160 )
 position = Vector2( 304, 160 )
 
 [node name="Spawner" parent="." instance=ExtResource( 2 )]
-position = Vector2( 48, 96 )
+position = Vector2( 496, 128 )
 
 [node name="Camera" parent="." instance=ExtResource( 6 )]
 limit_left = -18
@@ -63,22 +70,22 @@ limit_bottom = 180
 [node name="PauseHelper" type="Node" parent="."]
 script = ExtResource( 9 )
 
-[node name="Laser" parent="." instance=ExtResource( 4 )]
-position = Vector2( 24, 120 )
-
-[node name="Laser2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 208, 120 )
-rotation = -1.5708
-extension = 10.0
-
-[node name="PlataformaAndante" parent="." instance=ExtResource( 5 )]
-position = Vector2( 448, 144 )
-curve = SubResource( 1 )
-time_move = 2.0
-
 [node name="Trigger" parent="." instance=ExtResource( 10 )]
 position = Vector2( 416, 256 )
 
 [node name="EspetoQueCai" parent="." instance=ExtResource( 7 )]
 position = Vector2( 384, 64 )
 trigger_path = NodePath("../Trigger")
+
+[node name="LancadorDardo" parent="." instance=ExtResource( 11 )]
+position = Vector2( 0, 240 )
+velocity = 360.0
+
+[node name="PlataformaQuebrada3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 464, 160 )
+
+[node name="PlataformaQuebrada4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 368, 136 )
+
+[node name="PlataformaQuebrada5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 336, 136 )

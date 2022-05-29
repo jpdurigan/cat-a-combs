@@ -34,11 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://levels/_base/Spawner.gd"
 }, {
-"base": "Path2D",
-"class": "PlatformMoving",
-"language": "GDScript",
-"path": "res://objects/plataformas/PlataformaAndante.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -60,7 +55,6 @@ _global_script_class_icons={
 "LevelCamera": "",
 "LevelGoal": "",
 "LevelSpawner": "",
-"PlatformMoving": "",
 "Player": "",
 "Projectile": "",
 "Trigger": ""
@@ -70,6 +64,7 @@ _global_script_class_icons={
 
 config/name="Cat-A-Comb [Gamedevtv Jam]"
 run/main_scene="res://main_menu/MainMenu.tscn"
+boot_splash/bg_color=Color( 0.0784314, 0.176471, 0.258824, 1 )
 config/icon="res://game_icon.png"
 
 [autoload]
@@ -77,6 +72,7 @@ config/icon="res://game_icon.png"
 LoadingManager="*res://globals/LoadingManager.tscn"
 SoundManager="*res://globals/SoundManager.tscn"
 Events="*res://globals/Events.gd"
+HUD="*res://hud/HUD.tscn"
 
 [display]
 
@@ -96,3 +92,5 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
+environment/default_clear_color.editor=Color( 0.0784314, 0.176471, 0.258824, 1 )
+environment/default_clear_color.HTML5=Color( 0.0784314, 0.176471, 0.258824, 1 )
