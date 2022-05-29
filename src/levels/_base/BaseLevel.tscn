@@ -1,22 +1,27 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://tilemap/base_tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.gd" type="Script" id=2]
 [ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/_base/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/_base/Camera.tscn" type="PackedScene" id=5]
-[ext_resource path="res://main_menu/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/gothic_pixel.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/Kenney Pixel.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://audio/sfx/Player/cat_death_total3.ogg" type="AudioStream" id=8]
 [ext_resource path="res://audio/bg/cave/cave audio2.mp3" type="AudioStream" id=9]
 [ext_resource path="res://tilemap/tileset_foreground.tres" type="TileSet" id=10]
 [ext_resource path="res://tilemap/tileset_background.tres" type="TileSet" id=11]
 [ext_resource path="res://levels/_base/light_only_material.tres" type="Material" id=12]
+[ext_resource path="res://hud/panel_button_theme.tres" type="Theme" id=13]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 7 )
+size = 32
+extra_spacing_bottom = -8
+extra_spacing_space = 4
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 8
+extra_spacing_space = 1
 font_data = ExtResource( 7 )
 
 [node name="BaseLevel" type="Node2D"]
@@ -71,34 +76,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Overlay/GameOver/Center"]
-margin_left = 148.0
-margin_top = 110.0
-margin_right = 364.0
-margin_bottom = 178.0
+margin_left = 174.0
+margin_top = 102.0
+margin_right = 338.0
+margin_bottom = 186.0
 custom_constants/separation = 12
 
 [node name="GameOver" type="Label" parent="Overlay/GameOver/Center/VBoxContainer"]
-margin_right = 216.0
-margin_bottom = 16.0
+margin_right = 164.0
+margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 text = "GAME OVER"
 align = 1
 valign = 1
 
 [node name="Label" type="Label" parent="Overlay/GameOver/Center/VBoxContainer"]
-margin_top = 28.0
-margin_right = 216.0
-margin_bottom = 36.0
+margin_top = 32.0
+margin_right = 164.0
+margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "You've lost all your lives."
 align = 1
 valign = 1
 
 [node name="Retry" type="Button" parent="Overlay/GameOver/Center/VBoxContainer"]
-margin_top = 48.0
-margin_right = 216.0
-margin_bottom = 68.0
+margin_top = 56.0
+margin_right = 164.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 28 )
+theme = ExtResource( 13 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/GameOver/Center/VBoxContainer/Retry"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Overlay/GameOver/Center/VBoxContainer/Retry/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 156.0
+margin_bottom = 20.0
 text = "Try Again?"
+align = 1
+valign = 1
 
 [connection signal="player_reached" from="Goal" to="." method="_on_Goal_player_reached"]
 [connection signal="pressed" from="Overlay/GameOver/Center/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
