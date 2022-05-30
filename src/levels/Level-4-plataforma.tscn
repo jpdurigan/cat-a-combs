@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://levels/_base/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/dardos/LancadorDardo.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://levels/_base/bg/static/cranio_solto_2.png" type="Texture" id=13]
 [ext_resource path="res://levels/_base/bg/static/cranio_solto_3.png" type="Texture" id=14]
 [ext_resource path="res://levels/_base/bg/anim/velas_anim.tscn" type="PackedScene" id=15]
+[ext_resource path="res://levels/_base/bg/static/decor_cranio_2.png" type="Texture" id=16]
 
 [node name="Level-4-plataforma" instance=ExtResource( 1 )]
 lives = 6
@@ -35,74 +36,155 @@ texture = ExtResource( 6 )
 
 [node name="DecorCranio1" type="Sprite" parent="BG" index="2"]
 use_parent_material = true
-position = Vector2( 192.5, 144 )
+position = Vector2( 181.5, 160 )
 texture = ExtResource( 10 )
 
-[node name="Banner" type="Sprite" parent="BG" index="3"]
+[node name="Velas5" parent="BG" index="3" instance=ExtResource( 15 )]
 use_parent_material = true
-position = Vector2( 144.5, 152 )
+position = Vector2( 133, 123 )
+
+[node name="Velas6" parent="BG" index="4" instance=ExtResource( 15 )]
+use_parent_material = true
+position = Vector2( 229, 123 )
+frame = 0
+
+[node name="Banner" type="Sprite" parent="BG" index="5"]
+use_parent_material = true
+position = Vector2( 133.5, 168 )
 texture = ExtResource( 8 )
 
-[node name="Banner2" type="Sprite" parent="BG" index="4"]
+[node name="Banner2" type="Sprite" parent="BG" index="6"]
 use_parent_material = true
-position = Vector2( 240.5, 152 )
+position = Vector2( 229.5, 168 )
 texture = ExtResource( 8 )
 
-[node name="DecorOssos" type="Sprite" parent="BG" index="5"]
+[node name="DecorOssos" type="Sprite" parent="BG" index="7"]
 use_parent_material = true
-position = Vector2( 288, -256 )
+position = Vector2( 256, -275 )
 texture = ExtResource( 7 )
 
-[node name="TeiaAranha" type="Sprite" parent="BG" index="6"]
+[node name="DecorCranio2" type="Sprite" parent="BG" index="8"]
 use_parent_material = true
-position = Vector2( 336, 176 )
+position = Vector2( 447, -71 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 16 )
+
+[node name="TeiaAranha" type="Sprite" parent="BG" index="9"]
+use_parent_material = true
+position = Vector2( 338, 174 )
+scale = Vector2( -1, 1 )
 texture = ExtResource( 11 )
 
-[node name="TeiaAranha2" type="Sprite" parent="BG" index="7"]
+[node name="TeiaAranha4" type="Sprite" parent="BG" index="10"]
+use_parent_material = true
+position = Vector2( 13, 110 )
+texture = ExtResource( 11 )
+
+[node name="TeiaAranha3" type="Sprite" parent="BG" index="11"]
+use_parent_material = true
+position = Vector2( 338, -275 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 11 )
+
+[node name="TeiaAranha2" type="Sprite" parent="BG" index="12"]
 use_parent_material = true
 position = Vector2( -16, -240 )
 texture = ExtResource( 11 )
 
-[node name="Velas4" parent="BG" index="8" instance=ExtResource( 15 )]
+[node name="Velas4" parent="BG" index="13" instance=ExtResource( 15 )]
 use_parent_material = true
 position = Vector2( 16, -222 )
+frame = 2
 
-[node name="CranioSolto5" type="Sprite" parent="BG" index="9"]
+[node name="CranioSolto5" type="Sprite" parent="BG" index="14"]
 use_parent_material = true
 position = Vector2( 13, -196 )
 texture = ExtResource( 14 )
 
-[node name="CranioSolto2" type="Sprite" parent="BG" index="10"]
+[node name="CranioSolto2" type="Sprite" parent="BG" index="15"]
 use_parent_material = true
 position = Vector2( 21, -196 )
 texture = ExtResource( 13 )
 
-[node name="CranioSolto3" type="Sprite" parent="BG" index="11"]
+[node name="CranioSolto3" type="Sprite" parent="BG" index="16"]
 use_parent_material = true
 position = Vector2( 17, -204 )
 texture = ExtResource( 14 )
 
-[node name="CranioSolto1" type="Sprite" parent="BG" index="12"]
+[node name="CranioSolto1" type="Sprite" parent="BG" index="17"]
 use_parent_material = true
 position = Vector2( 25, -204 )
 texture = ExtResource( 12 )
 
-[node name="Velas" parent="BG" index="13" instance=ExtResource( 15 )]
+[node name="Velas" parent="BG" index="18" instance=ExtResource( 15 )]
 use_parent_material = true
-position = Vector2( 320, -180 )
+position = Vector2( 324, -175 )
+flip_h = true
+
+[node name="Velas2" parent="BG" index="19" instance=ExtResource( 15 )]
+use_parent_material = true
+position = Vector2( 207, -213 )
 frame = 0
 flip_h = true
 
-[node name="Velas2" parent="BG" index="14" instance=ExtResource( 15 )]
-use_parent_material = true
-position = Vector2( 208, -288 )
-frame = 4
-flip_h = true
-
-[node name="Velas3" parent="BG" index="15" instance=ExtResource( 15 )]
+[node name="Velas3" parent="BG" index="20" instance=ExtResource( 15 )]
 use_parent_material = true
 position = Vector2( 96, 16 )
-frame = 4
+frame = 0
+
+[node name="Velas7" parent="BG" index="21" instance=ExtResource( 15 )]
+use_parent_material = true
+position = Vector2( -16, -151 )
+frame = 0
+
+[node name="CranioSolto7" type="Sprite" parent="BG" index="22"]
+use_parent_material = true
+position = Vector2( 522, 145 )
+texture = ExtResource( 12 )
+offset = Vector2( -174.5, -22 )
+
+[node name="CranioSolto8" type="Sprite" parent="BG" index="23"]
+use_parent_material = true
+position = Vector2( 372, 82 )
+texture = ExtResource( 12 )
+offset = Vector2( -174.5, -22 )
+
+[node name="CranioSolto9" type="Sprite" parent="BG" index="24"]
+use_parent_material = true
+position = Vector2( 285, -95 )
+texture = ExtResource( 12 )
+offset = Vector2( -174.5, -22 )
+
+[node name="CranioSolto6" type="Sprite" parent="BG" index="25"]
+use_parent_material = true
+position = Vector2( 522, 145 )
+texture = ExtResource( 13 )
+offset = Vector2( -182.5, -21 )
+
+[node name="CranioSolto10" type="Sprite" parent="BG" index="26"]
+use_parent_material = true
+position = Vector2( 483, -48 )
+texture = ExtResource( 13 )
+offset = Vector2( -182.5, -21 )
+
+[node name="CranioSolto4" type="Sprite" parent="BG" index="27"]
+use_parent_material = true
+position = Vector2( 522, 145 )
+texture = ExtResource( 14 )
+offset = Vector2( -178.5, -29 )
+
+[node name="CranioSolto11" type="Sprite" parent="BG" index="28"]
+use_parent_material = true
+position = Vector2( 475, 257 )
+texture = ExtResource( 14 )
+offset = Vector2( -178.5, -29 )
+
+[node name="CranioSolto12" type="Sprite" parent="BG" index="29"]
+use_parent_material = true
+position = Vector2( 303, 89 )
+texture = ExtResource( 14 )
+offset = Vector2( -178.5, -29 )
 
 [node name="FG" parent="." index="2"]
 tile_data = PoolIntArray( -786435, 0, 0, -786434, 0, 1, -786433, 0, 1, -851968, 0, 1, -851967, 0, 1, -851966, 0, 1, -851965, 0, 1, -851964, 0, 1, -851963, 0, 1, -851962, 0, 1, -851961, 0, 1, -851960, 0, 1, -851959, 0, 1, -851958, 0, 1, -851957, 0, 1, -851956, 0, 1, -851955, 0, 1, -851954, 0, 2, -720899, 0, 65536, -720898, 0, 131077, -720897, 0, 65537, -786432, 0, 131077, -786431, 0, 65537, -786430, 0, 196613, -786429, 0, 131076, -786428, 0, 131077, -786427, 0, 196614, -786426, 0, 196613, -786425, 0, 196612, -786424, 0, 65537, -786423, 0, 65537, -786422, 0, 65537, -786421, 0, 196613, -786420, 0, 131078, -786419, 0, 131076, -786418, 0, 65538, -655363, 0, 65536, -655362, 0, 131078, -655361, 0, 196612, -720896, 0, 196612, -720895, 0, 65537, -720894, 0, 196612, -720893, 0, 4, -720892, 0, 131073, -720891, 0, 131073, -720890, 0, 131073, -720889, 0, 131073, -720888, 0, 131073, -720887, 0, 131073, -720886, 0, 5, -720885, 0, 131077, -720884, 0, 196613, -720883, 0, 65537, -720882, 0, 65538, -589827, 0, 65536, -589826, 0, 65537, -589825, 0, 196614, -655360, 0, 65537, -655359, 0, 196613, -655358, 0, 4, -655357, 0, 131074, -655350, 0, 131072, -655349, 0, 5, -655348, 0, 131078, -655347, 0, 131076, -655346, 0, 65538, -524291, 0, 65536, -524290, 0, 4, -524289, 0, 131073, -589824, 0, 131073, -589823, 0, 5, -589822, 0, 65538, -589813, 0, 65536, -589812, 0, 196613, -589811, 0, 65537, -589810, 0, 65538, -458755, 0, 65536, -458754, 0, 65538, -524287, 0, 65536, -524286, 0, 65538, -524277, 0, 131072, -524276, 0, 5, -524275, 0, 131077, -524274, 0, 65538, -393219, 0, 65536, -393218, 0, 65538, -458751, 0, 65536, -458750, 0, 65538, -458748, 0, 0, -458747, 0, 2, -458740, 0, 65536, -458739, 0, 196613, -458738, 0, 65538, -327683, 0, 65536, -327682, 0, 65538, -393216, 0, 0, -393215, 0, 65541, -393214, 0, 65538, -393212, 0, 65536, -393211, 0, 65540, -393210, 0, 2, -393205, 0, 0, -393204, 0, 65541, -393203, 0, 65537, -393202, 0, 65540, -393201, 0, 1, -393200, 0, 2, -262147, 0, 65536, -262146, 0, 65538, -327680, 0, 65536, -327679, 0, 65537, -327678, 0, 65538, -327676, 0, 65536, -327675, 0, 196613, -327674, 0, 65538, -327669, 0, 65536, -327668, 0, 131077, -327667, 0, 65537, -327666, 0, 196613, -327665, 0, 65537, -327664, 0, 65538, -196611, 0, 65536, -196610, 0, 65540, -196609, 0, 1, -262144, 0, 65541, -262143, 0, 196614, -262142, 0, 65538, -262140, 0, 65536, -262139, 0, 131078, -262138, 0, 65538, -262133, 0, 65536, -262132, 0, 4, -262131, 0, 131073, -262130, 0, 131073, -262129, 0, 5, -262128, 0, 65538, -131075, 0, 65536, -131074, 0, 131076, -131073, 0, 65537, -196608, 0, 65537, -196607, 0, 131077, -196606, 0, 65538, -196604, 0, 65536, -196603, 0, 4, -196602, 0, 131074, -196597, 0, 65536, -196596, 0, 65538, -196593, 0, 65536, -196592, 0, 65538, -65539, 0, 65536, -65538, 0, 131077, -65537, 0, 196613, -131072, 0, 131077, -131071, 0, 131078, -131070, 0, 65538, -131068, 0, 65536, -131067, 0, 65538, -131061, 0, 65536, -131060, 0, 65538, -131057, 0, 65536, -131056, 0, 65538, -3, 0, 65536, -2, 0, 65537, -1, 0, 4, -65536, 0, 131073, -65535, 0, 131073, -65534, 0, 131074, -65532, 0, 65536, -65531, 0, 65538, -65525, 0, 65536, -65524, 0, 65538, -65521, 0, 65536, -65520, 0, 65538, 65533, 0, 65536, 65534, 0, 65537, 65535, 0, 65538, 4, 0, 65536, 5, 0, 65538, 11, 0, 65536, 12, 0, 65540, 13, 0, 1, 14, 0, 1, 15, 0, 65541, 16, 0, 65538, 131069, 0, 65536, 131070, 0, 65537, 131071, 0, 65538, 65540, 0, 65536, 65541, 0, 65538, 65547, 0, 65536, 65548, 0, 131076, 65549, 0, 65537, 65550, 0, 65537, 65551, 0, 65537, 65552, 0, 65538, 196605, 0, 65536, 196606, 0, 65537, 196607, 0, 4, 131072, 0, 196609, 131073, 0, 196609, 131074, 0, 196609, 131075, 0, 196609, 131076, 0, 131073, 131077, 0, 131073, 131078, 0, 196609, 131079, 0, 196610, 131083, 0, 65536, 131084, 0, 131077, 131085, 0, 65537, 131086, 0, 196612, 131087, 0, 4, 131088, 0, 131074, 262141, 0, 65536, 262142, 0, 65537, 262143, 0, 65538, 196619, 0, 65536, 196620, 0, 65537, 196621, 0, 131076, 196622, 0, 196614, 196623, 0, 65538, 327677, 0, 65536, 327678, 0, 131078, 327679, 0, 65538, 262154, 0, 196608, 262155, 0, 5, 262156, 0, 196613, 262157, 0, 131077, 262158, 0, 196612, 262159, 0, 65538, 393213, 0, 65536, 393214, 0, 196613, 393215, 0, 65538, 327689, 0, 196611, 327691, 0, 65536, 327692, 0, 65537, 327693, 0, 131076, 327694, 0, 65537, 327695, 0, 65538, 458749, 0, 65536, 458750, 0, 196612, 458751, 0, 65540, 393216, 0, 1, 393217, 0, 2, 393227, 0, 65536, 393228, 0, 196613, 393229, 0, 131076, 393230, 0, 65537, 393231, 0, 65538, 524285, 0, 65536, 524286, 0, 65537, 524287, 0, 131078, 458752, 0, 65537, 458753, 0, 65538, 458763, 0, 65536, 458764, 0, 131076, 458765, 0, 65537, 458766, 0, 131077, 458767, 0, 65538, 589821, 0, 65536, 589822, 0, 196614, 589823, 0, 65537, 524288, 0, 196614, 524289, 0, 65538, 524299, 0, 65536, 524300, 0, 65537, 524301, 0, 65537, 524302, 0, 65537, 524303, 0, 65538, 655357, 0, 65536, 655358, 0, 196612, 655359, 0, 65537, 589824, 0, 131077, 589825, 0, 65540, 589826, 0, 1, 589827, 0, 1, 589828, 0, 1, 589829, 0, 1, 589830, 0, 1, 589831, 0, 1, 589832, 0, 1, 589833, 0, 1, 589834, 0, 1, 589835, 0, 65541, 589836, 0, 196612, 589837, 0, 131077, 589838, 0, 196613, 589839, 0, 65538, 720893, 0, 65536, 720894, 0, 196614, 720895, 0, 131077, 655360, 0, 65537, 655361, 0, 131076, 655362, 0, 65537, 655363, 0, 196613, 655364, 0, 131078, 655365, 0, 196614, 655366, 0, 131078, 655367, 0, 196614, 655368, 0, 196612, 655369, 0, 131077, 655370, 0, 65537, 655371, 0, 131078, 655372, 0, 65537, 655373, 0, 131077, 655374, 0, 65537, 655375, 0, 65538, 786429, 0, 131072, 786430, 0, 131073, 786431, 0, 131073, 720896, 0, 131073, 720897, 0, 131073, 720898, 0, 131073, 720899, 0, 131073, 720900, 0, 131073, 720901, 0, 131073, 720902, 0, 131073, 720903, 0, 131073, 720904, 0, 131073, 720905, 0, 131073, 720906, 0, 131073, 720907, 0, 131073, 720908, 0, 131073, 720909, 0, 131073, 720910, 0, 131073, 720911, 0, 131074 )

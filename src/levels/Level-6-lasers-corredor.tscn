@@ -31,94 +31,150 @@ use_parent_material = true
 position = Vector2( -149, -110 )
 texture = ExtResource( 9 )
 
-[node name="CranioSolto3" type="Sprite" parent="BG" index="2"]
+[node name="CranioSolto10" type="Sprite" parent="BG" index="2"]
+use_parent_material = true
+position = Vector2( -228, -100 )
+texture = ExtResource( 9 )
+
+[node name="CranioSolto11" type="Sprite" parent="BG" index="3"]
+use_parent_material = true
+position = Vector2( 172, -198 )
+texture = ExtResource( 9 )
+
+[node name="CranioSolto3" type="Sprite" parent="BG" index="4"]
 use_parent_material = true
 position = Vector2( -143, -101 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 6 )
 
-[node name="CranioSolto4" type="Sprite" parent="BG" index="3"]
+[node name="CranioSolto4" type="Sprite" parent="BG" index="5"]
 use_parent_material = true
 position = Vector2( -131, -100 )
 texture = ExtResource( 7 )
 
-[node name="CranioSolto5" type="Sprite" parent="BG" index="4"]
+[node name="CranioSolto9" type="Sprite" parent="BG" index="6"]
+use_parent_material = true
+position = Vector2( -238, -100 )
+texture = ExtResource( 7 )
+
+[node name="CranioSolto5" type="Sprite" parent="BG" index="7"]
 use_parent_material = true
 position = Vector2( -136, -109 )
 texture = ExtResource( 6 )
 
-[node name="CranioSolto6" type="Sprite" parent="BG" index="5"]
+[node name="CranioSolto8" type="Sprite" parent="BG" index="8"]
+use_parent_material = true
+position = Vector2( -317, -36 )
+texture = ExtResource( 6 )
+
+[node name="CranioSolto6" type="Sprite" parent="BG" index="9"]
 use_parent_material = true
 position = Vector2( -142, -118 )
 texture = ExtResource( 9 )
 
-[node name="DecorOssos" type="Sprite" parent="BG" index="6"]
+[node name="DecorOssos" type="Sprite" parent="BG" index="10"]
 use_parent_material = true
 position = Vector2( -54, -14 )
 texture = ExtResource( 8 )
 
-[node name="DecorCranio3" type="Sprite" parent="BG" index="7"]
+[node name="DecorCranio3" type="Sprite" parent="BG" index="11"]
 use_parent_material = true
 position = Vector2( 192, -20 )
 texture = ExtResource( 12 )
 
-[node name="DecorCranio4" type="Sprite" parent="BG" index="8"]
+[node name="DecorCranio4" type="Sprite" parent="BG" index="12"]
 use_parent_material = true
 position = Vector2( 128, -20 )
 texture = ExtResource( 12 )
 
-[node name="Banner" type="Sprite" parent="BG" index="9"]
+[node name="DecorCranio2" type="Sprite" parent="BG" index="13"]
+position = Vector2( -128, -229 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 12 )
+
+[node name="DecorCranio5" type="Sprite" parent="BG" index="14"]
+position = Vector2( -128, -205 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 12 )
+
+[node name="Banner2" type="Sprite" parent="BG" index="15"]
 use_parent_material = true
-position = Vector2( -80, -248 )
+position = Vector2( -129, -329 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha" type="Sprite" parent="BG" index="10"]
+[node name="TeiaAranha" type="Sprite" parent="BG" index="16"]
 use_parent_material = true
 position = Vector2( -336, -272 )
 texture = ExtResource( 11 )
 
-[node name="TeiaAranha2" type="Sprite" parent="BG" index="11"]
+[node name="TeiaAranha2" type="Sprite" parent="BG" index="17"]
 use_parent_material = true
 position = Vector2( 176, -272 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 11 )
 
-[node name="TeiaAranha4" type="Sprite" parent="BG" index="12"]
+[node name="TeiaAranha4" type="Sprite" parent="BG" index="18"]
 use_parent_material = true
 position = Vector2( -176, -304 )
 rotation = 1.5708
 scale = Vector2( 1, -1 )
 texture = ExtResource( 11 )
 
-[node name="DecorCranio1" type="Sprite" parent="BG" index="13"]
+[node name="DecorCranio1" type="Sprite" parent="BG" index="19"]
 use_parent_material = true
 position = Vector2( -128, -268 )
 texture = ExtResource( 13 )
 
-[node name="Velas" parent="BG" index="14" instance=ExtResource( 14 )]
+[node name="Velas" parent="BG" index="20" instance=ExtResource( 14 )]
 use_parent_material = true
 position = Vector2( 160, -56 )
-frame = 2
 
-[node name="Velas2" parent="BG" index="15" instance=ExtResource( 14 )]
+[node name="Velas5" parent="BG" index="21" instance=ExtResource( 14 )]
+use_parent_material = true
+position = Vector2( -73, -246 )
+frame = 0
+
+[node name="Velas8" parent="BG" index="22" instance=ExtResource( 14 )]
+use_parent_material = true
+position = Vector2( -342, -182 )
+frame = 0
+
+[node name="Velas6" parent="BG" index="23" instance=ExtResource( 14 )]
+use_parent_material = true
+position = Vector2( -120, -23 )
+frame = 0
+
+[node name="Velas7" parent="BG" index="24" instance=ExtResource( 14 )]
+use_parent_material = true
+position = Vector2( -88, 9 )
+frame = 4
+
+[node name="Velas2" parent="BG" index="25" instance=ExtResource( 14 )]
 use_parent_material = true
 position = Vector2( -288, -268 )
-frame = 3
-flip_h = true
-
-[node name="Velas3" parent="BG" index="16" instance=ExtResource( 14 )]
-use_parent_material = true
-position = Vector2( -96, -140 )
 frame = 2
 flip_h = true
 
-[node name="Velas4" parent="BG" index="17" instance=ExtResource( 14 )]
+[node name="Velas3" parent="BG" index="26" instance=ExtResource( 14 )]
+use_parent_material = true
+position = Vector2( -96, -140 )
+flip_h = true
+
+[node name="CranioSolto7" type="Sprite" parent="BG" index="27"]
+use_parent_material = true
+position = Vector2( -92, 28 )
+texture = ExtResource( 9 )
+
+[node name="Velas4" parent="BG" index="28" instance=ExtResource( 14 )]
 use_parent_material = true
 position = Vector2( 64, -140 )
+frame = 0
 
 [node name="FG" parent="." index="2"]
 scale = Vector2( -1, 1 )
