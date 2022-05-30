@@ -81,6 +81,7 @@ margin_bottom = 108.0
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 223.0
 margin_bottom = 57.0
+custom_colors/font_color = Color( 0.992157, 0.996078, 0.831373, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "AND THUS, THE CAT JOURNEYS ONWARDS...
 ONE 'CURIOSITY' AT A TIME...

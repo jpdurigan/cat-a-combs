@@ -16,6 +16,7 @@ var _is_active : bool = false
 var _was_activated : bool = false
 
 onready var _animated_sprite : AnimatedSprite = $AnimatedSprite
+onready var _light_animator : AnimationPlayer = $Light2D/AnimationPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -36,12 +37,12 @@ func activate() -> void:
 		return
 	Events.emit_signal("checkpoint_reached", self)
 	_animated_sprite.play("activate")
+	_light_animator.play("light_up")
 	_is_active = true
 	_was_activated = true
 
 
 func deactivate() -> void:
-	_animated_sprite.play("off")
 	_is_active = false
 
 ### -----------------------------------------------------------------------------------------------

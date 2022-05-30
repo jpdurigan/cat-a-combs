@@ -69,6 +69,7 @@ margin_bottom = 33.0
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 144.0
 margin_bottom = 27.0
+custom_colors/font_color = Color( 0.992157, 0.996078, 0.831373, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "MAYBE 'THE END' IS BUT A MEAN
 TO REACH THE TRUE ENDING"
