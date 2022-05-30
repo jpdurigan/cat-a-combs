@@ -110,15 +110,18 @@ script = ExtResource( 3 )
 [node name="Sprite" parent="." index="0"]
 visible = false
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
+[node name="CheckpointStream" type="AudioStreamPlayer" parent="." index="3"]
+bus = "World"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="4"]
 position = Vector2( 0, -14.5 )
 frames = SubResource( 1 )
 animation = "off"
 playing = true
 
-[node name="Trigger" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Trigger" parent="." index="5" instance=ExtResource( 4 )]
 
-[node name="Light2D" type="Light2D" parent="." index="5"]
+[node name="Light2D" type="Light2D" parent="." index="6"]
 position = Vector2( 0, -16 )
 texture = SubResource( 12 )
 texture_scale = 0.01
