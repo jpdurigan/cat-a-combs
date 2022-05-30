@@ -49,7 +49,7 @@ func _unhandled_key_input(event: InputEventKey):
 	if event.is_echo():
 		return
 	
-	if event.is_action_pressed("ui_up") and is_on_floor():
+	if event.is_action_pressed("ui_jump") and is_on_floor():
 		_jump_buffer = JUMP_BUFFER_COUNT
 	
 	if event.is_action_released("ui_left") or event.is_action_released("ui_right"):

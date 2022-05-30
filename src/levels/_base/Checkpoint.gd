@@ -12,7 +12,11 @@ extends LevelSpawner
 
 #--- private variables - order: export > normal var > onready -------------------------------------
 
+var _is_active : bool = false
+var _was_activated : bool = false
+
 onready var _animated_sprite : AnimatedSprite = $AnimatedSprite
+onready var _light_animator : AnimationPlayer = $Light2D/AnimationPlayer
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -21,6 +25,7 @@ onready var _animated_sprite : AnimatedSprite = $AnimatedSprite
 
 func _ready():
 	_animated_sprite.play("off")
+	Events.connect("checkpoint_reached", self, "_on_checkpoint_reached")
 
 ### -----------------------------------------------------------------------------------------------
 
@@ -28,15 +33,31 @@ func _ready():
 ### Public Methods --------------------------------------------------------------------------------
 
 func activate() -> void:
+	if _is_active or _was_activated:
+		return
 	Events.emit_signal("checkpoint_reached", self)
 	_animated_sprite.play("activate")
+	_light_animator.play("light_up")
+	_is_active = true
+	_was_activated = true
+
+
+func deactivate() -> void:
+	_is_active = false
 
 ### -----------------------------------------------------------------------------------------------
 
 
 ### Private Methods -------------------------------------------------------------------------------
 
+func _on_checkpoint_reached(checkpoint) -> void:
+	if checkpoint != self and _is_active:
+		deactivate()
+
+
 func _on_Trigger_player_triggered():
+	if _was_activated:
+		return
 	activate()
 
 

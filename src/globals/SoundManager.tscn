@@ -13,7 +13,13 @@ game_music = ExtResource( 2 )
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 bus = "BGM"
 
+[node name="BGM2" type="AudioStreamPlayer" parent="."]
+bus = "BGM"
+
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
+bus = "World"
+
+[node name="Ambience2" type="AudioStreamPlayer" parent="."]
 bus = "World"
 
 [node name="UI" type="AudioStreamPlayer" parent="."]
