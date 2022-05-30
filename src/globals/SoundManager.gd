@@ -62,7 +62,7 @@ func play_bgm(bgm_stream: AudioStream) -> void:
 		_backup_bgm = _current_bgm
 	_handle_transition(
 			_bgm_player, _bgm_player_alt,
-			_current_bgm, BGM_TRANSITION_DURATION
+			_current_bgm, BGM_TRANSITION_DURATION, is_bgm_on
 	)
 
 
@@ -72,7 +72,7 @@ func play_ambience(ambience_stream: AudioStream) -> void:
 	_current_ambience = ambience_stream
 	_handle_transition(
 			_ambience_player, _ambience_player_alt,
-			_current_ambience, AMBIENCE_TRANSTION_DURATION
+			_current_ambience, AMBIENCE_TRANSTION_DURATION, is_sfx_on
 	)
 
 
@@ -89,7 +89,8 @@ func _handle_transition(
 		player_1: AudioStreamPlayer,
 		player_2: AudioStreamPlayer,
 		stream: AudioStream,
-		duration: float
+		duration: float,
+		is_bus_on: bool
 ) -> void:
 	var playing_stream = _get_playing_stream(player_1, player_2)
 	var next_stream = _get_non_playing_stream(player_1, player_2)
@@ -101,7 +102,7 @@ func _handle_transition(
 	)
 	_tween.interpolate_callback(playing_stream, duration, "stop")
 	
-	if stream != null:
+	if stream != null and is_bus_on:
 		next_stream.stream = stream
 		next_stream.volume_db = PLAYER_OFF
 		_tween.interpolate_property(
