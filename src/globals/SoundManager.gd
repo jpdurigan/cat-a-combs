@@ -30,6 +30,7 @@ var is_sfx_on : bool = true setget _set_is_sfx_on
 #--- private variables - order: export > normal var > onready -------------------------------------
 
 var _current_bgm : AudioStream = null
+var _backup_bgm : AudioStream = null
 var _current_ambience : AudioStream = null
 
 onready var _bgm_player: AudioStreamPlayer = $BGM
@@ -57,6 +58,8 @@ func play_bgm(bgm_stream: AudioStream) -> void:
 	if bgm_stream == _current_bgm:
 		return
 	_current_bgm = bgm_stream
+	if _current_bgm != null:
+		_backup_bgm = _current_bgm
 	_handle_transition(
 			_bgm_player, _bgm_player_alt,
 			_current_bgm, BGM_TRANSITION_DURATION
@@ -91,20 +94,22 @@ func _handle_transition(
 	var playing_stream = _get_playing_stream(player_1, player_2)
 	var next_stream = _get_non_playing_stream(player_1, player_2)
 	
-	next_stream.stream = stream
-	next_stream.volume_db = PLAYER_OFF
 	_tween.interpolate_property(
 			playing_stream, "volume_db",
 			PLAYER_ON, PLAYER_OFF, duration * 2/3,
 			Tween.TRANS_EXPO, Tween.EASE_OUT
 	)
-	_tween.interpolate_property(
-			next_stream, "volume_db",
-			PLAYER_OFF, PLAYER_ON, duration,
-			Tween.TRANS_EXPO, Tween.EASE_OUT
-	)
-	_tween.interpolate_callback(next_stream, 0.0, "play")
 	_tween.interpolate_callback(playing_stream, duration, "stop")
+	
+	if stream != null:
+		next_stream.stream = stream
+		next_stream.volume_db = PLAYER_OFF
+		_tween.interpolate_property(
+				next_stream, "volume_db",
+				PLAYER_OFF, PLAYER_ON, duration,
+				Tween.TRANS_EXPO, Tween.EASE_OUT
+		)
+		_tween.interpolate_callback(next_stream, 0.0, "play")
 	_tween.start()
 
 
@@ -122,7 +127,10 @@ func _get_non_playing_stream(player_1: AudioStreamPlayer, player_2: AudioStreamP
 
 func _set_is_bgm_on(value: bool) -> void:
 	is_bgm_on = value
-	AudioServer.set_bus_mute(BGM_BUS, not is_bgm_on)
+	if is_bgm_on:
+		play_bgm(_backup_bgm)
+	else:
+		play_bgm(null)
 
 
 func _set_is_sfx_on(value: bool) -> void:
