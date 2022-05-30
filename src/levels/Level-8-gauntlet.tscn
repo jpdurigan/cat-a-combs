@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/espetos/Espeto.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/dardos/LancadorDardo.tscn" type="PackedScene" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://levels/_base/bg/static/decor_cranio_1.png" type="Texture" id=17]
 [ext_resource path="res://levels/_base/bg/static/deposito_cranio_3.png" type="Texture" id=18]
 [ext_resource path="res://levels/_base/bg/anim/velas_anim.tscn" type="PackedScene" id=19]
+[ext_resource path="res://levels/_base/bg/static/cranio_solto_2.png" type="Texture" id=20]
+[ext_resource path="res://levels/_base/bg/static/cranio_solto_1.png" type="Texture" id=21]
+[ext_resource path="res://levels/_base/bg/static/cranio_solto_3.png" type="Texture" id=22]
 
 [node name="BaseLevel" instance=ExtResource( 8 )]
 lives = 18
@@ -28,124 +31,90 @@ tile_data = PoolIntArray( -2097152, 0, 0, -2097151, 0, 0, -2097150, 0, 0, -20971
 
 [node name="TeiaAranha" type="Sprite" parent="BG" index="0"]
 use_parent_material = true
-position = Vector2( 80, -208 )
+position = Vector2( 75, -211 )
 texture = ExtResource( 10 )
 
 [node name="TeiaAranha8" type="Sprite" parent="BG" index="1"]
 use_parent_material = true
-position = Vector2( 80, 176 )
+position = Vector2( 73, 171 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha14" type="Sprite" parent="BG" index="2"]
+[node name="TeiaAranha15" type="Sprite" parent="BG" index="2"]
 use_parent_material = true
-position = Vector2( 688, 144 )
+position = Vector2( 653, 172 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha15" type="Sprite" parent="BG" index="3"]
+[node name="TeiaAranha13" type="Sprite" parent="BG" index="3"]
 use_parent_material = true
-position = Vector2( 656, 176 )
-texture = ExtResource( 10 )
-
-[node name="TeiaAranha12" type="Sprite" parent="BG" index="4"]
-use_parent_material = true
-position = Vector2( 304, 176 )
+position = Vector2( 731, 136 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha13" type="Sprite" parent="BG" index="5"]
+[node name="TeiaAranha17" type="Sprite" parent="BG" index="4"]
 use_parent_material = true
-position = Vector2( 720, 144 )
+position = Vector2( 565, -565 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha17" type="Sprite" parent="BG" index="6"]
+[node name="TeiaAranha19" type="Sprite" parent="BG" index="5"]
 use_parent_material = true
-position = Vector2( 560, -560 )
+position = Vector2( 505, -667 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha18" type="Sprite" parent="BG" index="7"]
-use_parent_material = true
-position = Vector2( 528, -624 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-texture = ExtResource( 10 )
-
-[node name="TeiaAranha19" type="Sprite" parent="BG" index="8"]
-use_parent_material = true
-position = Vector2( 496, -656 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-texture = ExtResource( 10 )
-
-[node name="TeiaAranha20" type="Sprite" parent="BG" index="9"]
+[node name="TeiaAranha20" type="Sprite" parent="BG" index="6"]
 use_parent_material = true
 position = Vector2( 1304, -856 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha2" type="Sprite" parent="BG" index="10"]
+[node name="TeiaAranha2" type="Sprite" parent="BG" index="7"]
 use_parent_material = true
-position = Vector2( 112, -240 )
+position = Vector2( 102, -249 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha3" type="Sprite" parent="BG" index="11"]
+[node name="TeiaAranha3" type="Sprite" parent="BG" index="8"]
 use_parent_material = true
-position = Vector2( 176, -528 )
+position = Vector2( 170, -532 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha4" type="Sprite" parent="BG" index="12"]
+[node name="TeiaAranha4" type="Sprite" parent="BG" index="9"]
 use_parent_material = true
-position = Vector2( 336, -560 )
+position = Vector2( 325, -571 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha5" type="Sprite" parent="BG" index="13"]
+[node name="TeiaAranha6" type="Sprite" parent="BG" index="10"]
 use_parent_material = true
-position = Vector2( 80, -496 )
+position = Vector2( 171, -723 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha6" type="Sprite" parent="BG" index="14"]
+[node name="TeiaAranha9" type="Sprite" parent="BG" index="11"]
 use_parent_material = true
-position = Vector2( 176, -720 )
+position = Vector2( 264, -824 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha7" type="Sprite" parent="BG" index="15"]
-use_parent_material = true
-position = Vector2( 208, -752 )
-texture = ExtResource( 10 )
-
-[node name="TeiaAranha9" type="Sprite" parent="BG" index="16"]
-use_parent_material = true
-position = Vector2( 272, -816 )
-texture = ExtResource( 10 )
-
-[node name="TeiaAranha10" type="Sprite" parent="BG" index="17"]
-use_parent_material = true
-position = Vector2( 336, -848 )
-texture = ExtResource( 10 )
-
-[node name="TeiaAranha16" type="Sprite" parent="BG" index="18"]
+[node name="TeiaAranha16" type="Sprite" parent="BG" index="12"]
 use_parent_material = true
 position = Vector2( 80, -880 )
 texture = ExtResource( 10 )
 
-[node name="TeiaAranha11" type="Sprite" parent="BG" index="19"]
+[node name="TeiaAranha11" type="Sprite" parent="BG" index="13"]
 use_parent_material = true
-position = Vector2( 368, -880 )
+position = Vector2( 362, -885 )
 texture = ExtResource( 10 )
 
-[node name="Tumulo" type="Sprite" parent="BG" index="20"]
+[node name="Tumulo" type="Sprite" parent="BG" index="14"]
 use_parent_material = true
 position = Vector2( 720, -120 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 14 )
 
-[node name="Tumulo2" type="Sprite" parent="BG" index="21"]
+[node name="Tumulo2" type="Sprite" parent="BG" index="15"]
 use_parent_material = true
 position = Vector2( 704, 232 )
 rotation = 3.14159
@@ -156,62 +125,65 @@ texture = ExtResource( 14 )
 show_behind_parent = true
 use_parent_material = true
 position = Vector2( -13.0002, -35.9999 )
+frame = 3
 
 [node name="Velas3" parent="BG/Tumulo2" index="1" instance=ExtResource( 19 )]
 show_behind_parent = true
 use_parent_material = true
 position = Vector2( -17.0001, -29.9999 )
+frame = 3
 flip_h = true
 
 [node name="Velas2" parent="BG/Tumulo2" index="2" instance=ExtResource( 19 )]
 show_behind_parent = true
 use_parent_material = true
 position = Vector2( 15.9999, -33 )
+frame = 3
 flip_h = true
 
-[node name="DepositoCranio1" type="Sprite" parent="BG" index="22"]
+[node name="DepositoCranio1" type="Sprite" parent="BG" index="16"]
 use_parent_material = true
 position = Vector2( 272, 264 )
 texture = ExtResource( 11 )
 
-[node name="DepositoCranio3" type="Sprite" parent="BG" index="23"]
+[node name="DepositoCranio3" type="Sprite" parent="BG" index="17"]
 use_parent_material = true
 position = Vector2( 416, 264 )
 texture = ExtResource( 16 )
 
-[node name="DepositoCranio4" type="Sprite" parent="BG" index="24"]
+[node name="DepositoCranio4" type="Sprite" parent="BG" index="18"]
 use_parent_material = true
 position = Vector2( 344, 264 )
 texture = ExtResource( 18 )
 flip_h = true
 
-[node name="Banner" type="Sprite" parent="BG" index="25"]
+[node name="Banner" type="Sprite" parent="BG" index="19"]
 use_parent_material = true
 position = Vector2( 656, 232 )
 texture = ExtResource( 13 )
 
-[node name="Banner2" type="Sprite" parent="BG" index="26"]
+[node name="Banner2" type="Sprite" parent="BG" index="20"]
 use_parent_material = true
 position = Vector2( 752, 232 )
 texture = ExtResource( 13 )
 
-[node name="Banner3" type="Sprite" parent="BG" index="27"]
+[node name="Banner3" type="Sprite" parent="BG" index="21"]
 use_parent_material = true
 position = Vector2( 496, 56 )
 texture = ExtResource( 13 )
 
-[node name="DecorOssos" type="Sprite" parent="BG" index="28"]
+[node name="DecorOssos" type="Sprite" parent="BG" index="22"]
 use_parent_material = true
 position = Vector2( 512, 168 )
 texture = ExtResource( 12 )
 flip_h = true
 
-[node name="DecorOssos2" type="Sprite" parent="BG" index="29"]
+[node name="DecorOssos2" type="Sprite" parent="BG" index="23"]
 use_parent_material = true
-position = Vector2( 340, -80 )
+position = Vector2( 340, -27 )
 texture = ExtResource( 12 )
 
-[node name="CruzCranio" type="Sprite" parent="BG" index="30"]
+[node name="CruzCranio" type="Sprite" parent="BG" index="24"]
 use_parent_material = true
 position = Vector2( 368, -336 )
 texture = ExtResource( 17 )
@@ -246,47 +218,222 @@ use_parent_material = true
 position = Vector2( 29, 0 )
 texture = ExtResource( 15 )
 
-[node name="DepositoCranio2" type="Sprite" parent="BG" index="31"]
+[node name="DepositoCranio2" type="Sprite" parent="BG" index="25"]
 use_parent_material = true
 position = Vector2( 352, -728 )
 texture = ExtResource( 16 )
 flip_h = true
 
-[node name="Velas" parent="BG" index="32" instance=ExtResource( 19 )]
-position = Vector2( 448, 104 )
+[node name="Velas" parent="BG" index="26" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 430, 138 )
+frame = 3
 
-[node name="Velas2" parent="BG" index="33" instance=ExtResource( 19 )]
+[node name="Velas22" parent="BG" index="27" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 397, 112 )
+frame = 3
+
+[node name="Velas10" parent="BG" index="28" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 566, 266 )
+frame = 2
+
+[node name="Velas11" parent="BG" index="29" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 553, 272 )
+
+[node name="Velas21" parent="BG" index="30" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 365, 272 )
+
+[node name="Velas12" parent="BG" index="31" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 231, 74 )
+
+[node name="Velas13" parent="BG" index="32" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 567, 41 )
+
+[node name="Velas14" parent="BG" index="33" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 584, -150 )
+frame = 0
+
+[node name="Velas15" parent="BG" index="34" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 608, -150 )
+frame = 0
+
+[node name="Velas16" parent="BG" index="35" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 618, -150 )
+frame = 4
+
+[node name="Velas17" parent="BG" index="36" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 70, -406 )
+frame = 3
+
+[node name="Velas18" parent="BG" index="37" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 79, -405 )
+frame = 3
+
+[node name="Velas19" parent="BG" index="38" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 371, -727 )
+frame = 2
+
+[node name="Velas2" parent="BG" index="39" instance=ExtResource( 19 )]
+use_parent_material = true
 position = Vector2( 288, -80 )
-frame = 0
+frame = 2
 
-[node name="Velas3" parent="BG" index="34" instance=ExtResource( 19 )]
+[node name="Velas3" parent="BG" index="40" instance=ExtResource( 19 )]
+use_parent_material = true
 position = Vector2( 384, -80 )
+frame = 2
+
+[node name="Velas4" parent="BG" index="41" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 208, -472 )
 frame = 0
 
-[node name="Velas4" parent="BG" index="35" instance=ExtResource( 19 )]
-position = Vector2( 208, -472 )
-frame = 3
-
-[node name="Velas5" parent="BG" index="36" instance=ExtResource( 19 )]
+[node name="Velas5" parent="BG" index="42" instance=ExtResource( 19 )]
+use_parent_material = true
 position = Vector2( 448, -624 )
-frame = 3
+frame = 0
 flip_h = true
 
-[node name="Velas6" parent="BG" index="37" instance=ExtResource( 19 )]
+[node name="Velas6" parent="BG" index="43" instance=ExtResource( 19 )]
+use_parent_material = true
 position = Vector2( 672, -840 )
+frame = 2
+
+[node name="Velas7" parent="BG" index="44" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 768, -840 )
+
+[node name="Velas8" parent="BG" index="45" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 864, -840 )
+
+[node name="Velas9" parent="BG" index="46" instance=ExtResource( 19 )]
+use_parent_material = true
+position = Vector2( 960, -840 )
 frame = 0
 
-[node name="Velas7" parent="BG" index="38" instance=ExtResource( 19 )]
-position = Vector2( 768, -840 )
-frame = 4
+[node name="DepositoCranio5" type="Sprite" parent="BG" index="47"]
+position = Vector2( 656, -690 )
+texture = ExtResource( 11 )
 
-[node name="Velas8" parent="BG" index="39" instance=ExtResource( 19 )]
-position = Vector2( 864, -840 )
-frame = 4
+[node name="DecorOssos3" type="Sprite" parent="BG" index="48"]
+position = Vector2( 117, -188 )
+texture = ExtResource( 12 )
 
-[node name="Velas9" parent="BG" index="40" instance=ExtResource( 19 )]
-position = Vector2( 960, -840 )
+[node name="Velas20" parent="BG" index="49" instance=ExtResource( 19 )]
+position = Vector2( 78, -176 )
 frame = 3
+
+[node name="Banner4" type="Sprite" parent="BG" index="50"]
+position = Vector2( 307, 227 )
+texture = ExtResource( 13 )
+
+[node name="Banner5" type="Sprite" parent="BG" index="51"]
+position = Vector2( 380, 227 )
+texture = ExtResource( 13 )
+
+[node name="Banner6" type="Sprite" parent="BG" index="52"]
+position = Vector2( 720, -829 )
+texture = ExtResource( 13 )
+
+[node name="Banner7" type="Sprite" parent="BG" index="53"]
+position = Vector2( 720, -829 )
+texture = ExtResource( 13 )
+
+[node name="Banner8" type="Sprite" parent="BG" index="54"]
+position = Vector2( 816, -829 )
+texture = ExtResource( 13 )
+
+[node name="Banner9" type="Sprite" parent="BG" index="55"]
+position = Vector2( 911, -829 )
+texture = ExtResource( 13 )
+
+[node name="CranioSolto1" type="Sprite" parent="BG" index="56"]
+position = Vector2( 68, 252 )
+texture = ExtResource( 21 )
+
+[node name="CranioSolto2" type="Sprite" parent="BG" index="57"]
+position = Vector2( 236, 284 )
+texture = ExtResource( 21 )
+
+[node name="CranioSolto3" type="Sprite" parent="BG" index="58"]
+position = Vector2( 228, 284 )
+texture = ExtResource( 20 )
+
+[node name="CranioSolto4" type="Sprite" parent="BG" index="59"]
+position = Vector2( 174, 221 )
+texture = ExtResource( 20 )
+
+[node name="CranioSolto6" type="Sprite" parent="BG" index="60"]
+position = Vector2( 239, -196 )
+texture = ExtResource( 22 )
+
+[node name="CranioSolto7" type="Sprite" parent="BG" index="61"]
+position = Vector2( 476, -68 )
+texture = ExtResource( 22 )
+
+[node name="CranioSolto5" type="Sprite" parent="BG" index="62"]
+position = Vector2( 301, 27 )
+texture = ExtResource( 20 )
+
+[node name="Velas23" parent="BG" index="63" instance=ExtResource( 19 )]
+position = Vector2( 519, -279 )
+frame = 0
+
+[node name="Velas24" parent="BG" index="64" instance=ExtResource( 19 )]
+position = Vector2( 566, -244 )
+frame = 4
+
+[node name="Velas25" parent="BG" index="65" instance=ExtResource( 19 )]
+position = Vector2( 544, -278 )
+frame = 4
+
+[node name="CranioSolto9" type="Sprite" parent="BG" index="66"]
+position = Vector2( 234, -291 )
+texture = ExtResource( 20 )
+
+[node name="CranioSolto8" type="Sprite" parent="BG" index="67"]
+position = Vector2( 228, -292 )
+texture = ExtResource( 21 )
+
+[node name="Velas26" parent="BG" index="68" instance=ExtResource( 19 )]
+position = Vector2( 167, -631 )
+
+[node name="CranioSolto10" type="Sprite" parent="BG" index="69"]
+position = Vector2( 175, -611 )
+texture = ExtResource( 21 )
+
+[node name="Velas27" parent="BG" index="70" instance=ExtResource( 19 )]
+position = Vector2( 199, -623 )
+frame = 0
+
+[node name="Tumulo3" type="Sprite" parent="BG" index="71"]
+position = Vector2( 531, -246 )
+texture = ExtResource( 14 )
+
+[node name="CranioSolto11" type="Sprite" parent="BG" index="72"]
+position = Vector2( 534, -741 )
+texture = ExtResource( 22 )
+
+[node name="CranioSolto12" type="Sprite" parent="BG" index="73"]
+position = Vector2( 541, -741 )
+texture = ExtResource( 20 )
+
+[node name="CranioSolto13" type="Sprite" parent="BG" index="74"]
+position = Vector2( 543, -750 )
+texture = ExtResource( 22 )
 
 [node name="FG" parent="." index="2"]
 tile_data = PoolIntArray( -2162658, 0, 0, -2162657, 0, 1, -2162656, 0, 1, -2162655, 0, 1, -2162654, 0, 1, -2162653, 0, 1, -2162652, 0, 1, -2162651, 0, 1, -2162650, 0, 1, -2162649, 0, 1, -2162648, 0, 2, -2097152, 0, 0, -2097151, 0, 1, -2097150, 0, 1, -2097149, 0, 1, -2097148, 0, 1, -2097147, 0, 1, -2097146, 0, 1, -2097145, 0, 1, -2097144, 0, 1, -2097143, 0, 1, -2097142, 0, 1, -2097141, 0, 1, -2097140, 0, 1, -2097139, 0, 1, -2097138, 0, 1, -2097137, 0, 1, -2097136, 0, 1, -2097135, 0, 1, -2097134, 0, 1, -2097133, 0, 1, -2097132, 0, 1, -2097131, 0, 1, -2097130, 0, 1, -2097129, 0, 1, -2097128, 0, 1, -2097127, 0, 1, -2097126, 0, 1, -2097125, 0, 1, -2097124, 0, 1, -2097123, 0, 1, -2097122, 0, 65541, -2097121, 0, 65537, -2097120, 0, 131076, -2097119, 0, 65537, -2097118, 0, 196612, -2097117, 0, 65537, -2097116, 0, 65537, -2097115, 0, 196612, -2097114, 0, 196614, -2097113, 0, 131076, -2097112, 0, 65538, -2031616, 0, 65536, -2031615, 0, 196612, -2031614, 0, 131078, -2031613, 0, 65537, -2031612, 0, 131077, -2031611, 0, 131077, -2031610, 0, 131078, -2031609, 0, 65537, -2031608, 0, 196612, -2031607, 0, 196612, -2031606, 0, 65537, -2031605, 0, 131077, -2031604, 0, 196613, -2031603, 0, 131076, -2031602, 0, 131076, -2031601, 0, 65537, -2031600, 0, 196613, -2031599, 0, 131076, -2031598, 0, 65537, -2031597, 0, 65537, -2031596, 0, 65537, -2031595, 0, 131076, -2031594, 0, 196612, -2031593, 0, 131076, -2031592, 0, 65537, -2031591, 0, 131078, -2031590, 0, 131078, -2031589, 0, 65537, -2031588, 0, 131078, -2031587, 0, 196612, -2031586, 0, 131078, -2031585, 0, 65537, -2031584, 0, 65537, -2031583, 0, 65537, -2031582, 0, 65537, -2031581, 0, 196613, -2031580, 0, 196613, -2031579, 0, 131076, -2031578, 0, 131078, -2031577, 0, 196612, -2031576, 0, 65538, -1966080, 0, 65536, -1966079, 0, 196612, -1966078, 0, 65537, -1966077, 0, 196613, -1966076, 0, 65537, -1966075, 0, 196612, -1966074, 0, 196613, -1966073, 0, 131078, -1966072, 0, 196612, -1966071, 0, 196613, -1966070, 0, 131076, -1966069, 0, 196613, -1966068, 0, 131077, -1966067, 0, 196612, -1966066, 0, 65537, -1966065, 0, 65537, -1966064, 0, 131078, -1966063, 0, 4, -1966062, 0, 131073, -1966061, 0, 131073, -1966060, 0, 131073, -1966059, 0, 131073, -1966058, 0, 131073, -1966057, 0, 131073, -1966056, 0, 131073, -1966055, 0, 131073, -1966054, 0, 131073, -1966053, 0, 131073, -1966052, 0, 131073, -1966051, 0, 131073, -1966050, 0, 131073, -1966049, 0, 131073, -1966048, 0, 131073, -1966047, 0, 5, -1966046, 0, 65537, -1966045, 0, 131077, -1966044, 0, 131077, -1966043, 0, 196613, -1966042, 0, 131076, -1966041, 0, 65537, -1966040, 0, 65540, -1966039, 0, 2, -1900544, 0, 65536, -1900543, 0, 4, -1900542, 0, 131073, -1900541, 0, 131073, -1900540, 0, 131073, -1900539, 0, 131073, -1900538, 0, 131073, -1900537, 0, 5, -1900536, 0, 131078, -1900535, 0, 65537, -1900534, 0, 4, -1900533, 0, 131073, -1900532, 0, 131073, -1900531, 0, 131073, -1900530, 0, 131073, -1900529, 0, 131073, -1900528, 0, 131073, -1900527, 0, 131074, -1900511, 0, 131072, -1900510, 0, 131073, -1900509, 0, 131073, -1900508, 0, 131073, -1900507, 0, 131073, -1900506, 0, 5, -1900505, 0, 65537, -1900504, 0, 131077, -1900503, 0, 65538, -1835008, 0, 65536, -1835007, 0, 65538, -1835001, 0, 65536, -1835000, 0, 131077, -1834999, 0, 4, -1834998, 0, 131074, -1834970, 0, 65536, -1834969, 0, 65537, -1834968, 0, 65537, -1834967, 0, 65538, -1769472, 0, 65536, -1769471, 0, 65538, -1769467, 0, 0, -1769466, 0, 1, -1769465, 0, 4, -1769464, 0, 131073, -1769463, 0, 131074, -1769434, 0, 65536, -1769433, 0, 196614, -1769432, 0, 131078, -1769431, 0, 65538, -1703936, 0, 65536, -1703935, 0, 65538, -1703932, 0, 0, -1703931, 0, 65541, -1703930, 0, 4, -1703929, 0, 131074, -1703898, 0, 65536, -1703897, 0, 65537, -1703896, 0, 65537, -1703895, 0, 65538, -1638400, 0, 65536, -1638399, 0, 65538, -1638397, 0, 0, -1638396, 0, 65541, -1638395, 0, 4, -1638394, 0, 131074, -1638365, 0, 0, -1638364, 0, 1, -1638363, 0, 1, -1638362, 0, 65541, -1638361, 0, 131076, -1638360, 0, 196612, -1638359, 0, 65538, -1572864, 0, 65536, -1572863, 0, 65540, -1572862, 0, 1, -1572861, 0, 65541, -1572860, 0, 4, -1572859, 0, 131074, -1572847, 0, 0, -1572846, 0, 1, -1572845, 0, 1, -1572844, 0, 1, -1572843, 0, 1, -1572842, 0, 1, -1572841, 0, 1, -1572840, 0, 1, -1572839, 0, 1, -1572838, 0, 1, -1572837, 0, 1, -1572836, 0, 1, -1572835, 0, 1, -1572834, 0, 1, -1572833, 0, 1, -1572832, 0, 1, -1572831, 0, 1, -1572830, 0, 1, -1572829, 0, 65541, -1572828, 0, 131078, -1572827, 0, 131076, -1572826, 0, 131076, -1572825, 0, 196612, -1572824, 0, 196613, -1572823, 0, 65538, -1507328, 0, 65536, -1507327, 0, 131078, -1507326, 0, 65537, -1507325, 0, 131076, -1507324, 0, 65538, -1507316, 0, 0, -1507315, 0, 1, -1507314, 0, 1, -1507313, 0, 1, -1507312, 0, 1, -1507311, 0, 65541, -1507310, 0, 131077, -1507309, 0, 4, -1507308, 0, 131073, -1507307, 0, 5, -1507306, 0, 65537, -1507305, 0, 65537, -1507304, 0, 131076, -1507303, 0, 65537, -1507302, 0, 131077, -1507301, 0, 65537, -1507300, 0, 131077, -1507299, 0, 65537, -1507298, 0, 65537, -1507297, 0, 131076, -1507296, 0, 131078, -1507295, 0, 65537, -1507294, 0, 65537, -1507293, 0, 131077, -1507292, 0, 65537, -1507291, 0, 131078, -1507290, 0, 65537, -1507289, 0, 131077, -1507288, 0, 196612, -1507287, 0, 65538, -1441792, 0, 65536, -1441791, 0, 196614, -1441790, 0, 196612, -1441789, 0, 131078, -1441788, 0, 65538, -1441782, 0, 196608, -1441781, 0, 196609, -1441780, 0, 131073, -1441779, 0, 131073, -1441778, 0, 131073, -1441777, 0, 131073, -1441776, 0, 5, -1441775, 0, 65537, -1441774, 0, 196613, -1441773, 0, 65538, -1441771, 0, 65536, -1441770, 0, 65537, -1441769, 0, 196614, -1441768, 0, 196612, -1441767, 0, 4, -1441766, 0, 131073, -1441765, 0, 131073, -1441764, 0, 131073, -1441763, 0, 131073, -1441762, 0, 131073, -1441761, 0, 131073, -1441760, 0, 5, -1441759, 0, 196613, -1441758, 0, 65537, -1441757, 0, 196614, -1441756, 0, 196613, -1441755, 0, 196612, -1441754, 0, 131077, -1441753, 0, 196612, -1441752, 0, 65537, -1441751, 0, 65538, -1376256, 0, 65536, -1376255, 0, 196612, -1376254, 0, 196612, -1376253, 0, 65537, -1376252, 0, 65538, -1376240, 0, 131072, -1376239, 0, 5, -1376238, 0, 196612, -1376237, 0, 65540, -1376236, 0, 1, -1376235, 0, 65541, -1376234, 0, 131076, -1376233, 0, 196612, -1376232, 0, 4, -1376231, 0, 131074, -1376224, 0, 65536, -1376223, 0, 131076, -1376222, 0, 131078, -1376221, 0, 65537, -1376220, 0, 196613, -1376219, 0, 196612, -1376218, 0, 131077, -1376217, 0, 196614, -1376216, 0, 196613, -1376215, 0, 65538, -1310720, 0, 65536, -1310719, 0, 196613, -1310718, 0, 131076, -1310717, 0, 65537, -1310716, 0, 65538, -1310703, 0, 65536, -1310702, 0, 196612, -1310701, 0, 131078, -1310700, 0, 196613, -1310699, 0, 65537, -1310698, 0, 196612, -1310697, 0, 196614, -1310696, 0, 65538, -1310688, 0, 65536, -1310687, 0, 196612, -1310686, 0, 65537, -1310685, 0, 131078, -1310684, 0, 65537, -1310683, 0, 131078, -1310682, 0, 131076, -1310681, 0, 131078, -1310680, 0, 196612, -1310679, 0, 65538, -1245184, 0, 65536, -1245183, 0, 65537, -1245182, 0, 196612, -1245181, 0, 131076, -1245180, 0, 65540, -1245179, 0, 1, -1245178, 0, 1, -1245177, 0, 1, -1245176, 0, 1, -1245175, 0, 1, -1245174, 0, 196610, -1245167, 0, 131072, -1245166, 0, 5, -1245165, 0, 131078, -1245164, 0, 131077, -1245163, 0, 131078, -1245162, 0, 196614, -1245161, 0, 4, -1245160, 0, 131074, -1245153, 0, 0, -1245152, 0, 65541, -1245151, 0, 65537, -1245150, 0, 65537, -1245149, 0, 131077, -1245148, 0, 131077, -1245147, 0, 65537, -1245146, 0, 131076, -1245145, 0, 131076, -1245144, 0, 65537, -1245143, 0, 65538, -1179648, 0, 65536, -1179647, 0, 65537, -1179646, 0, 131077, -1179645, 0, 131078, -1179644, 0, 4, -1179643, 0, 131073, -1179642, 0, 131073, -1179641, 0, 131073, -1179640, 0, 131073, -1179639, 0, 131074, -1179636, 0, 196611, -1179630, 0, 65536, -1179629, 0, 196614, -1179628, 0, 65537, -1179627, 0, 65537, -1179626, 0, 196613, -1179625, 0, 65538, -1179618, 0, 0, -1179617, 0, 65541, -1179616, 0, 65537, -1179615, 0, 65537, -1179614, 0, 131077, -1179613, 0, 65537, -1179612, 0, 131078, -1179611, 0, 196614, -1179610, 0, 65537, -1179609, 0, 65537, -1179608, 0, 196612, -1179607, 0, 65538, -1114112, 0, 65536, -1114111, 0, 4, -1114110, 0, 131073, -1114109, 0, 131073, -1114108, 0, 131074, -1114098, 0, 196611, -1114094, 0, 65536, -1114093, 0, 131076, -1114092, 0, 196613, -1114091, 0, 65537, -1114090, 0, 196614, -1114089, 0, 65540, -1114088, 0, 2, -1114086, 0, 0, -1114085, 0, 1, -1114084, 0, 1, -1114083, 0, 1, -1114082, 0, 65541, -1114081, 0, 65537, -1114080, 0, 65537, -1114079, 0, 196613, -1114078, 0, 131078, -1114077, 0, 131077, -1114076, 0, 65537, -1114075, 0, 196613, -1114074, 0, 65537, -1114073, 0, 65537, -1114072, 0, 131076, -1114071, 0, 65538, -1048576, 0, 65536, -1048575, 0, 65538, -1048558, 0, 65536, -1048557, 0, 196612, -1048556, 0, 196614, -1048555, 0, 65537, -1048554, 0, 65537, -1048553, 0, 131076, -1048552, 0, 65540, -1048551, 0, 1, -1048550, 0, 65541, -1048549, 0, 131076, -1048548, 0, 65537, -1048547, 0, 65537, -1048546, 0, 131077, -1048545, 0, 65537, -1048544, 0, 131077, -1048543, 0, 65537, -1048542, 0, 196612, -1048541, 0, 4, -1048540, 0, 131073, -1048539, 0, 131073, -1048538, 0, 131073, -1048537, 0, 131073, -1048536, 0, 131073, -1048535, 0, 131074, -983040, 0, 65536, -983039, 0, 65538, -983022, 0, 65536, -983021, 0, 65537, -983020, 0, 196613, -983019, 0, 131076, -983018, 0, 65537, -983017, 0, 65537, -983016, 0, 196614, -983015, 0, 131078, -983014, 0, 196613, -983013, 0, 131077, -983012, 0, 65537, -983011, 0, 4, -983010, 0, 131073, -983009, 0, 131073, -983008, 0, 131073, -983007, 0, 131073, -983006, 0, 131073, -983005, 0, 131074, -917504, 0, 65536, -917503, 0, 65538, -917495, 0, 196611, -917486, 0, 65536, -917485, 0, 131077, -917484, 0, 65537, -917483, 0, 131077, -917482, 0, 131076, -917481, 0, 65537, -917480, 0, 131076, -917479, 0, 196613, -917478, 0, 4, -917477, 0, 131073, -917476, 0, 131073, -917475, 0, 131074, -851968, 0, 65536, -851967, 0, 65538, -851950, 0, 65536, -851949, 0, 131078, -851948, 0, 65537, -851947, 0, 131077, -851946, 0, 131076, -851945, 0, 196614, -851944, 0, 131077, -851943, 0, 4, -851942, 0, 131074, -786432, 0, 65536, -786431, 0, 65540, -786430, 0, 1, -786429, 0, 2, -786414, 0, 65536, -786413, 0, 131077, -786412, 0, 65537, -786411, 0, 196613, -786410, 0, 196613, -786409, 0, 65537, -786408, 0, 65537, -786407, 0, 65538, -720896, 0, 65536, -720895, 0, 196613, -720894, 0, 65537, -720893, 0, 65538, -720878, 0, 65536, -720877, 0, 131078, -720876, 0, 65537, -720875, 0, 196612, -720874, 0, 196614, -720873, 0, 196613, -720872, 0, 65537, -720871, 0, 65538, -655360, 0, 65536, -655359, 0, 196612, -655358, 0, 196613, -655357, 0, 65540, -655356, 0, 1, -655355, 0, 1, -655354, 0, 2, -655342, 0, 65536, -655341, 0, 131077, -655340, 0, 65537, -655339, 0, 65537, -655338, 0, 4, -655337, 0, 131073, -655336, 0, 5, -655335, 0, 65538, -589824, 0, 65536, -589823, 0, 131077, -589822, 0, 4, -589821, 0, 131073, -589820, 0, 131073, -589819, 0, 131073, -589818, 0, 131074, -589817, 0, 196611, -589806, 0, 65536, -589805, 0, 196614, -589804, 0, 131078, -589803, 0, 4, -589802, 0, 131074, -589800, 0, 65536, -589799, 0, 65538, -524288, 0, 65536, -524287, 0, 4, -524286, 0, 131074, -524278, 0, 196608, -524277, 0, 196609, -524276, 0, 196610, -524270, 0, 65536, -524269, 0, 65537, -524268, 0, 4, -524267, 0, 131074, -524264, 0, 65536, -524263, 0, 65538, -458752, 0, 65536, -458751, 0, 65538, -458737, 0, 0, -458736, 0, 1, -458735, 0, 1, -458734, 0, 65541, -458733, 0, 4, -458732, 0, 131074, -458728, 0, 65536, -458727, 0, 65538, -393216, 0, 65536, -393215, 0, 65538, -393210, 0, 196608, -393209, 0, 196609, -393208, 0, 196610, -393201, 0, 65536, -393200, 0, 131076, -393199, 0, 4, -393198, 0, 131073, -393197, 0, 131074, -393192, 0, 65536, -393191, 0, 65538, -327680, 0, 65536, -327679, 0, 65540, -327678, 0, 2, -327665, 0, 65536, -327664, 0, 65537, -327663, 0, 65538, -327656, 0, 65536, -327655, 0, 65538, -262144, 0, 65536, -262143, 0, 65537, -262142, 0, 65540, -262141, 0, 2, -262129, 0, 65536, -262128, 0, 65537, -262127, 0, 65540, -262126, 0, 1, -262125, 0, 1, -262124, 0, 2, -262120, 0, 65536, -262119, 0, 65538, -196608, 0, 65536, -196607, 0, 196612, -196606, 0, 65537, -196605, 0, 65540, -196604, 0, 1, -196603, 0, 1, -196602, 0, 1, -196601, 0, 2, -196593, 0, 65536, -196592, 0, 131078, -196591, 0, 196613, -196590, 0, 131077, -196589, 0, 131078, -196588, 0, 65540, -196587, 0, 1, -196586, 0, 1, -196585, 0, 1, -196584, 0, 65541, -196583, 0, 65538, -131072, 0, 65536, -131071, 0, 196614, -131070, 0, 131077, -131069, 0, 131078, -131068, 0, 65537, -131067, 0, 131078, -131066, 0, 4, -131065, 0, 131074, -131059, 0, 196608, -131058, 0, 196610, -131057, 0, 131072, -131056, 0, 131073, -131055, 0, 131073, -131054, 0, 5, -131053, 0, 131076, -131052, 0, 131076, -131051, 0, 131077, -131050, 0, 65537, -131049, 0, 131078, -131048, 0, 131076, -131047, 0, 65538, -65536, 0, 65536, -65535, 0, 65537, -65534, 0, 196613, -65533, 0, 131078, -65532, 0, 196613, -65531, 0, 65537, -65530, 0, 65538, -65518, 0, 65536, -65517, 0, 196613, -65516, 0, 65537, -65515, 0, 196613, -65514, 0, 196612, -65513, 0, 65537, -65512, 0, 65537, -65511, 0, 65538, 0, 0, 65536, 1, 0, 65537, 2, 0, 196613, 3, 0, 131076, 4, 0, 196612, 5, 0, 65537, 6, 0, 65538, 15, 0, 196611, 18, 0, 65536, 19, 0, 196612, 20, 0, 65537, 21, 0, 65537, 22, 0, 131078, 23, 0, 196614, 24, 0, 65537, 25, 0, 65538, 65536, 0, 65536, 65537, 0, 131077, 65538, 0, 196613, 65539, 0, 65537, 65540, 0, 196614, 65541, 0, 196614, 65542, 0, 65538, 65554, 0, 65536, 65555, 0, 196612, 65556, 0, 131078, 65557, 0, 196612, 65558, 0, 196613, 65559, 0, 196614, 65560, 0, 131076, 65561, 0, 65538, 131072, 0, 65536, 131073, 0, 131077, 131074, 0, 131076, 131075, 0, 196612, 131076, 0, 131077, 131077, 0, 65537, 131078, 0, 65538, 131089, 0, 196611, 131090, 0, 65536, 131091, 0, 196612, 131092, 0, 65537, 131093, 0, 196614, 131094, 0, 131078, 131095, 0, 65537, 131096, 0, 196612, 131097, 0, 65538, 196608, 0, 65536, 196609, 0, 196614, 196610, 0, 196613, 196611, 0, 196613, 196612, 0, 131076, 196613, 0, 131078, 196614, 0, 65540, 196615, 0, 1, 196616, 0, 1, 196617, 0, 1, 196618, 0, 1, 196619, 0, 2, 196626, 0, 65536, 196627, 0, 196613, 196628, 0, 4, 196629, 0, 131073, 196630, 0, 131073, 196631, 0, 5, 196632, 0, 131076, 196633, 0, 65538, 262144, 0, 65536, 262145, 0, 4, 262146, 0, 131073, 262147, 0, 131073, 262148, 0, 131073, 262149, 0, 131073, 262150, 0, 131073, 262151, 0, 131073, 262152, 0, 131073, 262153, 0, 131073, 262154, 0, 5, 262155, 0, 65540, 262156, 0, 2, 262162, 0, 65536, 262163, 0, 4, 262164, 0, 131074, 262167, 0, 131072, 262168, 0, 5, 262169, 0, 65538, 327680, 0, 65536, 327681, 0, 65538, 327690, 0, 131072, 327691, 0, 131073, 327692, 0, 131073, 327693, 0, 196610, 327698, 0, 65536, 327699, 0, 65538, 327704, 0, 65536, 327705, 0, 65538, 393216, 0, 65536, 393217, 0, 65538, 393234, 0, 65536, 393235, 0, 65538, 393240, 0, 65536, 393241, 0, 65538, 458752, 0, 65536, 458753, 0, 65538, 458757, 0, 0, 458758, 0, 2, 458767, 0, 196608, 458768, 0, 196610, 458770, 0, 65536, 458771, 0, 65538, 458776, 0, 65536, 458777, 0, 65538, 524288, 0, 65536, 524289, 0, 65540, 524290, 0, 1, 524291, 0, 1, 524292, 0, 1, 524293, 0, 65541, 524294, 0, 65538, 524306, 0, 65536, 524307, 0, 65540, 524308, 0, 1, 524309, 0, 1, 524310, 0, 1, 524311, 0, 1, 524312, 0, 65541, 524313, 0, 65538, 589824, 0, 65536, 589825, 0, 196612, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 131077, 589829, 0, 131078, 589830, 0, 65540, 589831, 0, 1, 589832, 0, 1, 589833, 0, 1, 589834, 0, 1, 589835, 0, 1, 589836, 0, 1, 589837, 0, 1, 589838, 0, 1, 589839, 0, 1, 589840, 0, 1, 589841, 0, 1, 589842, 0, 65541, 589843, 0, 131077, 589844, 0, 196614, 589845, 0, 196612, 589846, 0, 65537, 589847, 0, 196612, 589848, 0, 131076, 589849, 0, 65538, 655360, 0, 65536, 655361, 0, 65537, 655362, 0, 196612, 655363, 0, 196612, 655364, 0, 131076, 655365, 0, 131077, 655366, 0, 131077, 655367, 0, 196612, 655368, 0, 65537, 655369, 0, 131077, 655370, 0, 65537, 655371, 0, 131076, 655372, 0, 131076, 655373, 0, 65537, 655374, 0, 196614, 655375, 0, 131076, 655376, 0, 196613, 655377, 0, 131078, 655378, 0, 196613, 655379, 0, 65537, 655380, 0, 131078, 655381, 0, 131076, 655382, 0, 65537, 655383, 0, 65537, 655384, 0, 131076, 655385, 0, 65538, 720896, 0, 131072, 720897, 0, 131073, 720898, 0, 131073, 720899, 0, 131073, 720900, 0, 131073, 720901, 0, 131073, 720902, 0, 131073, 720903, 0, 131073, 720904, 0, 131073, 720905, 0, 131073, 720906, 0, 131073, 720907, 0, 131073, 720908, 0, 131073, 720909, 0, 131073, 720910, 0, 131073, 720911, 0, 131073, 720912, 0, 131073, 720913, 0, 131073, 720914, 0, 131073, 720915, 0, 131073, 720916, 0, 131073, 720917, 0, 131073, 720918, 0, 131073, 720919, 0, 131073, 720920, 0, 131073, 720921, 0, 131074 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/dardos/LancadorDardo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/_base/BaseLevel.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://levels/_base/bg/static/teia_aranha.png" type="Texture" id=7]
 [ext_resource path="res://levels/_base/bg/static/tumulo.png" type="Texture" id=8]
 [ext_resource path="res://levels/_base/bg/anim/velas_anim.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/_base/bg/static/decor_ossos.png" type="Texture" id=10]
 
 [node name="Level-3-dardo-tuto" instance=ExtResource( 2 )]
 lives = 4
@@ -18,7 +19,7 @@ tile_data = PoolIntArray( -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0
 
 [node name="Tumulo" type="Sprite" parent="BG" index="0"]
 use_parent_material = true
-position = Vector2( 224, 171 )
+position = Vector2( 247, 171 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 8 )
@@ -29,25 +30,50 @@ use_parent_material = true
 position = Vector2( -16.0001, -35 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
+frame = 0
+
+[node name="Velas2" parent="BG/Tumulo" index="1" instance=ExtResource( 9 )]
+show_behind_parent = true
+use_parent_material = true
+position = Vector2( -5.00012, -32 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+frame = 4
+
+[node name="Velas3" parent="BG/Tumulo" index="2" instance=ExtResource( 9 )]
+show_behind_parent = true
+use_parent_material = true
+position = Vector2( 34, -1.00008 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+frame = 4
+
+[node name="Velas4" parent="BG/Tumulo" index="3" instance=ExtResource( 9 )]
+show_behind_parent = true
+use_parent_material = true
+position = Vector2( -33, -0.999908 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+frame = 3
 
 [node name="Banner" type="Sprite" parent="BG" index="1"]
 use_parent_material = true
-position = Vector2( 160, 56 )
+position = Vector2( 160, 43 )
 texture = ExtResource( 6 )
 
 [node name="TeiaAranha" type="Sprite" parent="BG" index="2"]
 use_parent_material = true
-position = Vector2( -16, 48 )
+position = Vector2( -18, 46 )
 texture = ExtResource( 7 )
 
-[node name="TeiaAranha2" type="Sprite" parent="BG" index="3"]
-use_parent_material = true
-position = Vector2( 16, 16 )
-texture = ExtResource( 7 )
-
-[node name="CranioSolto2" type="Sprite" parent="BG" index="4"]
+[node name="CranioSolto2" type="Sprite" parent="BG" index="3"]
 use_parent_material = true
 position = Vector2( 123, 187 )
+texture = ExtResource( 5 )
+
+[node name="CranioSolto6" type="Sprite" parent="BG" index="4"]
+use_parent_material = true
+position = Vector2( 301, 90 )
 texture = ExtResource( 5 )
 
 [node name="CranioSolto3" type="Sprite" parent="BG" index="5"]
@@ -55,26 +81,52 @@ use_parent_material = true
 position = Vector2( 112, 188 )
 texture = ExtResource( 4 )
 
-[node name="CranioSolto1" type="Sprite" parent="BG" index="6"]
+[node name="CranioSolto7" type="Sprite" parent="BG" index="6"]
+use_parent_material = true
+position = Vector2( 381, 188.5 )
+texture = ExtResource( 4 )
+
+[node name="CranioSolto1" type="Sprite" parent="BG" index="7"]
 use_parent_material = true
 position = Vector2( 101, 187 )
 texture = ExtResource( 3 )
 
-[node name="CranioSolto4" type="Sprite" parent="BG" index="7"]
+[node name="CranioSolto4" type="Sprite" parent="BG" index="8"]
 use_parent_material = true
 position = Vector2( 119, 178 )
 texture = ExtResource( 4 )
 
-[node name="CranioSolto5" type="Sprite" parent="BG" index="8"]
+[node name="CranioSolto5" type="Sprite" parent="BG" index="9"]
 use_parent_material = true
 position = Vector2( 108, 179 )
 texture = ExtResource( 5 )
 
-[node name="Velas2" parent="BG" index="9" instance=ExtResource( 9 )]
+[node name="Velas2" parent="BG" index="10" instance=ExtResource( 9 )]
 use_parent_material = true
-position = Vector2( 48, 56 )
-frame = 2
+position = Vector2( 48, 97 )
 flip_h = true
+
+[node name="Velas3" parent="BG" index="11" instance=ExtResource( 9 )]
+use_parent_material = true
+position = Vector2( -24, 171 )
+frame = 0
+flip_h = true
+
+[node name="Velas4" parent="BG" index="12" instance=ExtResource( 9 )]
+use_parent_material = true
+position = Vector2( -15, 171 )
+frame = 0
+flip_h = true
+
+[node name="DecorOssos" type="Sprite" parent="BG" index="13"]
+use_parent_material = true
+position = Vector2( 48.5, 51 )
+texture = ExtResource( 10 )
+
+[node name="CranioSolto8" type="Sprite" parent="BG" index="14"]
+use_parent_material = true
+position = Vector2( 245, 83 )
+texture = ExtResource( 4 )
 
 [node name="TileMap" parent="." index="1"]
 visible = false
