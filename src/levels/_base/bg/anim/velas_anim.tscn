@@ -30,7 +30,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="Velas" type="AnimatedSprite"]
 position = Vector2( 48, 88 )
 frames = SubResource( 6 )
 frame = 1

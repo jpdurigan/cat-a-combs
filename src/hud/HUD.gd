@@ -35,6 +35,11 @@ func _ready():
 	Events.connect("level_started", self, "_on_level_started")
 	Events.connect("lives_updated", self, "_on_lives_updated")
 
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("ui_reset"):
+		_reset_level()
+
 ### -----------------------------------------------------------------------------------------------
 
 
@@ -44,6 +49,11 @@ func _ready():
 
 
 ### Private Methods -------------------------------------------------------------------------------
+
+func _reset_level() -> void:
+	_reset_sprite.play("pressed")
+	Events.emit_signal("level_reset")
+
 
 func _on_main_menu_entered() -> void:
 	if _game_hud.visible:
@@ -63,8 +73,7 @@ func _on_lives_updated(value: int) -> void:
 
 
 func _on_Reset_pressed():
-	_reset_sprite.play("pressed")
-	Events.emit_signal("level_reset")
+	_reset_level()
 
 
 func _on_Music_toggled(button_pressed: bool):

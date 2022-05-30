@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://levels/_base/Spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/_base/checkpoint.png" type="Texture" id=2]
@@ -8,18 +8,11 @@
 [ext_resource path="res://levels/_base/lights/small_light1.png" type="Texture" id=6]
 [ext_resource path="res://levels/_base/lights/small_light3.png" type="Texture" id=7]
 [ext_resource path="res://levels/_base/lights/small_light2.png" type="Texture" id=8]
+[ext_resource path="res://audio/sfx/checkpoint2.ogg" type="AudioStream" id=9]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 32, 29 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 29 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 29 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
@@ -41,26 +34,34 @@ region = Rect2( 64, 29, 32, 29 )
 atlas = ExtResource( 2 )
 region = Rect2( 96, 29, 32, 29 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 32, 29 )
 
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 29 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 29 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
-"loop": false,
-"name": "activate",
-"speed": 10.0
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "off",
+"speed": 1.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "on",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 6 ) ],
-"loop": true,
-"name": "off",
-"speed": 1.0
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "activate",
+"speed": 10.0
 } ]
 
 [sub_resource type="AnimatedTexture" id=12]
@@ -110,15 +111,19 @@ script = ExtResource( 3 )
 [node name="Sprite" parent="." index="0"]
 visible = false
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
+[node name="CheckpointStream" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 9 )
+bus = "World"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="4"]
 position = Vector2( 0, -14.5 )
 frames = SubResource( 1 )
 animation = "off"
 playing = true
 
-[node name="Trigger" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Trigger" parent="." index="5" instance=ExtResource( 4 )]
 
-[node name="Light2D" type="Light2D" parent="." index="5"]
+[node name="Light2D" type="Light2D" parent="." index="6"]
 position = Vector2( 0, -16 )
 texture = SubResource( 12 )
 texture_scale = 0.01
